@@ -2,9 +2,6 @@ name: Deploy Axis Robotics Updates
 
 on:
   workflow_dispatch:
-  schedule:
-    # Refresh every day at 8:30am UTC. Increase frequency if demos change often.
-    - cron: '30 8 * * *'
   push:
     branches: [main]
 
@@ -27,34 +24,6 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
-      - name: Verify NOTION_TOKEN secret
-        env:
-          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
-        run: |
-          if [ -z "$NOTION_TOKEN" ]; then
-            echo "::error::Missing NOTION_TOKEN. Add it in Settings → Secrets and variables → Actions → Secrets."
-            exit 1
-          fi
-          node --input-type=module <<'EOF'
-          import { Client } from '@notionhq/client';
-          try {
-            const notion = new Client({ auth: process.env.NOTION_TOKEN });
-            await notion.users.me({});
-            console.log('Notion token is valid.');
-          } catch (error) {
-            console.error('Notion token check failed:', error.message || error);
-            process.exit(1);
-          }
-          EOF
-      - name: Ingest Notion
-        run: npm run ingest
-        env:
-          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
-          NOTION_ROBOTICS_ROOT_PAGE_ID: 35c68db0a61c80fcade6c0b5e9ae0633
-          NOTION_MENGFEI_PAGE_ID: 2df68db0a61c80c2b820ec5706e5750b
-          NOTION_YIKAI_PAGE_ID: 30168db0a61c80a690e8cb41c24ade6b
-          UPDATE_YEAR: '2026'
-          NOTION_DOWNLOAD_MEDIA: true
       - name: Build static site
         run: npm run build
         env:
