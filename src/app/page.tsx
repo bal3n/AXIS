@@ -2,6 +2,14 @@ import rawData from '@/data/siteData.json';
 import type { DemoItem, MediaItem, SiteData, WeeklyUpdate } from '@/lib/types';
 
 const data = rawData as SiteData;
+const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || '';
+
+function assetUrl(url?: string) {
+  if (!url) return url;
+  if (url.startsWith('http://') || url.startsWith('https://')) return url;
+  if (BASE_PATH && url.startsWith('/')) return `${BASE_PATH}${url}`;
+  return url;
+}
 
 type ReportSection = {
   title: string;
@@ -291,13 +299,13 @@ function mediaAlt(media: MediaItem, title: string) {
 
 function MediaAsset({ item, title }: { item: MediaItem; title: string }) {
   if (item.type === 'image' && item.url) {
-    return <img src={item.url} alt={mediaAlt(item, title)} loading="lazy" />;
+    return <img src={assetUrl(item.url)} alt={mediaAlt(item, title)} loading="lazy" />;
   }
   if ((item.type === 'video' || isVideoFile(item)) && item.url) {
-    return <video src={item.url} controls muted preload="metadata" />;
+    return <video src={assetUrl(item.url)} controls muted preload="metadata" />;
   }
   return (
-    <a className="fileLink" href={item.url || '#'} target="_blank" rel="noreferrer">
+    <a className="fileLink" href={assetUrl(item.url) || '#'} target="_blank" rel="noreferrer">
       {item.originalName || 'Open supporting file'}
     </a>
   );

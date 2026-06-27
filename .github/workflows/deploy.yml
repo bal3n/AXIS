@@ -27,21 +27,28 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      - name: Verify NOTION_TOKEN secret
+        env:
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+        run: |
+          if [ -z "$NOTION_TOKEN" ]; then
+            echo "::error::Missing NOTION_TOKEN. Add it in Settings → Secrets and variables → Actions → Secrets."
+            exit 1
+          fi
       - name: Ingest Notion
         run: npm run ingest
         env:
           NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
-          NOTION_ROBOTICS_ROOT_PAGE_ID: ${{ vars.NOTION_ROBOTICS_ROOT_PAGE_ID || '35c68db0a61c80fcade6c0b5e9ae0633' }}
-          NOTION_MENGFEI_PAGE_ID: ${{ vars.NOTION_MENGFEI_PAGE_ID || '2df68db0a61c80c2b820ec5706e5750b' }}
-          NOTION_YIKAI_PAGE_ID: ${{ vars.NOTION_YIKAI_PAGE_ID || '30168db0a61c80a690e8cb41c24ade6b' }}
-          UPDATE_YEAR: ${{ vars.UPDATE_YEAR || '2026' }}
+          NOTION_ROBOTICS_ROOT_PAGE_ID: 35c68db0a61c80fcade6c0b5e9ae0633
+          NOTION_MENGFEI_PAGE_ID: 2df68db0a61c80c2b820ec5706e5750b
+          NOTION_YIKAI_PAGE_ID: 30168db0a61c80a690e8cb41c24ade6b
+          UPDATE_YEAR: '2026'
           NOTION_DOWNLOAD_MEDIA: true
       - name: Build static site
         run: npm run build
         env:
           NEXT_OUTPUT_EXPORT: true
-          BASIC_AUTH_USER: ${{ secrets.BASIC_AUTH_USER }}
-          BASIC_AUTH_PASSWORD: ${{ secrets.BASIC_AUTH_PASSWORD }}
+          NEXT_PUBLIC_BASE_PATH: /AXIS
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
