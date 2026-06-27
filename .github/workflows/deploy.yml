@@ -35,6 +35,17 @@ jobs:
             echo "::error::Missing NOTION_TOKEN. Add it in Settings → Secrets and variables → Actions → Secrets."
             exit 1
           fi
+          node --input-type=module <<'EOF'
+          import { Client } from '@notionhq/client';
+          try {
+            const notion = new Client({ auth: process.env.NOTION_TOKEN });
+            await notion.users.me({});
+            console.log('Notion token is valid.');
+          } catch (error) {
+            console.error('Notion token check failed:', error.message || error);
+            process.exit(1);
+          }
+          EOF
       - name: Ingest Notion
         run: npm run ingest
         env:
