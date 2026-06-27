@@ -1,0 +1,1048 @@
+{
+  "generatedAt": "2026-06-27T11:26:47.663Z",
+  "sources": {
+    "weeklyRoot": "https://app.notion.com/p/35c68db0a61c80fcade6c0b5e9ae0633",
+    "mengfei": "https://app.notion.com/p/2df68db0a61c80c2b820ec5706e5750b",
+    "yikai": "https://app.notion.com/p/30168db0a61c80a690e8cb41c24ade6b"
+  },
+  "stats": {
+    "weeklyUpdates": 7,
+    "demoItems": 36,
+    "mediaItems": 59,
+    "lastUpdate": "2026-06-21"
+  },
+  "weeklyUpdates": [
+    {
+      "id": "2026-05-03",
+      "title": "Tech Updates 5/3–5/10",
+      "period": "5/3–5/10",
+      "startDate": "2026-05-03",
+      "endDate": "2026-05-10",
+      "sourceUrl": "https://app.notion.com/p/36168db0a61c80df8040e56fa36618a3",
+      "summary": [
+        "5/3–5/10 Robotics Tech Updates",
+        "This week, the robotics team continued strengthening the full data loop across task generation, simulation infrastructure, model training, failure recovery, and asset-level data augmentation. On the TaskGen side, we completed the asset scan module and merged it into the TaskGen pipeline, enabling generated tasks to better reason over available assets and scene layouts. Long-horizon and multi-embodiment task support are now online, with remaining work focused on minor bug fixes and stability improvements.",
+        "On the simulation and product side, we continued improving MuJoCo verify, replay and scene-variant workflows. A major focus was reducing repeated downloads caused by scene variants, where different tasks were repeatedly downloading overlapping assets. The planned fixes include task-file caching, MuJoCo model and scene caching, local asset caching, concurrency protection, and S3 retry logic. We also fixed compatibility issues around scene variants, domain randomization, submit_nonce, and initial state sets. For longer-horizon and multi-asset tasks, we addressed test-group feedback around gripper penetration, difficult gripper closure, and abnormal IK behaviors. The Axis arm teleoperation, gripper close pose, and control panel were further cleaned up, with dual-arm and booster controls now online.",
+        "On the failure-recovery side, we continued building a recover-from-failure pipeline inspired by the OmniReset-style idea of reusing intermediate failure states. We collected around 50 transition states from an existing task, covering different stages such as already grasped semi-success states, initial states far from the object, and near-object states before grasping. The next technical step is to integrate these states into task configs, because the state representation contains relatively large information, we are also evaluating S3-based storage. Longer term, this pipeline can be extended to more randomized scene-variant tasks, turning failure and near-failure states into targeted data for more robust policy learning.",
+        "On the model training side, we merged the pi0.5-related work and synced with Jiachen on the dataset and model-training direction. The current paper framing emphasizes continuous model growth and better transferable pretraining from human data. This connects directly to our broader dataset thesis: as task diversity and data scale increase, we want to measure whether model performance grows continuously with data volume, and whether sufficient data can outperform existing baselines in more transferable manipulation settings.",
+        "Also, we continued the Fishbone collaboration with Chenfanfu Jiang. Fishbone introduces a structured and controllable representation for 3D meshes, automatically decomposing objects into a low-dimensional spine-and-rib structure for deformation editing, physical simulation, and data augmentation without manual rigging. We are using around 500 deformed assets to fine-tune DexGraspNet 2.0, and current results show a 10–20% grasp success rate improvement in both single-object and multi-object settings. For Axis, this is important because Fishbone can serve as an asset-level augmentation engine for TaskGen: TaskGen generates task semantics and scene layouts, while Fishbone generates controllable object variants and deformation distributions, improving task diversity, difficulty coverage, and sim-to-real generalization.",
+        "5/3–5/10 Robotics Tech Update",
+        "本周 robotics team 继续推进从任务生成、仿真基础设施、模型训练、失败恢复到资产级数据扩增的完整数据闭环。在 TaskGen 方面，我们完成了 asset scan 模块，并将其合并进 TaskGen pipeline，使生成任务能够更好地利用已有资产和场景布局信息。Long-horizon 和 multi-embodiment 任务支持也已经上线，目前主要剩余工作是一些小 bug 修复和稳定性优化。"
+      ],
+      "demos": [
+        {
+          "id": "6b8f9203a433",
+          "date": "2026-05-03",
+          "weekId": "2026-05-03",
+          "owner": "Yikai",
+          "title": "Model Training · Validated the effectiveness of the new tasks",
+          "caption": "Model Training · Validated the effectiveness of the new tasks. The original generated tasks can be learned with ~50-100 demos, while with training data on the new task, a minimal of 500 traj is required. This is because that the newly generated tasks applies heavy randomization on assets variety and spatial relationships, that prevents the model to hack on the shortcut of overfitting to execute the same trajectory no matter what the visual input is. · Training on 100 demos:",
+          "tags": [
+            "Randomization",
+            "Model"
+          ],
+          "media": [
+            {
+              "type": "video",
+              "url": "/media/notion/yikai/2026-05-03/35568db0a61c804ebc85dab8a0424d3a.mp4",
+              "originalName": "832f1641b8200abab5684528de18f9e6.mp4",
+              "notionBlockId": "35568db0-a61c-804e-bc85-dab8a0424d3a"
+            }
+          ],
+          "sourceUrl": "https://app.notion.com/p/30168db0a61c80a690e8cb41c24ade6b"
+        },
+        {
+          "id": "188dc53b202d",
+          "date": "2026-05-03",
+          "weekId": "2026-05-03",
+          "owner": "Yikai",
+          "title": "Multiple Embodiment Support · c",
+          "caption": "Multiple Embodiment Support · c. refined DR for the same complexity with less tasks required, 25-30 tasks/day · d. Deliver to 擎羽",
+          "tags": [
+            "Multi-embodiment"
+          ],
+          "media": [
+            {
+              "type": "video",
+              "url": "/media/notion/yikai/2026-05-03/35568db0a61c8073a889cfcfc58955cb.mp4",
+              "originalName": "rgb.mp4",
+              "notionBlockId": "35568db0-a61c-8073-a889-cfcfc58955cb"
+            }
+          ],
+          "sourceUrl": "https://app.notion.com/p/30168db0a61c80a690e8cb41c24ade6b"
+        },
+        {
+          "id": "ffd3b9525f9a",
+          "date": "2026-05-03",
+          "weekId": "2026-05-03",
+          "owner": "Mengfei",
+          "title": "recover from failure · 从中间 快成功或者已经失败开始 · 完整pipeline: collect后快速training一个轻量模型 然后这个模型 既",
+          "caption": "recover from failure · 从中间 快成功或者已经失败开始 · 完整pipeline: collect后快速training一个轻量模型 然后这个模型 既可以给后面导出 也可以用来评估 收集那些未包括的分布和失败姿态",
+          "tags": [
+            "Recovery",
+            "Model"
+          ],
+          "media": [
+            {
+              "type": "image",
+              "url": "/media/notion/mengfei/2026-05-03/35568db0a61c80879930c63fbf7062b0.png",
+              "originalName": "fed48ae7efb9bc94336e6e0a8f0b8334.png",
+              "notionBlockId": "35568db0-a61c-8087-9930-c63fbf7062b0"
+            },
+            {
+              "type": "image",
+              "url": "/media/notion/mengfei/2026-05-03/35568db0a61c80c492f0ef8322b2711a.png",
+              "originalName": "8fd3274e438fcbd5f3b5a6cb795bf616.png",
+              "notionBlockId": "35568db0-a61c-80c4-92f0-ef8322b2711a"
+            }
+          ],
+          "sourceUrl": "https://app.notion.com/p/2df68db0a61c80c2b820ec5706e5750b"
+        },
+        {
+          "id": "1f6b33a8f453",
+          "date": "2026-05-03",
+          "weekId": "2026-05-03",
+          "owner": "Yikai",
+          "title": "TaskGen · Automatic Checker Generation · Multiple Embodiment Support",
+          "caption": "TaskGen · Automatic Checker Generation · Multiple Embodiment Support",
+          "tags": [
+            "TaskGen",
+            "Checker",
+            "Multi-embodiment"
+          ],
+          "media": [
+            {
+              "type": "image",
+              "url": "/media/notion/yikai/2026-05-03/35568db0a61c804d9656e6053c8bb161.png",
+              "originalName": "截屏2026-05-01_20.26.29.png",
+              "notionBlockId": "35568db0-a61c-804d-9656-e6053c8bb161"
+            },
+            {
+              "type": "image",
+              "url": "/media/notion/yikai/2026-05-03/35568db0a61c807b8ca6c2f982f28328.png",
+              "originalName": "截屏2026-05-01_20.29.09.png",
+              "notionBlockId": "35568db0-a61c-807b-8ca6-c2f982f28328"
+            },
+            {
+              "type": "image",
+              "url": "/media/notion/yikai/2026-05-03/35568db0a61c80b184c6c0710cfb4e60.png",
+              "originalName": "截屏2026-05-01_20.26.42.png",
+              "notionBlockId": "35568db0-a61c-80b1-84c6-c0710cfb4e60"
+            }
+          ],
+          "sourceUrl": "https://app.notion.com/p/30168db0a61c80a690e8cb41c24ade6b"
+        },
+        {
+          "id": "b591f86cb8a4",
+          "date": "2026-05-03",
+          "weekId": "2026-05-03",
+          "owner": "Yikai",
+          "title": "Validated the effectiveness of the new tasks",
+          "caption": "Validated the effectiveness of the new tasks. The original generated tasks can be learned with ~50-100 demos, while with training data on the new task, a minimal of 500 traj is required. This is because that the newly generated tasks applies heavy randomization on assets variety and spatial relationships, that prevents the model to hack on the shortcut of overfitting to execute the same trajectory no matter what the visual input is. · Training on 100 demos: · Training on 500 demos:",
+          "tags": [
+            "Randomization",
+            "Model"
+          ],
+          "media": [
+            {
+              "type": "video",
+              "url": "/media/notion/yikai/2026-05-03/35568db0a61c80919b1dcdf98a35b368.mp4",
+              "originalName": "f6dfd74b594eaa92abf3f98159dd07ad.mp4",
+              "notionBlockId": "35568db0-a61c-8091-9b1d-cdf98a35b368"
+            }
+          ],
+          "sourceUrl": "https://app.notion.com/p/30168db0a61c80a690e8cb41c24ade6b"
+        },
+        {
+          "id": "6f2bd0aea3a2",
+          "date": "2026-05-03",
+          "weekId": "2026-05-03",
+          "owner": "Mengfei",
+          "title": "从中间 快成功或者已经失败开始 · 完整pipeline: collect后快速training一个轻量模型 然后这个模型 既可以给后面导出 也可以用来评估 收集那些未包括",
+          "caption": "从中间 快成功或者已经失败开始 · 完整pipeline: collect后快速training一个轻量模型 然后这个模型 既可以给后面导出 也可以用来评估 收集那些未包括的分布和失败姿态 · 2.smolVLA finetune 一个轻量化的VLA在已有的任务数据上 之前都是经典IL模型 4.5B",
+          "tags": [
+            "Model"
+          ],
+          "media": [
+            {
+              "type": "video",
+              "url": "/media/notion/mengfei/2026-05-03/35568db0a61c806c8204cc18dbb49668.mp4",
+              "originalName": "0a2ba51aa281510bf46a017da93f65b6.mp4",
+              "notionBlockId": "35568db0-a61c-806c-8204-cc18dbb49668"
+            },
+            {
+              "type": "video",
+              "url": "/media/notion/mengfei/2026-05-03/35568db0a61c8030a13be46fc791d2e4.mp4",
+              "originalName": "cd44aee1152c9875a8e808893b880893.mp4",
+              "notionBlockId": "35568db0-a61c-8030-a13b-e46fc791d2e4"
+            }
+          ],
+          "sourceUrl": "https://app.notion.com/p/2df68db0a61c80c2b820ec5706e5750b"
+        },
+        {
+          "id": "e3502b62f9e7",
+          "date": "2026-05-03",
+          "weekId": "2026-05-03",
+          "owner": "Mengfei",
+          "title": "完整pipeline: collect后快速training一个轻量模型 然后这个模型 既可以给后面导出 也可以用来评估 收集那些未包括的分布和失败姿态 · 2",
+          "caption": "完整pipeline: collect后快速training一个轻量模型 然后这个模型 既可以给后面导出 也可以用来评估 收集那些未包括的分布和失败姿态 · 2.smolVLA finetune 一个轻量化的VLA在已有的任务数据上 之前都是经典IL模型 4.5B · 3.检查verify的问题 还有一些需要确定的情况 对接yk那边变化资产的随机数设置 修复了一些对接bug",
+          "tags": [
+            "Verify",
+            "Model"
+          ],
+          "media": [
+            {
+              "type": "image",
+              "url": "/media/notion/mengfei/2026-05-03/35668db0a61c8095af73e874e82ef37c.png",
+              "originalName": "14e0c48e33b386accdf29e38f3d16489.png",
+              "notionBlockId": "35668db0-a61c-8095-af73-e874e82ef37c"
+            },
+            {
+              "type": "image",
+              "url": "/media/notion/mengfei/2026-05-03/35668db0a61c80c681e0c38375df23c0.png",
+              "originalName": "eb8d8a176ddef12237732892caf6a49a.png",
+              "notionBlockId": "35668db0-a61c-80c6-81e0-c38375df23c0"
+            }
+          ],
+          "sourceUrl": "https://app.notion.com/p/2df68db0a61c80c2b820ec5706e5750b"
+        }
+      ]
+    },
+    {
+      "id": "2026-05-10",
+      "title": "Tech Updates 5/10-5/17",
+      "period": "5/10-5/17",
+      "startDate": "2026-05-10",
+      "endDate": "2026-05-17",
+      "sourceUrl": "https://app.notion.com/p/36b68db0a61c8024b49ed9e3ac8cb064",
+      "summary": [
+        "5/10–5/17 Robotics Tech Updates",
+        "This week, the robotics team focused on improving data quality, expanding TaskGen capabilities, and pushing the data-to-model pipeline toward a more reproducible service. On the product side, we analyzed Task 805 and found that the high failure rate was largely inflated by concentrated bot traffic rather than real user experience. After filtering bot-like users, the true user pass rate is much closer to neighboring tasks. We are also building scripts that combine replay/verification failure reasons with user behavior patterns to automatically flag suspicious bot submissions. The previous replay mechanism issue, where users could exploit checker-only final states, has been addressed on the backend.",
+        "On the TaskGen side, we transferred the web-service codebase package and added interfaces for users to customize and visualize data diversity as well as downstream model performance. TaskGen can now generate articulated-object tasks end-to-end from prompts, unlocking Open, Close, and Press skills over objects such as microwaves, ovens, and cabinets. This expands TaskGen from rigid-object manipulation toward more realistic household and industrial interaction tasks.",
+        "On the simulation and data infrastructure side, we continued fixing asset-level issues such as lag, object adhesion, failed graspability, and penetration in the latest asset batch, and handed them off for validation. The recover-from-failure pipeline is also moving toward release: model export and frontend integration are ready, pending checkpoint upload to S3. We added automated orchestration scripts covering failure-state selection, collection, training, evaluation, failure-task creation, parallel Axis eval, failure checkers, final aggregation, and static replay filtering. The next step is to collect and train on broader randomized task set.",
+        "On the model side, we completed multi-task pretraining for cross-simulation evaluation. The current setup uses 84 Axis-rendered tasks in IsaacLab for pretraining and fine-tunes on Task 684 in MuJoCo, achieving around 40% cross-sim success. This provides an early signal that our data and task pipeline can support transferable policy learning across simulation environments. In parallel, we updated the domain randomization roadmap toward zero-shot sim-to-real, focusing next on physical parameter randomization over friction, mass, and damping, as well as Franka joint-level initial-state randomization while avoiding object collisions.",
+        "In parallel, the CoRL paper effort continued to consolidate the technical story around AXIS as a growable community-driven data engine. The current framing emphasizes browser-based MuJoCo-WASM teleoperation, automated task generation, standardized trajectory processing, IsaacSim-based visual/physics augmentation, and fixed held-out evaluation snapshots for measuring dataset scaling. This matches the team’s current direction: turning community data collection, task generation, replay/verification, augmentation, model training, and failure-driven improvement into one continuously growing robotics data loop.",
+        "5/10–5/17 Robotics Tech Update",
+        "本周 robotics team 主要推进了数据质量分析、TaskGen 能力扩展，以及 data-to-model pipeline 的服务化和可复现实验闭环。在产品侧，我们分析了 Task 805 的失败率，发现全量失败率主要被集中刷入的 bot 流量拉高，并不能代表真实玩家体验；排除疑似 bot 用户后，真实用户通过率与相邻任务更接近。我们也在开发结合 replay/verify 失败原因和用户行为模式的脚本，用来自动识别疑似 bot 提交。此前基于 checker 末状态可被编辑作弊的问题，后端 replay 机制已经完成修复。"
+      ],
+      "demos": [
+        {
+          "id": "8d2cfbc8964d",
+          "date": "2026-05-10",
+          "weekId": "2026-05-10",
+          "owner": "Mengfei",
+          "title": "submit_nonce 和 axis_initial_state_set_v1，同时调了 Axis arm 的 teleop/IK、夹爪闭合姿态，并整理了 Control",
+          "caption": "submit_nonce 和 axis_initial_state_set_v1，同时调了 Axis arm 的 teleop/IK、夹爪闭合姿态，并整理了 Controls panel 目前双臂和booster已经上线 · 2.recover from failture 总结blog 采集了一个已有task的 失败过渡态 参考omnireset这篇论文的思路 包括半成功（已经抓住） 刚开始（远离物体） 和起步（靠近物体但不抓）收集了这50个states 正在看这些states怎么放到任务config里 由于信息量比较大 可能需要传S3 正在解决 · 之后考虑在新的scene variants 任务上进行 随机化程度更大",
+          "tags": [
+            "Booster",
+            "Teleoperation",
+            "Recovery"
+          ],
+          "media": [
+            {
+              "type": "video",
+              "url": "/media/notion/mengfei/2026-05-10/35c68db0a61c8044a30dc1fdbc7b383f.mp4",
+              "originalName": "8dd4d01386f785647242869a19bacccb.mp4",
+              "notionBlockId": "35c68db0-a61c-8044-a30d-c1fdbc7b383f"
+            }
+          ],
+          "sourceUrl": "https://app.notion.com/p/2df68db0a61c80c2b820ec5706e5750b"
+        },
+        {
+          "id": "7a58e347c880",
+          "date": "2026-05-11",
+          "weekId": "2026-05-10",
+          "owner": "Yikai",
+          "title": "5/11 · TaskGen: · a",
+          "caption": "5/11 · TaskGen: · a. Assets Scan Done, Merged into taskgen pipeline",
+          "tags": [
+            "TaskGen"
+          ],
+          "media": [
+            {
+              "type": "image",
+              "url": "/media/notion/yikai/2026-05-11/35d68db0a61c80b6a9ceec775bf79366.jpg",
+              "originalName": "62a50ef15742903f0cd5676891d8c3e8.jpg",
+              "notionBlockId": "35d68db0-a61c-80b6-a9ce-ec775bf79366"
+            },
+            {
+              "type": "image",
+              "url": "/media/notion/yikai/2026-05-11/35d68db0a61c80bbbda2c9f17461e6a2.png",
+              "originalName": "截屏2026-05-11_10.23.11.png",
+              "notionBlockId": "35d68db0-a61c-80bb-bda2-c9f17461e6a2"
+            }
+          ],
+          "sourceUrl": "https://app.notion.com/p/30168db0a61c80a690e8cb41c24ade6b"
+        }
+      ]
+    },
+    {
+      "id": "2026-05-17",
+      "title": "Tech Updates 5/17-5/24",
+      "period": "5/17-5/24",
+      "startDate": "2026-05-17",
+      "endDate": "2026-05-24",
+      "sourceUrl": "https://app.notion.com/p/37268db0a61c803d932ec594c0dee7db",
+      "summary": [
+        "5/17–5/24 Robotics Tech Update",
+        "This week, the robotics team focused on improving AXIS data quality, TaskGen coverage, model deployment, and real-world validation. On the product side, we completed a suspicious-user audit script for axis-mvp, using user statistics together with verify/replay failure reasons to detect abnormal collection behavior. This helps prevent bot traffic or checker exploits from distorting pass-rate statistics and improves the reliability of community-collected data.",
+        "On the webapp and simulation side, we continued improving the t1_7dof gripper and asset interaction quality. Issues reported in testing, including penetration, difficulty grasping heavier objects, and limited IK flexibility, have been fixed. These fixes reduce failures caused by asset or physics bugs, making newly generated tasks more suitable for real data collection.",
+        "On the recover-from-failure side, we tested Failure Task 892 and collected 300+ failure initial states. Before adding recovery data, baseline performance plateaued around 60% after more than 200 demos, with most failures concentrated around grasping. Since this task still used assets from before the latest penetration and interaction fixes, the next step is to retry the recovery pipeline on repaired and more randomized tasks.",
+        "On the TaskGen side, articulated-object generation has been merged into the automatic generation pipeline, supporting cabinets, dishwashers, drawers, and the existing randomization workflow. Delivery to Qingyu is on track, with 27 tasks ready for collection and 9 more tasks generating. Multi-embodiment and chain-of-thought task generation are also online, extending TaskGen toward more complex long-horizon and articulated-object tasks.",
+        "On the model side, we finished the first round of fine-tuning, evaluation, and benchmarking, and are now adjusting the data recipe for better performance. The π0.5 evaluation pipeline has been merged into the real-world stack. Web policy inference can now download checkpoints from S3 for online deployment, while RoboVerse experiments are analyzing dataset-size scaling and adding object geometry information into training.",
+        "In parallel, we completed the main CoRL submission draft for the Franka dataset and are now improving supplementary materials and experimental results for release. The current AXIS snapshot contains 207 tasks, 50k+ human demonstration trajectories, and 60k+ task or scene variants, organized into AXIS-25%/50%/100% snapshots for studying dataset scaling. On the real-world side, Booster hardware setup also progressed, beginning the connection from simulation-heavy training to physical robot validation.",
+        "5/17–5/24 Robotics Tech Update"
+      ],
+      "demos": [
+        {
+          "id": "b59814a34ff3",
+          "date": "2026-05-17",
+          "weekId": "2026-05-17",
+          "owner": "Mengfei",
+          "title": "1",
+          "caption": "1.Task 805 失败率低 有几个id用户在集中的 固定间隔的刷数据 然后目前正在写一套结合verify不通过原因 直接反应疑似bot用户的脚本给yao哥 · 看了下discord的反馈 基本上还是针对上一阶段的replay 机制的反馈 基本就是说还是给予checker末状态 可以直接编辑作弊 目前服务器后端回放机制都已解决这些 · 手机端卡顿问题 和之前task的旧参数有关 新的参属下的任务测还比较流畅",
+          "tags": [
+            "Checker",
+            "Verify",
+            "Replay"
+          ],
+          "media": [
+            {
+              "type": "video",
+              "url": "/media/notion/mengfei/2026-05-17/36468db0a61c80959f6accfd1103a51d.mp4",
+              "originalName": "8112af40291ec1cd50e3a4f8c9c4d0ef.mp4",
+              "notionBlockId": "36468db0-a61c-8095-9f6a-ccfd1103a51d"
+            }
+          ],
+          "sourceUrl": "https://app.notion.com/p/2df68db0a61c80c2b820ec5706e5750b"
+        },
+        {
+          "id": "7b20b8c21947",
+          "date": "2026-05-17",
+          "weekId": "2026-05-17",
+          "owner": "Mengfei",
+          "title": "3",
+          "caption": "3.针对之前新一批资产卡顿 粘连 抓不上 穿模等问题进行修复 已经移交给yikai检验 · 4.recover from failure 已经准备好模型的导出和放到网页端 现在需要在S3库上上传ckpt 可以准备正式发布 然后加入 自动化提取failure state的脚本，包括 select/collect/train/eval/create failure task 的编排脚本、parallel Axis eval、failure checker、final aggregation、static replay filter · 在yk新一批更大范围随机化的task上采集好数据进行训练",
+          "tags": [
+            "Recovery",
+            "Checker",
+            "Replay"
+          ],
+          "media": [
+            {
+              "type": "video",
+              "url": "/media/notion/mengfei/2026-05-17/36468db0a61c80928ba0de81d98bc4d7.mp4",
+              "originalName": "61fccf246accbac87e73abe39e81721d.mp4",
+              "notionBlockId": "36468db0-a61c-8092-8ba0-de81d98bc4d7"
+            },
+            {
+              "type": "video",
+              "url": "/media/notion/mengfei/2026-05-17/36468db0a61c8040947ec21f8f698ffb.mp4",
+              "originalName": "992c8bad155698454fbf94376ac01492.mp4",
+              "notionBlockId": "36468db0-a61c-8040-947e-c21f8f698ffb"
+            }
+          ],
+          "sourceUrl": "https://app.notion.com/p/2df68db0a61c80c2b820ec5706e5750b"
+        },
+        {
+          "id": "7ad00299013f",
+          "date": "2026-05-17",
+          "weekId": "2026-05-17",
+          "owner": "Mengfei",
+          "title": "5/17 · 1",
+          "caption": "5/17 · 1.Task 805 失败率低 有几个id用户在集中的 固定间隔的刷数据 然后目前正在写一套结合verify不通过原因 直接反应疑似bot用户的脚本给yao哥",
+          "tags": [
+            "Verify"
+          ],
+          "media": [
+            {
+              "type": "image",
+              "url": "/media/notion/mengfei/2026-05-17/36468db0a61c80dd93ddd5bd8648f919.png",
+              "originalName": "image.png",
+              "notionBlockId": "36468db0-a61c-80dd-93dd-d5bd8648f919"
+            },
+            {
+              "type": "image",
+              "url": "/media/notion/mengfei/2026-05-17/36468db0a61c804eb4dce90486beb3ba.png",
+              "originalName": "image.png",
+              "notionBlockId": "36468db0-a61c-804e-b4dc-e90486beb3ba"
+            }
+          ],
+          "sourceUrl": "https://app.notion.com/p/2df68db0a61c80c2b820ec5706e5750b"
+        },
+        {
+          "id": "d4ceea886669",
+          "date": "2026-05-17",
+          "weekId": "2026-05-17",
+          "owner": "Mengfei",
+          "title": "看了下discord的反馈 基本上还是针对上一阶段的replay 机制的反馈 基本就是说还是给予checker末状态 可以直接编辑作弊 目前服务器后端回放机制都已解决这些",
+          "caption": "看了下discord的反馈 基本上还是针对上一阶段的replay 机制的反馈 基本就是说还是给予checker末状态 可以直接编辑作弊 目前服务器后端回放机制都已解决这些 · 手机端卡顿问题 和之前task的旧参数有关 新的参属下的任务测还比较流畅 · 3.针对之前新一批资产卡顿 粘连 抓不上 穿模等问题进行修复 已经移交给yikai检验",
+          "tags": [
+            "Checker",
+            "Replay"
+          ],
+          "media": [
+            {
+              "type": "video",
+              "url": "/media/notion/mengfei/2026-05-17/36468db0a61c80a589d8ef5e5a9b0fe5.mp4",
+              "originalName": "7701e2672149e5ad0b9dfc13ad5c13e1.mp4",
+              "notionBlockId": "36468db0-a61c-80a5-89d8-ef5e5a9b0fe5"
+            }
+          ],
+          "sourceUrl": "https://app.notion.com/p/2df68db0a61c80c2b820ec5706e5750b"
+        },
+        {
+          "id": "c7085bfb4d8c",
+          "date": "2026-05-18",
+          "weekId": "2026-05-17",
+          "owner": "Yikai",
+          "title": "TaskGen · web service codebase to yao, features added · We want to make our data2model",
+          "caption": "TaskGen · web service codebase to yao, features added · We want to make our data2model pipeline a reproducible and customizable service open to everyday users, we’re therefore opening our taskgen service and model preview pipeline as a whole package to deliver. We therefore added interface to users to customize and visualize the variety of our data, and the consequent performance of the models.",
+          "tags": [
+            "TaskGen",
+            "Model"
+          ],
+          "media": [
+            {
+              "type": "image",
+              "url": "/media/notion/yikai/2026-05-18/36468db0a61c801690e9cae4f106f507.jpg",
+              "originalName": "1.jpg",
+              "notionBlockId": "36468db0-a61c-8016-90e9-cae4f106f507"
+            }
+          ],
+          "sourceUrl": "https://app.notion.com/p/30168db0a61c80a690e8cb41c24ade6b"
+        },
+        {
+          "id": "bef0b810b185",
+          "date": "2026-05-18",
+          "weekId": "2026-05-17",
+          "owner": "Yikai",
+          "title": "Taskgen now generates articulated objects end-to-end, auto-detected from prompts",
+          "caption": "Taskgen now generates articulated objects end-to-end, auto-detected from prompts. It unlocks Open/Close/Press skills and covers articulated objects like Microwave/Oven/Cabinet. · Model Training · Done multi-task pretraining for cross-simulation evaluation, using 84 tasks from axis rendering in Isaaclab for pretraining, and used task 684 on mujoco to finetune. The cross-sim evaluation resulted in ~40% success rate, proving the effectiveness of our system.",
+          "tags": [
+            "TaskGen",
+            "Model",
+            "Articulated objects",
+            "MuJoCo",
+            "Multi-embodiment"
+          ],
+          "media": [
+            {
+              "type": "video",
+              "url": "/media/notion/yikai/2026-05-18/36468db0a61c8033bcc6f0e1d69fa933.mp4",
+              "originalName": "bd2c7ddc5ba7b459f64b26d8bb05ad2e.mp4",
+              "notionBlockId": "36468db0-a61c-8033-bcc6-f0e1d69fa933"
+            }
+          ],
+          "sourceUrl": "https://app.notion.com/p/30168db0a61c80a690e8cb41c24ade6b"
+        },
+        {
+          "id": "b9c8c52445ae",
+          "date": "2026-05-18",
+          "weekId": "2026-05-17",
+          "owner": "Yikai",
+          "title": "web service codebase to yao, features added · We want to make our data2model pipeline",
+          "caption": "web service codebase to yao, features added · We want to make our data2model pipeline a reproducible and customizable service open to everyday users, we’re therefore opening our taskgen service and model preview pipeline as a whole package to deliver. We therefore added interface to users to customize and visualize the variety of our data, and the consequent performance of the models. · Taskgen now generates articulated objects end-to-end, auto-detected from prompts. It unlocks Open/Close/Press skills and covers articulated objects like Microwave/Oven/Cabinet.",
+          "tags": [
+            "TaskGen",
+            "Model",
+            "Articulated objects"
+          ],
+          "media": [
+            {
+              "type": "video",
+              "url": "/media/notion/yikai/2026-05-18/36468db0a61c8061a296c7ac9dc17a4a.mp4",
+              "originalName": "b9cb8702312700ee0929fe099c53c7c3_raw.mp4",
+              "notionBlockId": "36468db0-a61c-8061-a296-c7ac9dc17a4a"
+            }
+          ],
+          "sourceUrl": "https://app.notion.com/p/30168db0a61c80a690e8cb41c24ade6b"
+        }
+      ]
+    },
+    {
+      "id": "2026-05-24",
+      "title": "Tech Updates 5/24-5/31",
+      "period": "5/24-5/31",
+      "startDate": "2026-05-24",
+      "endDate": "2026-05-31",
+      "sourceUrl": "https://app.notion.com/p/37968db0a61c8046853ceb3d435468f7",
+      "summary": [
+        "5/24–5/31 Robotics Tech Update",
+        "This week, the robotics team focused on automating the data-to-model pipeline, expanding TaskGen capabilities, and preparing the AXIS dataset for release. On the automation side, we built scripts to streamline several repetitive but critical workflows. Given an attempt ID, the system can now map it to the corresponding simulation replay video, with the production-side environment configured and bugs fixed for handoff. Given a task ID, the pipeline can automatically train a model, upload the checkpoint to S3, and connect the model metadata back to the product side.",
+        "We also automated the task/model-to-evaluation workflow. Given a task ID and model, the system can run evaluation, produce success-rate statistics, and export visualizations such as success-state heatmaps. These model fields, evaluation results, and success visualizations have been handed off for frontend/product integration. This moves the pipeline closer to a reproducible service where task generation, training, evaluation, and visualization can be triggered systematically instead of manually.",
+        "On the continuous-growth training side, we synced with Tianze and Jie and completed multi-data-scale training and success-rate comparisons for Tasks 1050, 1053, and 1055. We also added shape one-shot training, S3 model upload, and success-initial-state heatmap export/upload. The recovery setup shows an initial improvement of around 10% over the baseline, but more ablation studies are needed to understand the contribution of data scale, data quality, and randomization range. A new batch of F tasks, including 1050, 1053, 1055, 1058, 1060, 1063, 1065, 1068, and 1070, has been pushed to test to expand the evaluation range.",
+        "On the TaskGen side, articulated-object generation has been merged into the automatic generation pipeline, supporting objects such as cabinets, dishwashers, and drawers while remaining compatible with the existing randomization workflow. Delivery to Qingyu is on track, with 27 tasks ready for collection and 9 more tasks generating. Multi-embodiment and chain-of-thought task generation are also online, further extending TaskGen toward long-horizon, multi-asset, and articulated-object manipulation.",
+        "On the model and real-world side, we finished the first round of fine-tuning, evaluation, and benchmarking, and are now adjusting the data recipe for better performance. The π0.5 evaluation pipeline has been merged into the real-world stack, and Booster hardware setup is progressing. In parallel, we completed the main CoRL submission draft for the Franka dataset and are now polishing supplementary materials and experimental results for release. The next step is to continue batch ablations, identify why success rate plateaus beyond 200 demos, generate checkpoints and F tasks at scale, and land model visualization in the hub.",
+        "5/24–5/31 Robotics Tech Update",
+        "本周 robotics team 主要推进了 data-to-model pipeline 的自动化、TaskGen 能力扩展，以及 AXIS dataset 的 release 准备。在自动化方面，我们通过脚本加快并标准化了一些重复但关键的流程。现在给定 attempt ID，系统可以映射到对应的仿真 replay 视频，并且已经在生产端服务器上配好环境、修复 bug、跑通流程并交付给产品侧。给定 task ID，pipeline 也可以自动完成模型训练、上传 checkpoint 到 S3，并把模型字段信息同步到产品侧。"
+      ],
+      "demos": [
+        {
+          "id": "3d5d7309920a",
+          "date": "2026-05-25",
+          "weekId": "2026-05-24",
+          "owner": "Yikai",
+          "title": "5/25 · TaskGen: · Articulated objects: Merged ariticulated objects(Cabinet, Dishwasher",
+          "caption": "5/25 · TaskGen: · Articulated objects: Merged ariticulated objects(Cabinet, Dishwasher, Drawer, etc.) into auto-generation pipeline, supporting existing randomization pipeline.",
+          "tags": [
+            "TaskGen",
+            "Randomization",
+            "Articulated objects"
+          ],
+          "media": [
+            {
+              "type": "video",
+              "url": "/media/notion/yikai/2026-05-25/36b68db0a61c8040a9d8f50d8206682c.mov",
+              "originalName": "录屏2026-05-22_00.21.44.mov",
+              "notionBlockId": "36b68db0-a61c-8040-a9d8-f50d8206682c"
+            }
+          ],
+          "sourceUrl": "https://app.notion.com/p/30168db0a61c80a690e8cb41c24ade6b"
+        },
+        {
+          "id": "4b850e38731f",
+          "date": "2026-05-25",
+          "weekId": "2026-05-24",
+          "owner": "Yikai",
+          "title": "merged pi05 evaluation pipeline into realworld · Realworld · Booster hardware setup",
+          "caption": "merged pi05 evaluation pipeline into realworld · Realworld · Booster hardware setup",
+          "tags": [
+            "Booster"
+          ],
+          "media": [
+            {
+              "type": "video",
+              "url": "/media/notion/yikai/2026-05-25/36b68db0a61c80cc93efc480e16aafd4.mp4",
+              "originalName": "7c70f2702dbaeb0a79c608262d583c58.mp4",
+              "notionBlockId": "36b68db0-a61c-80cc-93ef-c480e16aafd4"
+            }
+          ],
+          "sourceUrl": "https://app.notion.com/p/30168db0a61c80a690e8cb41c24ade6b"
+        }
+      ]
+    },
+    {
+      "id": "2026-06-01",
+      "title": "Tech Updates 6/1-6/7",
+      "period": "6/1-6/7",
+      "startDate": "2026-06-01",
+      "endDate": "2026-06-07",
+      "sourceUrl": "https://app.notion.com/p/38068db0a61c8003a9eecd35e6413c0d",
+      "summary": [
+        "6/1–6/7 Robotics Tech Update",
+        "This week, the robotics team focused on stabilizing articulated-object TaskGen, scaling randomized-view data collection, and improving Booster-related product reliability. On the TaskGen side, we finished testing across 12 articulated objects from 6 categories, covering objects such as cabinets, drawers, and similar open/close interaction targets. We also fixed several rotation and collision bugs, and the articulated-object pipeline is now ready to hand over to Fuhan for further testing. This moves TaskGen closer to reliable generation of long-horizon and articulated-object manipulation tasks.",
+        "On the model training side, we added heavier camera-position randomization to improve visual robustness and collected around 80k demonstrations under randomized views. We are waiting for the dataset to reach 100k demonstrations before reproducing the Sim2Real recipe with AXIS data. This experiment is important for testing whether stronger view randomization and larger-scale AXIS data can improve policy transfer under more realistic visual shifts.",
+        "On the real-world side, we completed teleoperation with Booster and fixed several minor bugs in the setup. In parallel, we analyzed why Booster tasks had relatively high failure rates. The issue came from two sources: some early Booster tasks were created before the Booster-side fixes were available, and the frontend/backend checker logic for Booster tasks was not fully consistent. These issues have now been fixed, which should make future Booster task evaluation more reliable.",
+        "On the product infrastructure side, we further improved MuJoCo/attempt video export and backend task isolation. We also fixed API bugs reported from the product side, making replay visualization and debugging workflows more stable. These improvements help connect attempt-level user data with simulation videos, model evaluation, and task debugging more smoothly.",
+        "In parallel, we completed the full-paper writing for the AXIS Franka dataset, including the appendix. The paper now better consolidates the technical story around AXIS as a growable data engine, connecting task generation, web-based teleoperation, data cleaning, augmentation, model training, and real-world validation into a unified robotics data loop.",
+        "6/1–6/7 Robotics Tech Update",
+        "本周 robotics team 主要推进了 articulated-object TaskGen 的稳定性、随机视角数据采集的扩展，以及 Booster 相关产品可靠性的提升。在 TaskGen 方面，我们完成了 6 类、共 12 个 articulated objects 的测试，覆盖 cabinet、drawer 等具有 open/close 交互的物体类型。同时修复了 rotation 和 collision 相关 bug，目前 articulated-object pipeline 已经可以交给 Fuhan 做进一步测试。这一步让 TaskGen 更接近稳定生成长程任务和可动部件物体操作任务。"
+      ],
+      "demos": [
+        {
+          "id": "78ee0b856eae",
+          "date": "2026-06-01",
+          "weekId": "2026-06-01",
+          "owner": "Mengfei",
+          "title": "3",
+          "caption": "3.和tianze jie对了一下目前持续增长训练闭关的部分 完成 task1050/1053/1055 多数据量训练与 SR 对比；加入 shape one-shot 训练、S3 模型上传和成功初始状态热力图导出/上传 具体结果如下 之前recovery是有明显的结果的 相比baseline有大概10%的提升 不过还需要更多消融实验 · 1050 1053 1055 1058 1060 1063 1065 1068 1070 上线这一批新的F task到test 扩大范围 · 然后现在正在给已有task中消融最合适的数据比例 初步看200条以上sc仍保留停滞 需要具体看failure case找到原因 是随机化范围太大难学 还是200数据已经基本饱和 还是数据质量不过关",
+          "tags": [
+            "Recovery"
+          ],
+          "media": [
+            {
+              "type": "image",
+              "url": "/media/notion/mengfei/2026-06-01/37868db0a61c80be8d1bcf8c89fe5553.png",
+              "originalName": "f098da04150a01fe40617e7415722e11.png",
+              "notionBlockId": "37868db0-a61c-80be-8d1b-cf8c89fe5553"
+            },
+            {
+              "type": "image",
+              "url": "/media/notion/mengfei/2026-06-01/37868db0a61c80fb8f91e5da4ed4e745.png",
+              "originalName": "87da95f01bcbb5f9486c2e62956b7803.png",
+              "notionBlockId": "37868db0-a61c-80fb-8f91-e5da4ed4e745"
+            }
+          ],
+          "sourceUrl": "https://app.notion.com/p/2df68db0a61c80c2b820ec5706e5750b"
+        },
+        {
+          "id": "9a3e027e1092",
+          "date": "2026-06-01",
+          "weekId": "2026-06-01",
+          "owner": "Mengfei",
+          "title": "axis-mvp：完善后端轨迹校验能力，支持接触、姿态方向和慢漂移作弊检测；完成可疑用户和异常轨迹筛选；新增按步骤顺序完成任务的checker和verify · 现在是在原",
+          "caption": "axis-mvp：完善后端轨迹校验能力，支持接触、姿态方向和慢漂移作弊检测；完成可疑用户和异常轨迹筛选；新增按步骤顺序完成任务的checker和verify · 现在是在原来的逐步物理一致性检验state transition verify中加入有符号残差保留，然后分析累计残差，最大残差，时间归一化残差。阈值已经调好了，现在应该挺好的，扫了10个task现在100%拦截慢漂移作弊的，0误杀 · 检查一些操作过快的用户原因 给出了一批查封的user ID",
+          "tags": [
+            "Checker",
+            "Verify"
+          ],
+          "media": [
+            {
+              "type": "video",
+              "url": "/media/notion/mengfei/2026-06-01/37268db0a61c8087ab95d78c5f03ec61.mp4",
+              "originalName": "0aef88cbb36ae561e920956e972bdbc7.mp4",
+              "notionBlockId": "37268db0-a61c-8087-ab95-d78c5f03ec61"
+            }
+          ],
+          "sourceUrl": "https://app.notion.com/p/2df68db0a61c80c2b820ec5706e5750b"
+        },
+        {
+          "id": "c82141b89134",
+          "date": "2026-06-01",
+          "weekId": "2026-06-01",
+          "owner": "Mengfei",
+          "title": "提供task id到model的自动化 给出id就完成训练得到模型 上传s3 · 提供task id model 到评测结果的自动化 得到成功范围的可视化图 以及成功率 ·",
+          "caption": "提供task id到model的自动化 给出id就完成训练得到模型 上传s3 · 提供task id model 到评测结果的自动化 得到成功范围的可视化图 以及成功率 · 模型字段信息 模型 成功状态可视化均给到yao哥那边",
+          "tags": [
+            "Model"
+          ],
+          "media": [
+            {
+              "type": "image",
+              "url": "/media/notion/mengfei/2026-06-01/37868db0a61c800ca8fef1ac71db6ea8.jpg",
+              "originalName": "37f409a56f6a34bc6f2970e504527aac.jpg",
+              "notionBlockId": "37868db0-a61c-800c-a8fe-f1ac71db6ea8"
+            },
+            {
+              "type": "image",
+              "url": "/media/notion/mengfei/2026-06-01/37868db0a61c80a19723e045a066082e.jpg",
+              "originalName": "4466294c7742c5e6238119d3c43ea853.jpg",
+              "notionBlockId": "37868db0-a61c-80a1-9723-e045a066082e"
+            }
+          ],
+          "sourceUrl": "https://app.notion.com/p/2df68db0a61c80c2b820ec5706e5750b"
+        },
+        {
+          "id": "061aa7260dcf",
+          "date": "2026-06-01",
+          "weekId": "2026-06-01",
+          "owner": "Mengfei",
+          "title": "检查一些操作过快的用户原因 给出了一批查封的user ID · 同步fuhan那边checker的增加，构建后端的 BodyContactChecker 和yao哥沟通后测",
+          "caption": "检查一些操作过快的用户原因 给出了一批查封的user ID · 同步fuhan那边checker的增加，构建后端的 BodyContactChecker 和yao哥沟通后测试回考虑verify 然后我会review一下大家提交的code · webapp：时序checker，支持任务按步骤实时显示完成进度；MuJoCo 资源切换到统一 CDN 修复t1夹爪悬空的问题",
+          "tags": [
+            "Checker",
+            "Verify",
+            "MuJoCo"
+          ],
+          "media": [
+            {
+              "type": "video",
+              "url": "/media/notion/mengfei/2026-06-01/37268db0a61c8038bb3fd5bcb9fa3d85.mp4",
+              "originalName": "5657eb2c8a3255a6864b19f612583878.mp4",
+              "notionBlockId": "37268db0-a61c-8038-bb3f-d5bcb9fa3d85"
+            }
+          ],
+          "sourceUrl": "https://app.notion.com/p/2df68db0a61c80c2b820ec5706e5750b"
+        }
+      ]
+    },
+    {
+      "id": "2026-06-07",
+      "title": "Tech Updates 6/7-6/14",
+      "period": "6/7-6/14",
+      "startDate": "2026-06-07",
+      "endDate": "2026-06-14",
+      "sourceUrl": "https://app.notion.com/p/38768db0a61c8019a373de3945cbf83a",
+      "summary": [
+        "6/7–6/14 Robotics Tech Update",
+        "This week, the robotics team focused on improving the teleoperation interface, upgrading TaskGen’s multi-embodiment and checker capabilities, and continuing the Web Policy and failure-recovery data loop. On the frontend side, we explored new ways to improve control smoothness and reduce task difficulty, especially for bimanual tasks. Instead of only adding gamepad support, the more fundamental question is how to reduce unnecessary operation complexity and let users focus on the most informative parts of the demonstration. We therefore added an end-effector dragging feature, where users can directly drag the gripper with the mouse along the current camera-view plane. We also added object selection and automatic movement logic: after clicking an object, the gripper can move into a pre-grasp state automatically. The single-arm version is now mostly smooth, while the bimanual version is still under debugging. The long-term goal is to support smoother bimanual and mobile bimanual data collection.",
+        "On the Web Policy and failure-recovery side, we organized the policy release protocol and recorded the success rate, S3 path, and heatmap status for RoboVerse-uploaded policies, making it easier for the web frontend to integrate and verify models consistently. We also exported and uploaded browser ONNX policies and success heatmaps for task764, 1050, 1053, 1055, 1058, 1060, 1063, 1065, and 1068, while continuing to collect corresponding failure-recovery task data. The previously released failure tasks 1400–1404 are now waiting for testing. We are also continuing smolVLA and new model/task data collection; some results are still pending due to server interruption. On Booster T1, the current checkpoint reaches around 32% success rate, which is within a reasonable range, but there is still room for improvement and we are investigating the bottleneck.",
+        "On the TaskGen side, we optimized the multi-embodiment pipeline. Previously, multi-embodiment support was implemented as an add-on patch on top of Franka, so the layout optimization process could not be reused and introduced around 30% additional computation and testing time. We now apply a unified strategy across embodiments and added support for more robots such as UR5, making the conversion process faster and reducing the need for per-embodiment parameter tuning. We also synced with Yikai and Tianze on the current TaskGen version, including articulated-object texture issues and long-horizon step expansion.",
+        "On the checker and data-quality side, we further strengthened task validation. Some users were finding unusual ways to fool the checker and submit large batches of low-quality trajectories, while previous relative-position-only checkers were easy to exploit. This week, we added more absolute position and orientation constraints, and also limited the number of trajectories a single account can submit, making malicious or abnormal data easier to identify and filter. We also improved existing checkers with stricter spatial constraints to reduce backend rendering cost and manual double-checking.",
+        "On the data delivery and real-world side, we delivered around 7k trajectories across 35 tasks to Qingyu, covering a broad range of atomic skills and demonstrating both trajectory diversity and workspace coverage. For real-world teleoperation, we continued optimizing the Booster pipeline and identified significant latency after adding wrist cameras, which will need further debugging and optimization. We also worked with Junzhu to improve the three-view display, making the data collection and debugging interface clearer.",
+        "6/7–6/14 Robotics Tech Update",
+        "本周 robotics team 主要推进了 teleoperation interface 优化、TaskGen 多 embodiment 和 checker 能力升级，以及 Web Policy 发布与 failure-recovery 数据闭环。在前端操作体验方面，我们针对用户反馈的双臂任务难度和操作流畅性问题进行了新的尝试。相比单纯引入手柄，当前更核心的问题是如何降低操作复杂度，让用户专注在真正有信息量的动作上。因此，我们新增了末端拖拽功能，用户可以直接用鼠标拖动夹爪，使其在当前视角平面内移动；同时加入物体选择和自动移动逻辑，点击物体后夹爪可以自动进入 pre-grasp 状态。单臂版本目前已经基本顺畅，双臂版本仍在 debug。目标是后续更自然地支持双臂和轮式双臂任务采集。"
+      ],
+      "demos": [
+        {
+          "id": "3bc2d6aef443",
+          "date": "2026-06-07",
+          "weekId": "2026-06-07",
+          "owner": "Mengfei",
+          "title": "6/7 · 产品端维护 1",
+          "caption": "6/7 · 产品端维护 1. 分析booster 任务有比较多fail的情况原因 包括2方面 a比较早的一批任务 booster还没修复 b booster相关的前后端checker逻辑不完全一致导致 之前booster还没检查过 现已修复",
+          "tags": [
+            "Booster",
+            "Checker"
+          ],
+          "media": [
+            {
+              "type": "image",
+              "url": "/media/notion/mengfei/2026-06-07/37868db0a61c8069adebe3c1e374918d.png",
+              "originalName": "image.png",
+              "notionBlockId": "37868db0-a61c-8069-adeb-e3c1e374918d"
+            },
+            {
+              "type": "image",
+              "url": "/media/notion/mengfei/2026-06-07/37868db0a61c80ee9983c1bf03ca5290.png",
+              "originalName": "9c8f447fe25f2a3389b6e5b13fc34cbb.png",
+              "notionBlockId": "37868db0-a61c-80ee-9983-c1bf03ca5290"
+            }
+          ],
+          "sourceUrl": "https://app.notion.com/p/2df68db0a61c80c2b820ec5706e5750b"
+        },
+        {
+          "id": "574595f6def2",
+          "date": "2026-06-07",
+          "weekId": "2026-06-07",
+          "owner": "Mengfei",
+          "title": "6/7 · 产品端维护 1",
+          "caption": "6/7 · 产品端维护 1. 分析booster 任务有比较多fail的情况原因 包括2方面 a比较早的一批任务 booster还没修复 b booster相关的前后端checker逻辑不完全一致导致 之前booster还没检查过 现已修复 · 2.完善 MuJoCo/attempt 视频导出与后台任务隔离 修复yao哥那边反应的api的bug",
+          "tags": [
+            "Booster",
+            "Checker",
+            "MuJoCo"
+          ],
+          "media": [
+            {
+              "type": "image",
+              "url": "/media/notion/mengfei/2026-06-07/37868db0a61c8080a1f1c549597ebf8d.png",
+              "originalName": "1.png",
+              "notionBlockId": "37868db0-a61c-8080-a1f1-c549597ebf8d"
+            }
+          ],
+          "sourceUrl": "https://app.notion.com/p/2df68db0a61c80c2b820ec5706e5750b"
+        },
+        {
+          "id": "62f940513cc6",
+          "date": "2026-06-08",
+          "weekId": "2026-06-07",
+          "owner": "Yikai",
+          "title": "6/8 · TaskGen: Tests across 12 articulated objects of 6 categories finished, bug fixes",
+          "caption": "6/8 · TaskGen: Tests across 12 articulated objects of 6 categories finished, bug fixes for rotation and collision, ready to hand over to Fuhan for testing",
+          "tags": [
+            "TaskGen",
+            "Articulated objects"
+          ],
+          "media": [
+            {
+              "type": "image",
+              "url": "/media/notion/yikai/2026-06-08/37968db0a61c80aa914ce8dc7be97f05.png",
+              "originalName": "microwave_part_base_iso.png",
+              "notionBlockId": "37968db0-a61c-80aa-914c-e8dc7be97f05"
+            },
+            {
+              "type": "image",
+              "url": "/media/notion/yikai/2026-06-08/37968db0a61c80848d64c43b9e83fbcb.png",
+              "originalName": "coacd_Oven_iso.png",
+              "notionBlockId": "37968db0-a61c-8084-8d64-c43b9e83fbcb"
+            }
+          ],
+          "sourceUrl": "https://app.notion.com/p/30168db0a61c80a690e8cb41c24ade6b"
+        },
+        {
+          "id": "eac3f8a412b1",
+          "date": "2026-06-08",
+          "weekId": "2026-06-07",
+          "owner": "Yikai",
+          "title": "TaskGen: Tests across 12 articulated objects of 6 categories finished, bug fixes for r",
+          "caption": "TaskGen: Tests across 12 articulated objects of 6 categories finished, bug fixes for rotation and collision, ready to hand over to Fuhan for testing · Model Training: Added heavier randomization in camera position and had collected 80k demos on randomized view. Waiting for reach 100k for reproducing Sim2Real recipe with axis data · Realworld: Finished teleoperation with Booster, fixed minor bugs for them",
+          "tags": [
+            "TaskGen",
+            "Booster",
+            "Teleoperation",
+            "Randomization",
+            "Model"
+          ],
+          "media": [
+            {
+              "type": "video",
+              "url": "/media/notion/yikai/2026-06-08/37968db0a61c8005a510cee67076782d.mp4",
+              "originalName": "c4b1e4a04e418961ab1614e8e51b9922.mp4",
+              "notionBlockId": "37968db0-a61c-8005-a510-cee67076782d"
+            }
+          ],
+          "sourceUrl": "https://app.notion.com/p/30168db0a61c80a690e8cb41c24ade6b"
+        },
+        {
+          "id": "0fdba1f50e88",
+          "date": "2026-06-14",
+          "weekId": "2026-06-07",
+          "owner": "Mengfei",
+          "title": "6/14 · 前端： 针对操作流畅性问题 进行尝试",
+          "caption": "6/14 · 前端： 针对操作流畅性问题 进行尝试 。和mingxuan jiachen老师 讨论的结果 以及用户对双臂任务难度的反馈 ，现在数据操作流畅性 以及未来能否支持更负责的操作 都是比较重要的问题， 需要在teleop interace 这个层面 优化 。一种可能办法是 引入手柄前还要调研社区使用情况 接受程度 而且依旧没解决双臂任务复杂度高的问题 ，手柄按键还是不够的。 于是想着怎么在操作上简化 流畅 让人真正做最核心的步骤 有一些没什么信息含量的步骤看看能不能跳过（ 当然 具体肯定还要对比不同办法采集数据对模型的影响 后期做消融实验） · 于是新增末端拖拽功能：直接鼠标拉着夹爪 根据视角所在的平面移动、 以及物体选择/自动移动 点击物体 夹爪进入pre-grasp状态 ，单臂已经基本顺畅 双臂还在debug。 用户需要做的是找到哪个抓取点最合适 完成夹爪闭合前后几帧的动作微调。 目标是后面能流畅的支持双臂以及轮式双臂任务。",
+          "tags": [
+            "Teleoperation"
+          ],
+          "media": [
+            {
+              "type": "video",
+              "url": "/media/notion/mengfei/2026-06-14/37f68db0a61c8022ad02e6a82dd30b36.mp4",
+              "originalName": "7d533eb1b3bcbe28b495bea704f54d8a.mp4",
+              "notionBlockId": "37f68db0-a61c-8022-ad02-e6a82dd30b36"
+            },
+            {
+              "type": "video",
+              "url": "/media/notion/mengfei/2026-06-14/37f68db0a61c80e0a09cc3183b12ac12.mp4",
+              "originalName": "f589ff73ffc130d9323cd7a0ea32f046.mp4",
+              "notionBlockId": "37f68db0-a61c-80e0-a09c-c3183b12ac12"
+            },
+            {
+              "type": "image",
+              "url": "/media/notion/mengfei/2026-06-14/37f68db0a61c801897cae50d5583b149.png",
+              "originalName": "71c472400b71a1234e1aa8740d45f815.png",
+              "notionBlockId": "37f68db0-a61c-8018-97ca-e50d5583b149"
+            }
+          ],
+          "sourceUrl": "https://app.notion.com/p/2df68db0a61c80c2b820ec5706e5750b"
+        },
+        {
+          "id": "91512a1a3d81",
+          "date": "2026-06-15",
+          "weekId": "2026-06-07",
+          "owner": "Yikai",
+          "title": "Checker:There are lots of users who love to figure out weird ways to fool the checker",
+          "caption": "Checker:There are lots of users who love to figure out weird ways to fool the checker and submit dozens of trajectories at a time. This costs us to double-check the trajs at render time and have to abandon some of the “trash” trajectories. The cause is that current available checkers only support relative position that could be easily fooled by malicious users. We’ve added multiple checkers of absolute positions and orientations. Also, we’ve added limit on the number of trajs a single account is allowed to use, so that malicious data is easier to ban or identify. · Deliver to qinyu: Delivered 7k trajs of 35 tasks to qinyu covering a wide range of atomic skills. Visualization from @//zageth · Diversity in traj",
+          "tags": [
+            "Checker",
+            "Multi-embodiment"
+          ],
+          "media": [
+            {
+              "type": "image",
+              "url": "/media/notion/yikai/2026-06-15/38068db0a61c80a8ad86c24f3407ef97.png",
+              "originalName": "0.png",
+              "notionBlockId": "38068db0-a61c-80a8-ad86-c24f3407ef97"
+            }
+          ],
+          "sourceUrl": "https://app.notion.com/p/30168db0a61c80a690e8cb41c24ade6b"
+        },
+        {
+          "id": "caaebf102729",
+          "date": "2026-06-15",
+          "weekId": "2026-06-07",
+          "owner": "Yikai",
+          "title": "Deliver to qinyu: Delivered 7k trajs of 35 tasks to qinyu covering a wide range of ato",
+          "caption": "Deliver to qinyu: Delivered 7k trajs of 35 tasks to qinyu covering a wide range of atomic skills. Visualization from @//zageth · Diversity in traj · ii. Complete workspace coverage",
+          "tags": [],
+          "media": [
+            {
+              "type": "image",
+              "url": "/media/notion/yikai/2026-06-15/38068db0a61c80aabd07e56be942f97e.png",
+              "originalName": "2.png",
+              "notionBlockId": "38068db0-a61c-80aa-bd07-e56be942f97e"
+            }
+          ],
+          "sourceUrl": "https://app.notion.com/p/30168db0a61c80a690e8cb41c24ade6b"
+        }
+      ]
+    },
+    {
+      "id": "2026-06-21",
+      "title": "Progress Update 6/21-6/28",
+      "period": "6/21-6/28",
+      "startDate": "2026-06-21",
+      "endDate": "2026-06-28",
+      "sourceUrl": "https://app.notion.com/p/2df68db0a61c80c2b820ec5706e5750b",
+      "summary": [
+        "This week, the robotics team pushed forward Verify, Replay, TaskGen, RoboVerse, DAgger through implementation work and demos."
+      ],
+      "demos": [
+        {
+          "id": "eeca2b2748a6",
+          "date": "2026-06-22",
+          "weekId": "2026-06-21",
+          "owner": "Mengfei",
+          "title": "1",
+          "caption": "1.优化末端拖拽机械臂功能 更加流畅 丝滑 好操作 已经正式上线 检验了采集后的数据replay/verify过程也正常 · 最终目的是为双臂和轮式双臂数据服务 · 从增量求解重构为关节空间的平滑在线插值（限加加速度、消除到位抖动、拖拽时提高控制频率且仍能通过后端轨迹校验）",
+          "tags": [
+            "Verify",
+            "Replay"
+          ],
+          "media": [
+            {
+              "type": "video",
+              "url": "/media/notion/mengfei/2026-06-22/38668db0a61c8014ba6fe3ec04b41a7a.mp4",
+              "originalName": "68c2ec33d93e239ad64769ca2fb94ca9.mp4",
+              "notionBlockId": "38668db0-a61c-8014-ba6f-e3ec04b41a7a"
+            },
+            {
+              "type": "video",
+              "url": "/media/notion/mengfei/2026-06-22/38668db0a61c80589337e99f23644b75.mp4",
+              "originalName": "80295625bfe3b28f487345a71edcc062.mp4",
+              "notionBlockId": "38668db0-a61c-8058-9337-e99f23644b75"
+            },
+            {
+              "type": "video",
+              "url": "/media/notion/mengfei/2026-06-22/38668db0a61c806e837bcd6ad5f950b8.mp4",
+              "originalName": "dda3f4c283125fb126463abfdc99adcb.mp4",
+              "notionBlockId": "38668db0-a61c-806e-837b-cd6ad5f950b8"
+            }
+          ],
+          "sourceUrl": "https://app.notion.com/p/2df68db0a61c80c2b820ec5706e5750b"
+        },
+        {
+          "id": "b2105f921281",
+          "date": "2026-06-22",
+          "weekId": "2026-06-21",
+          "owner": "Mengfei",
+          "title": "2",
+          "caption": "2.改进了采集时对机器人规格与初始位姿的还原，并新增了打包状态轨迹的本地视频导出和若干场景格式转换修复 交接给jie · https://github.com/frank-prio/Roboverse_train/blob/smolvla-train/scripts/advanced/export_packed_state_video.py · 3.准备两个合作展示需要的长程任务 已经上线test 包含铰链物体和4-5个步骤 之后taskgen也以此为目标",
+          "tags": [
+            "TaskGen",
+            "RoboVerse"
+          ],
+          "media": [
+            {
+              "type": "video",
+              "url": "/media/notion/mengfei/2026-06-22/38668db0a61c80fcb777d8a8f705e781.mp4",
+              "originalName": "b2fd79325f0be791ea882b418500bde2.mp4",
+              "notionBlockId": "38668db0-a61c-80fc-b777-d8a8f705e781"
+            },
+            {
+              "type": "video",
+              "url": "/media/notion/mengfei/2026-06-22/38668db0a61c80b8bddfdf69d87ef4f4.mp4",
+              "originalName": "aff951efabae93c68df06d030567b980.mp4",
+              "notionBlockId": "38668db0-a61c-80b8-bddf-df69d87ef4f4"
+            }
+          ],
+          "sourceUrl": "https://app.notion.com/p/2df68db0a61c80c2b820ec5706e5750b"
+        },
+        {
+          "id": "7c322ee48556",
+          "date": "2026-06-22",
+          "weekId": "2026-06-21",
+          "owner": "Mengfei",
+          "title": "3",
+          "caption": "3.准备两个合作展示需要的长程任务 已经上线test 包含铰链物体和4-5个步骤 之后taskgen也以此为目标 · DAgger · 4.现在网页端还缺少随机化 已经加上 可以重置不同物体的初始空间位置 可以独立的复位策略和复位机械臂",
+          "tags": [
+            "TaskGen",
+            "DAgger"
+          ],
+          "media": [
+            {
+              "type": "video",
+              "url": "/media/notion/mengfei/2026-06-22/38668db0a61c80daba97fc26295e1391.mp4",
+              "originalName": "c54f663e85c2ed34e747bbccd7298bf2.mp4",
+              "notionBlockId": "38668db0-a61c-80da-ba97-fc26295e1391"
+            }
+          ],
+          "sourceUrl": "https://app.notion.com/p/2df68db0a61c80c2b820ec5706e5750b"
+        },
+        {
+          "id": "8354d9815d2f",
+          "date": "2026-06-22",
+          "weekId": "2026-06-21",
+          "owner": "Yikai",
+          "title": "6/22 · TaskGen: · Dataset 2",
+          "caption": "6/22 · TaskGen: · Dataset 2.0: merged in 6 embodiments with new pipeline.",
+          "tags": [
+            "TaskGen",
+            "Dataset"
+          ],
+          "media": [
+            {
+              "type": "image",
+              "url": "/media/notion/yikai/2026-06-22/38768db0a61c807e98bac0227403455e.png",
+              "originalName": "_montage_camB.png",
+              "notionBlockId": "38768db0-a61c-807e-98ba-c0227403455e"
+            },
+            {
+              "type": "video",
+              "url": "/media/notion/yikai/2026-06-22/38768db0a61c8025884af97d2fbc3a45.mp4",
+              "originalName": "a4c8cc0ab1fea8afc98d5556272fb701_raw.mp4",
+              "notionBlockId": "38768db0-a61c-8025-884a-f97d2fbc3a45"
+            },
+            {
+              "type": "video",
+              "url": "/media/notion/yikai/2026-06-22/38768db0a61c807784d1f8c5373a7de7.mp4",
+              "originalName": "b7477dec96f88e8cdc35c20bd002943f_raw.mp4",
+              "notionBlockId": "38768db0-a61c-8077-84d1-f8c5373a7de7"
+            },
+            {
+              "type": "video",
+              "url": "/media/notion/yikai/2026-06-22/38768db0a61c80ffaa15f82e880909df.mp4",
+              "originalName": "7168d33b680b44dd00feb6b25da8e843_raw.mp4",
+              "notionBlockId": "38768db0-a61c-80ff-aa15-f82e880909df"
+            },
+            {
+              "type": "video",
+              "url": "/media/notion/yikai/2026-06-22/38768db0a61c8015b7b4fb97ffb80cf2.mp4",
+              "originalName": "cc0fbb67782d06738b00bab9ddff9743_raw.mp4",
+              "notionBlockId": "38768db0-a61c-8015-b7b4-fb97ffb80cf2"
+            },
+            {
+              "type": "video",
+              "url": "/media/notion/yikai/2026-06-22/38768db0a61c805c920df554c0f6d014.mp4",
+              "originalName": "c8bb8845c7b70cc9c9fafd0feb4a5131_raw.mp4",
+              "notionBlockId": "38768db0-a61c-805c-920d-f554c0f6d014"
+            },
+            {
+              "type": "video",
+              "url": "/media/notion/yikai/2026-06-22/38768db0a61c800e9153dbbf3fc68502.mp4",
+              "originalName": "905fada5a048586d5c9f620e2a65d187_raw.mp4",
+              "notionBlockId": "38768db0-a61c-800e-9153-dbbf3fc68502"
+            }
+          ],
+          "sourceUrl": "https://app.notion.com/p/30168db0a61c80a690e8cb41c24ade6b"
+        },
+        {
+          "id": "96126eac4704",
+          "date": "2026-06-22",
+          "weekId": "2026-06-21",
+          "owner": "Mengfei",
+          "title": "7",
+          "caption": "7.调研SOP ABC 这两个post-training infra，对我们浏览器做dagger的思路很有借鉴 草拟了一个架构图 同时思考了一下 后面如何通过刷榜和建立好用的dagger数据集来扩大影响力 · https://www.agibot.com/research/sop · https://abc.bot/",
+          "tags": [
+            "DAgger",
+            "Model"
+          ],
+          "media": [
+            {
+              "type": "image",
+              "url": "/media/notion/mengfei/2026-06-22/38668db0a61c808eb6fee7de68b90db2.png",
+              "originalName": "dcbcebad3ede3bdec23b981025932f0c.png",
+              "notionBlockId": "38668db0-a61c-808e-b6fe-e7de68b90db2"
+            }
+          ],
+          "sourceUrl": "https://app.notion.com/p/2df68db0a61c80c2b820ec5706e5750b"
+        },
+        {
+          "id": "4c0fc69c176e",
+          "date": "2026-06-22",
+          "weekId": "2026-06-21",
+          "owner": "Yikai",
+          "title": "b",
+          "caption": "b. Rebuilt the rendering pipeline in an embodiment agnostic infra: Booster as demonstration · Model Training: wraping up codebase for reproduction & release. Release countdown for CoRL submission · Realworld: Solved the communication limitation for triple camera of Booster teleoperation",
+          "tags": [
+            "Booster",
+            "Teleoperation",
+            "Model"
+          ],
+          "media": [
+            {
+              "type": "video",
+              "url": "/media/notion/yikai/2026-06-22/38768db0a61c8005b01dfb9cd9116d1c.mp4",
+              "originalName": "17262eeb143ebf7548b1653cdcfecd81.mp4",
+              "notionBlockId": "38768db0-a61c-8005-b01d-fb9cd9116d1c"
+            }
+          ],
+          "sourceUrl": "https://app.notion.com/p/30168db0a61c80a690e8cb41c24ade6b"
+        },
+        {
+          "id": "1981934da88b",
+          "date": "2026-06-22",
+          "weekId": "2026-06-21",
+          "owner": "Yikai",
+          "title": "TaskGen: · Dataset 2",
+          "caption": "TaskGen: · Dataset 2.0: merged in 6 embodiments with new pipeline. · b. Rebuilt the rendering pipeline in an embodiment agnostic infra: Booster as demonstration",
+          "tags": [
+            "TaskGen",
+            "Booster",
+            "Dataset"
+          ],
+          "media": [
+            {
+              "type": "video",
+              "url": "/media/notion/yikai/2026-06-22/38768db0a61c803db0d0e0f70aaa75e8.mp4",
+              "originalName": "d415d1b0a24545899fb6fa74112afb53.mp4",
+              "notionBlockId": "38768db0-a61c-803d-b0d0-e0f70aaa75e8"
+            }
+          ],
+          "sourceUrl": "https://app.notion.com/p/30168db0a61c80a690e8cb41c24ade6b"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+node_modules
+.next
+out
+.env*.local
+.DS_Store
+public/media/notion/*
+!public/media/notion/.gitkeep

@@ -1,0 +1,24 @@
+{
+  "name": "axis-robotics-live-updates",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "ingest": "node scripts/ingest-notion.mjs",
+    "site:refresh": "npm run ingest && npm run build"
+  },
+  "dependencies": {
+    "@notionhq/client": "^2.3.0",
+    "next": "^15.3.4",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.5",
+    "@types/react": "^19.0.7",
+    "@types/react-dom": "^19.0.3",
+    "typescript": "^5.7.2"
+  }
+}
