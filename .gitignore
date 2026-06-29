@@ -3,5 +3,6 @@ node_modules
 out
 .env*.local
 .DS_Store
+mynote.markdown
 public/media/notion/*
 !public/media/notion/.gitkeep

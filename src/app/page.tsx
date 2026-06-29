@@ -18,7 +18,7 @@ type ReportSection = {
 };
 
 const WEEK_COPY: Record<string, { lead: string; sections: ReportSection[] }> = {
-  '2026-06-21': {
+  '2026-06-14': {
     lead: 'This cycle focused on making browser-based robot control smoother, preparing longer-horizon articulated-object tasks, and tightening the path from task data to trained and evaluated policies. The main theme was improving the robotics loop end to end: interaction, replay, verification, training, and evaluation all moved toward workflows that are easier to inspect, reproduce, and explain.',
     sections: [
       {

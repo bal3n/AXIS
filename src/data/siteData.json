@@ -9,7 +9,7 @@
     "weeklyUpdates": 7,
     "demoItems": 36,
     "mediaItems": 59,
-    "lastUpdate": "2026-06-21"
+    "lastUpdate": "2026-06-14"
   },
   "weeklyUpdates": [
     {
@@ -829,11 +829,11 @@
       ]
     },
     {
-      "id": "2026-06-21",
-      "title": "Progress Update 6/21-6/28",
-      "period": "6/21-6/28",
-      "startDate": "2026-06-21",
-      "endDate": "2026-06-28",
+      "id": "2026-06-14",
+      "title": "Progress Update 6/14-6/21",
+      "period": "6/14-6/21",
+      "startDate": "2026-06-14",
+      "endDate": "2026-06-21",
       "sourceUrl": "https://app.notion.com/p/2df68db0a61c80c2b820ec5706e5750b",
       "summary": [
         "This week, the robotics team pushed forward Verify, Replay, TaskGen, RoboVerse, DAgger through implementation work and demos."
@@ -842,7 +842,7 @@
         {
           "id": "eeca2b2748a6",
           "date": "2026-06-22",
-          "weekId": "2026-06-21",
+          "weekId": "2026-06-14",
           "owner": "Mengfei",
           "title": "1",
           "caption": "1.优化末端拖拽机械臂功能 更加流畅 丝滑 好操作 已经正式上线 检验了采集后的数据replay/verify过程也正常 · 最终目的是为双臂和轮式双臂数据服务 · 从增量求解重构为关节空间的平滑在线插值（限加加速度、消除到位抖动、拖拽时提高控制频率且仍能通过后端轨迹校验）",
@@ -875,7 +875,7 @@
         {
           "id": "b2105f921281",
           "date": "2026-06-22",
-          "weekId": "2026-06-21",
+          "weekId": "2026-06-14",
           "owner": "Mengfei",
           "title": "2",
           "caption": "2.改进了采集时对机器人规格与初始位姿的还原，并新增了打包状态轨迹的本地视频导出和若干场景格式转换修复 交接给jie · https://github.com/frank-prio/Roboverse_train/blob/smolvla-train/scripts/advanced/export_packed_state_video.py · 3.准备两个合作展示需要的长程任务 已经上线test 包含铰链物体和4-5个步骤 之后taskgen也以此为目标",
@@ -902,7 +902,7 @@
         {
           "id": "7c322ee48556",
           "date": "2026-06-22",
-          "weekId": "2026-06-21",
+          "weekId": "2026-06-14",
           "owner": "Mengfei",
           "title": "3",
           "caption": "3.准备两个合作展示需要的长程任务 已经上线test 包含铰链物体和4-5个步骤 之后taskgen也以此为目标 · DAgger · 4.现在网页端还缺少随机化 已经加上 可以重置不同物体的初始空间位置 可以独立的复位策略和复位机械臂",
@@ -923,7 +923,7 @@
         {
           "id": "8354d9815d2f",
           "date": "2026-06-22",
-          "weekId": "2026-06-21",
+          "weekId": "2026-06-14",
           "owner": "Yikai",
           "title": "6/22 · TaskGen: · Dataset 2",
           "caption": "6/22 · TaskGen: · Dataset 2.0: merged in 6 embodiments with new pipeline.",
@@ -980,7 +980,7 @@
         {
           "id": "96126eac4704",
           "date": "2026-06-22",
-          "weekId": "2026-06-21",
+          "weekId": "2026-06-14",
           "owner": "Mengfei",
           "title": "7",
           "caption": "7.调研SOP ABC 这两个post-training infra，对我们浏览器做dagger的思路很有借鉴 草拟了一个架构图 同时思考了一下 后面如何通过刷榜和建立好用的dagger数据集来扩大影响力 · https://www.agibot.com/research/sop · https://abc.bot/",
@@ -1001,7 +1001,7 @@
         {
           "id": "4c0fc69c176e",
           "date": "2026-06-22",
-          "weekId": "2026-06-21",
+          "weekId": "2026-06-14",
           "owner": "Yikai",
           "title": "b",
           "caption": "b. Rebuilt the rendering pipeline in an embodiment agnostic infra: Booster as demonstration · Model Training: wraping up codebase for reproduction & release. Release countdown for CoRL submission · Realworld: Solved the communication limitation for triple camera of Booster teleoperation",
@@ -1023,7 +1023,7 @@
         {
           "id": "1981934da88b",
           "date": "2026-06-22",
-          "weekId": "2026-06-21",
+          "weekId": "2026-06-14",
           "owner": "Yikai",
           "title": "TaskGen: · Dataset 2",
           "caption": "TaskGen: · Dataset 2.0: merged in 6 embodiments with new pipeline. · b. Rebuilt the rendering pipeline in an embodiment agnostic infra: Booster as demonstration",
