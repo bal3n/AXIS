@@ -6,10 +6,10 @@
     "yikai": "https://app.notion.com/p/30168db0a61c80a690e8cb41c24ade6b"
   },
   "stats": {
-    "weeklyUpdates": 8,
+    "weeklyUpdates": 9,
     "demoItems": 41,
     "mediaItems": 66,
-    "lastUpdate": "2026-06-21"
+    "lastUpdate": "2026-06-28"
   },
   "weeklyUpdates": [
     {
@@ -1063,76 +1063,6 @@
       ],
       "demos": [
         {
-          "id": "demo-2026-06-29-mengfei-gripper-autoselect",
-          "date": "2026-06-29",
-          "weekId": "2026-06-21",
-          "owner": "Mengfei",
-          "title": "Object-selected gripper movement and smoother teleoperation",
-          "caption": "Object selection now sends the gripper toward the target automatically, with smoother motion and controlled randomization so correction data remains useful for learning.",
-          "tags": [
-            "Teleoperation",
-            "Randomization",
-            "DAgger"
-          ],
-          "media": [
-            {
-              "type": "video",
-              "url": "/media/notion/mengfei/2026-06-29/39468db0a61c80d98fd3fdf7c3d002a1.mp4",
-              "originalName": "3112dd4b0f7f865ce98da7b41b748377.mp4",
-              "notionBlockId": "39468db0-a61c-80d9-8fd3-fdf7c3d002a1"
-            }
-          ],
-          "sourceUrl": "https://app.notion.com/p/2df68db0a61c80c2b820ec5706e5750b"
-        },
-        {
-          "id": "demo-2026-06-29-mengfei-openarm",
-          "date": "2026-06-29",
-          "weekId": "2026-06-21",
-          "owner": "Mengfei",
-          "title": "OpenArm deployment in the browser task interface",
-          "caption": "OpenArm support is online, extending the web teleoperation and task collection surface toward more embodiments.",
-          "tags": [
-            "Teleoperation",
-            "Multi-embodiment"
-          ],
-          "media": [
-            {
-              "type": "video",
-              "url": "/media/notion/mengfei/2026-06-29/39468db0a61c8064bf75d1b891bb5f40.mp4",
-              "originalName": "ebe0679456670fc8c298a913a0148cd8.mp4",
-              "notionBlockId": "39468db0-a61c-8064-bf75-d1b891bb5f40"
-            }
-          ],
-          "sourceUrl": "https://app.notion.com/p/2df68db0a61c80c2b820ec5706e5750b"
-        },
-        {
-          "id": "demo-2026-06-29-mengfei-taskgen-worker",
-          "date": "2026-06-29",
-          "weekId": "2026-06-21",
-          "owner": "Mengfei",
-          "title": "TaskGen worker debugging and Libero Pro migration",
-          "caption": "TaskGen bottlenecks were narrowed around separating layout construction from asset generation, parallelizing worker execution, adding auto-checker support, and preparing Libero Pro migration.",
-          "tags": [
-            "TaskGen",
-            "Checker"
-          ],
-          "media": [
-            {
-              "type": "image",
-              "url": "/media/notion/mengfei/2026-06-29/39568db0a61c80e78e30eea69d47dad2.png",
-              "originalName": "image.png",
-              "notionBlockId": "39568db0-a61c-80e7-8e30-eea69d47dad2"
-            },
-            {
-              "type": "image",
-              "url": "/media/notion/mengfei/2026-06-29/39568db0a61c80c2992ddae4e41ee3c5.png",
-              "originalName": "image.png",
-              "notionBlockId": "39568db0-a61c-80c2-992d-dae4e41ee3c5"
-            }
-          ],
-          "sourceUrl": "https://app.notion.com/p/2df68db0a61c80c2b820ec5706e5750b"
-        },
-        {
           "id": "demo-2026-06-29-yikai-articraft-assets",
           "date": "2026-06-29",
           "weekId": "2026-06-21",
@@ -1181,6 +1111,93 @@
             }
           ],
           "sourceUrl": "https://app.notion.com/p/30168db0a61c80a690e8cb41c24ade6b"
+        }
+      ]
+    },
+    {
+      "id": "2026-06-28",
+      "title": "Team Updates 6/28-7/5",
+      "period": "6/28-7/5",
+      "startDate": "2026-06-28",
+      "endDate": "2026-07-05",
+      "sourceUrl": "https://app.notion.com/p/2df68db0a61c80c2b820ec5706e5750b",
+      "summary": [
+        "6/28–7/5 Robotics Tech Update",
+        "This week focused on turning DAgger and TaskGen plans into executable work: DAgger scoring, state-DP reproduction, server training, post-task release preparation, and correction-data training.",
+        "TaskGen bottleneck analysis identified the need to separate layout construction from asset generation, automate and parallelize generation, debug workers, expand checker and asset-library tests, and define a new roadmap for long-horizon task production.",
+        "Rendering moved toward parallel execution, improving throughput, while Libero Pro migration started as a path toward mainstream benchmark integration.",
+        "OpenArm was brought online, and object-selected gripper movement was improved so selecting a target automatically moves the gripper toward it with smoother trajectories and controlled randomization."
+      ],
+      "demos": [
+        {
+          "id": "demo-2026-06-29-mengfei-gripper-autoselect",
+          "date": "2026-06-29",
+          "weekId": "2026-06-28",
+          "owner": "Mengfei",
+          "title": "Object-selected gripper movement and smoother teleoperation",
+          "caption": "Object selection now sends the gripper toward the target automatically, with smoother motion and controlled randomization so correction data remains useful for learning.",
+          "tags": [
+            "Teleoperation",
+            "Randomization",
+            "DAgger"
+          ],
+          "media": [
+            {
+              "type": "video",
+              "url": "/media/notion/mengfei/2026-06-29/39468db0a61c80d98fd3fdf7c3d002a1.mp4",
+              "originalName": "3112dd4b0f7f865ce98da7b41b748377.mp4",
+              "notionBlockId": "39468db0-a61c-80d9-8fd3-fdf7c3d002a1"
+            }
+          ],
+          "sourceUrl": "https://app.notion.com/p/2df68db0a61c80c2b820ec5706e5750b"
+        },
+        {
+          "id": "demo-2026-06-29-mengfei-openarm",
+          "date": "2026-06-29",
+          "weekId": "2026-06-28",
+          "owner": "Mengfei",
+          "title": "OpenArm deployment in the browser task interface",
+          "caption": "OpenArm support is online, extending the web teleoperation and task collection surface toward more embodiments.",
+          "tags": [
+            "Teleoperation",
+            "Multi-embodiment"
+          ],
+          "media": [
+            {
+              "type": "video",
+              "url": "/media/notion/mengfei/2026-06-29/39468db0a61c8064bf75d1b891bb5f40.mp4",
+              "originalName": "ebe0679456670fc8c298a913a0148cd8.mp4",
+              "notionBlockId": "39468db0-a61c-8064-bf75-d1b891bb5f40"
+            }
+          ],
+          "sourceUrl": "https://app.notion.com/p/2df68db0a61c80c2b820ec5706e5750b"
+        },
+        {
+          "id": "demo-2026-06-29-mengfei-taskgen-worker",
+          "date": "2026-06-29",
+          "weekId": "2026-06-28",
+          "owner": "Mengfei",
+          "title": "TaskGen worker debugging and Libero Pro migration",
+          "caption": "TaskGen bottlenecks were narrowed around separating layout construction from asset generation, parallelizing worker execution, adding auto-checker support, and preparing Libero Pro migration.",
+          "tags": [
+            "TaskGen",
+            "Checker"
+          ],
+          "media": [
+            {
+              "type": "image",
+              "url": "/media/notion/mengfei/2026-06-29/39568db0a61c80e78e30eea69d47dad2.png",
+              "originalName": "image.png",
+              "notionBlockId": "39568db0-a61c-80e7-8e30-eea69d47dad2"
+            },
+            {
+              "type": "image",
+              "url": "/media/notion/mengfei/2026-06-29/39568db0a61c80c2992ddae4e41ee3c5.png",
+              "originalName": "image.png",
+              "notionBlockId": "39568db0-a61c-80c2-992d-dae4e41ee3c5"
+            }
+          ],
+          "sourceUrl": "https://app.notion.com/p/2df68db0a61c80c2b820ec5706e5750b"
         }
       ]
     }

@@ -18,6 +18,36 @@ type ReportSection = {
 };
 
 const WEEK_COPY: Record<string, { lead: string; sections: ReportSection[] }> = {
+  '2026-06-28': {
+    lead: 'This week focused on turning the June DAgger and TaskGen direction into concrete execution work: stabilizing worker infrastructure, preparing post-task deployment, bringing OpenArm online, and improving object-selected gripper movement for smoother correction-data collection.',
+    sections: [
+      {
+        title: 'DAgger Scoring and Correction-Data Training',
+        body: 'The DAgger pipeline moved from infrastructure toward training execution. The scoring direction is now defined as a function of trajectory quality, policy-control time, and total control time, using a score such as dagger_score = length.score * policy_control_time / total_control_time. The next tasks are aligned with Yanqing around follow-up TODOs and reproducing the state-based diffusion policy baseline, so correction data can be evaluated against a controlled small-model training setup.',
+        references: ['dagger', 'model', 'policy']
+      },
+      {
+        title: 'Post-Task Preparation and Test Deployment',
+        body: 'Training jobs are being run on the server, then uploaded to test for post-task release preparation. This turns the post-training loop into an operational workflow: train, package, upload, test, and prepare the task for product-side release instead of treating each iteration as a one-off experiment.',
+        references: ['model', 'taskgen', 'replay']
+      },
+      {
+        title: 'TaskGen Bottleneck Roadmap',
+        body: 'The new TaskGen bottleneck analysis clarified that layout construction and asset generation should be separated, automated, and parallelized so the pipeline no longer requires constant manual monitoring. The immediate work includes debugging workers, expanding checker and asset-library tests, checking post-task generation issues, and defining a new TaskGen roadmap around scalable long-horizon task production.',
+        references: ['taskgen', 'checker', 'libero', 'worker']
+      },
+      {
+        title: 'Parallel Rendering and Libero Pro Migration',
+        body: 'Rendering throughput improved after switching to a parallel rendering path, roughly doubling speed in the current setup. In parallel, Libero Pro migration is being prepared so the same task and correction-data infrastructure can connect to more mainstream benchmark tasks.',
+        references: ['taskgen', 'libero', 'parallel']
+      },
+      {
+        title: 'OpenArm and Smoother Object-Selected Control',
+        body: 'OpenArm was brought online, and object-selected gripper motion was improved so selecting an object automatically sends the gripper toward the target. The movement was smoothed because overly fast drag trajectories are hard for policies to learn, while controlled randomization remains in the loop to preserve data diversity.',
+        references: ['openarm', 'teleoperation', 'gripper', 'randomization']
+      }
+    ]
+  },
   '2026-06-21': {
     lead: 'This week, the robotics team consolidated the June work into a clearer data-loop direction: moving beyond standard short-horizon single-arm demonstrations toward complex-task data, correction data, and continuous model iteration. The focus was to make data collection more valuable, reduce low-quality trajectories, and prepare the post-training loop for scalable DAgger-style improvement.',
     sections: [
