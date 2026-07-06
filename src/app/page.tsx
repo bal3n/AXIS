@@ -18,6 +18,36 @@ type ReportSection = {
 };
 
 const WEEK_COPY: Record<string, { lead: string; sections: ReportSection[] }> = {
+  '2026-06-21': {
+    lead: 'This week, the robotics team consolidated the June work into a clearer data-loop direction: moving beyond standard short-horizon single-arm demonstrations toward complex-task data, correction data, and continuous model iteration. The focus was to make data collection more valuable, reduce low-quality trajectories, and prepare the post-training loop for scalable DAgger-style improvement.',
+    sections: [
+      {
+        title: 'Teleoperation and Complex-Task Collection',
+        body: 'The team continued improving direct gripper dragging, object selection with automatic pre-grasp movement, and bimanual control. The goal is to skip low-information but high-effort actions such as manually moving the gripper close to the target, while preserving the high-value parts of the demonstration: contact, grasping, gripper closing, and correction. After fixes around latency, sensitivity, penetration, and grasp stability, bimanual collection is more natural, and the Booster bimanual interface is now much smoother for future mobile-bimanual tasks.',
+        references: ['teleoperation', 'gripper', 'openarm', 'booster']
+      },
+      {
+        title: 'Verification, Checker, and Data Quality',
+        body: 'Verification and checker logic were strengthened in response to new community cheating patterns. The stricter verification path is being extended to new features such as bimanual tasks and DAgger collection. In parallel, operation bugs, asset issues, frontend/backend inconsistencies, and replay problems were addressed so fewer low-quality trajectories enter the training pipeline and manual review remains manageable.',
+        references: ['checker', 'verify', 'taskgen']
+      },
+      {
+        title: 'Model Iteration and DAgger Post-Training',
+        body: 'The automated task-to-policy loop is now largely connected: task, policy, success rate, heatmap, backend replay video, inference visualization, reset, undo/redo, and randomization are all part of the same iteration story. Directly collecting full failure-task demonstrations only produced limited gains, so the team is shifting toward DAgger-style correction data, where the database distinguishes human intervention segments from original policy rollout segments and supports verification.',
+        references: ['dagger', 'model', 'policy', 'replay']
+      },
+      {
+        title: 'TaskGen and Articulated Assets',
+        body: 'TaskGen articulated-object support expanded beyond the earlier six categories. With an Articraft-style workflow, a coding agent can generate broader articulated assets, while a semantic LLM agent and DINO-based visual identifier retrieve better asset matches from prompts. The team is also improving description-to-checker automation plus asset initial-state and orientation correction to make generated tasks more stable and collectable.',
+        references: ['taskgen', 'articulated', 'dataset']
+      },
+      {
+        title: 'Real-World Validation and July Direction',
+        body: 'Dataset v2 long-horizon data collection is underway, and early real-world Franka results suggest that Axis + DROID co-training can preserve useful learned priors on Pick Butter. The team will continue stress testing harder tasks to see whether AXIS diversity in semantics and spatial layouts improves real-world transfer. July will focus on DAgger/post-training pilot studies and Dataset v2 production, with both directions moving toward ICRA submission.',
+        references: ['realworld', 'franka', 'dataset', 'booster']
+      }
+    ]
+  },
   '2026-06-14': {
     lead: 'This cycle focused on making browser-based robot control smoother, preparing longer-horizon articulated-object tasks, and tightening the path from task data to trained and evaluated policies. The main theme was improving the robotics loop end to end: interaction, replay, verification, training, and evaluation all moved toward workflows that are easier to inspect, reproduce, and explain.',
     sections: [
@@ -203,6 +233,11 @@ const BLOCKED_MEDIA_IDS = [
   '35d68db0a61c80b6a9ceec775bf79366'
 ];
 
+const ALLOWED_MEDIA_IDS = [
+  '39568db0a61c80e78e30eea69d47dad2',
+  '39568db0a61c80c2992ddae4e41ee3c5'
+];
+
 function fmtDate(date: string) {
   if (!date || date === 'undated' || date === 'older') return date;
   const d = new Date(`${date}T00:00:00`);
@@ -237,6 +272,21 @@ function reportSections(week: WeeklyUpdate) {
 function demoCaption(demo: DemoItem, week: WeeklyUpdate) {
   const text = contextText(demo);
 
+  if (text.includes('openarm')) {
+    return 'OpenArm support is validated in the browser-based task interface.';
+  }
+  if (text.includes('franka') || text.includes('cotraining') || text.includes('pick butter')) {
+    return 'Real-world Franka co-training is tested against the DROID baseline.';
+  }
+  if (text.includes('articraft') || text.includes('dino')) {
+    return 'TaskGen expands articulated assets through semantic and visual retrieval.';
+  }
+  if (text.includes('libero') || text.includes('worker') || text.includes('parallel')) {
+    return 'TaskGen workers are debugged for scalable task generation and Libero Pro migration.';
+  }
+  if (text.includes('object selection') || text.includes('automatic pre-grasp') || text.includes('gripper')) {
+    return 'Object selection and gripper movement are smoothed for correction-data collection.';
+  }
   if (text.includes('drag') || text.includes('pre-grasp') || text.includes('teleop')) {
     return 'Teleoperation is tested with smoother gripper control and replay-safe motion.';
   }
@@ -352,6 +402,7 @@ function isDocumentImage(demo: DemoItem, media: MediaItem) {
 }
 
 function isRobotDemoMedia(demo: DemoItem, media: MediaItem) {
+  if (ALLOWED_MEDIA_IDS.some((id) => (media.url || '').includes(id))) return true;
   if (isDocumentImage(demo, media)) return false;
   if (media.type === 'video' || isVideoFile(media)) return true;
 

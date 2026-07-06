@@ -1,15 +1,15 @@
 {
-  "generatedAt": "2026-06-27T12:09:20.621Z",
+  "generatedAt": "2026-07-06T02:41:09.567Z",
   "sources": {
     "weeklyRoot": "https://app.notion.com/p/35c68db0a61c80fcade6c0b5e9ae0633",
     "mengfei": "https://app.notion.com/p/2df68db0a61c80c2b820ec5706e5750b",
     "yikai": "https://app.notion.com/p/30168db0a61c80a690e8cb41c24ade6b"
   },
   "stats": {
-    "weeklyUpdates": 7,
-    "demoItems": 36,
-    "mediaItems": 59,
-    "lastUpdate": "2026-06-14"
+    "weeklyUpdates": 8,
+    "demoItems": 41,
+    "mediaItems": 66,
+    "lastUpdate": "2026-06-21"
   },
   "weeklyUpdates": [
     {
@@ -1038,6 +1038,146 @@
               "url": "/media/notion/yikai/2026-06-22/38768db0a61c803db0d0e0f70aaa75e8.mp4",
               "originalName": "d415d1b0a24545899fb6fa74112afb53.mp4",
               "notionBlockId": "38768db0-a61c-803d-b0d0-e0f70aaa75e8"
+            }
+          ],
+          "sourceUrl": "https://app.notion.com/p/30168db0a61c80a690e8cb41c24ade6b"
+        }
+      ]
+    },
+    {
+      "id": "2026-06-21",
+      "title": "Team Updates 6/21-6/28",
+      "period": "6/21-6/28",
+      "startDate": "2026-06-21",
+      "endDate": "2026-06-28",
+      "sourceUrl": "https://app.notion.com/p/39568db0a61c804f8a68e38a10533afd",
+      "summary": [
+        "6/21–6/28 Robotics Tech Update",
+        "This week, the robotics team consolidated June work around a clearer data-loop direction: moving from standard short-horizon single-arm demonstrations toward complex-task data, correction data, and continuous model iteration.",
+        "Teleoperation improvements continued across direct gripper dragging, object selection with automatic pre-grasp movement, and bimanual control, reducing low-information manual movement while preserving high-value contact and correction behavior.",
+        "Verification and checker logic were strengthened in response to new community cheating behaviors, with coverage extended to bimanual tasks and DAgger-style collection.",
+        "The automated task-to-policy loop now connects policy training, success rate, heatmap, backend replay video, model inference visualization, reset, undo/redo, and randomization.",
+        "The DAgger infrastructure is live for collecting user correction data and distinguishing human intervention segments from policy rollout segments.",
+        "TaskGen articulated-object support expanded through Articraft-style asset generation, semantic LLM retrieval, DINO-based visual matching, checker automation, and asset initial-state correction.",
+        "Axis + DROID co-training showed early real-world signal on Franka Pick Butter, while Booster training data rendering is underway."
+      ],
+      "demos": [
+        {
+          "id": "demo-2026-06-29-mengfei-gripper-autoselect",
+          "date": "2026-06-29",
+          "weekId": "2026-06-21",
+          "owner": "Mengfei",
+          "title": "Object-selected gripper movement and smoother teleoperation",
+          "caption": "Object selection now sends the gripper toward the target automatically, with smoother motion and controlled randomization so correction data remains useful for learning.",
+          "tags": [
+            "Teleoperation",
+            "Randomization",
+            "DAgger"
+          ],
+          "media": [
+            {
+              "type": "video",
+              "url": "/media/notion/mengfei/2026-06-29/39468db0a61c80d98fd3fdf7c3d002a1.mp4",
+              "originalName": "3112dd4b0f7f865ce98da7b41b748377.mp4",
+              "notionBlockId": "39468db0-a61c-80d9-8fd3-fdf7c3d002a1"
+            }
+          ],
+          "sourceUrl": "https://app.notion.com/p/2df68db0a61c80c2b820ec5706e5750b"
+        },
+        {
+          "id": "demo-2026-06-29-mengfei-openarm",
+          "date": "2026-06-29",
+          "weekId": "2026-06-21",
+          "owner": "Mengfei",
+          "title": "OpenArm deployment in the browser task interface",
+          "caption": "OpenArm support is online, extending the web teleoperation and task collection surface toward more embodiments.",
+          "tags": [
+            "Teleoperation",
+            "Multi-embodiment"
+          ],
+          "media": [
+            {
+              "type": "video",
+              "url": "/media/notion/mengfei/2026-06-29/39468db0a61c8064bf75d1b891bb5f40.mp4",
+              "originalName": "ebe0679456670fc8c298a913a0148cd8.mp4",
+              "notionBlockId": "39468db0-a61c-8064-bf75-d1b891bb5f40"
+            }
+          ],
+          "sourceUrl": "https://app.notion.com/p/2df68db0a61c80c2b820ec5706e5750b"
+        },
+        {
+          "id": "demo-2026-06-29-mengfei-taskgen-worker",
+          "date": "2026-06-29",
+          "weekId": "2026-06-21",
+          "owner": "Mengfei",
+          "title": "TaskGen worker debugging and Libero Pro migration",
+          "caption": "TaskGen bottlenecks were narrowed around separating layout construction from asset generation, parallelizing worker execution, adding auto-checker support, and preparing Libero Pro migration.",
+          "tags": [
+            "TaskGen",
+            "Checker"
+          ],
+          "media": [
+            {
+              "type": "image",
+              "url": "/media/notion/mengfei/2026-06-29/39568db0a61c80e78e30eea69d47dad2.png",
+              "originalName": "image.png",
+              "notionBlockId": "39568db0-a61c-80e7-8e30-eea69d47dad2"
+            },
+            {
+              "type": "image",
+              "url": "/media/notion/mengfei/2026-06-29/39568db0a61c80c2992ddae4e41ee3c5.png",
+              "originalName": "image.png",
+              "notionBlockId": "39568db0-a61c-80c2-992d-dae4e41ee3c5"
+            }
+          ],
+          "sourceUrl": "https://app.notion.com/p/2df68db0a61c80c2b820ec5706e5750b"
+        },
+        {
+          "id": "demo-2026-06-29-yikai-articraft-assets",
+          "date": "2026-06-29",
+          "weekId": "2026-06-21",
+          "owner": "Yikai",
+          "title": "Articraft-based articulated-object expansion for TaskGen",
+          "caption": "TaskGen now uses an Articraft-style articulated-object source, semantic LLM matching, and DINO visual identification to retrieve better assets from prompts.",
+          "tags": [
+            "TaskGen",
+            "Articulated objects",
+            "Dataset"
+          ],
+          "media": [
+            {
+              "type": "image",
+              "url": "/media/notion/yikai/2026-06-29/38e68db0a61c802ca8f0cb4a0f4a0e66.png",
+              "originalName": "montage_ALL_categories.png",
+              "notionBlockId": "38e68db0-a61c-802c-a8f0-cb4a0f4a0e66"
+            },
+            {
+              "type": "image",
+              "url": "/media/notion/yikai/2026-06-29/38e68db0a61c8099b751e24b5453e984.png",
+              "originalName": "set4_alt.png",
+              "notionBlockId": "38e68db0-a61c-8099-b751-e24b5453e984"
+            }
+          ],
+          "sourceUrl": "https://app.notion.com/p/30168db0a61c80a690e8cb41c24ade6b"
+        },
+        {
+          "id": "demo-2026-06-29-yikai-franka-cotraining",
+          "date": "2026-06-29",
+          "weekId": "2026-06-21",
+          "owner": "Yikai",
+          "title": "Axis + DROID co-training on real Franka",
+          "caption": "Axis + DROID co-training is being tested on real Franka tasks, with early Pick Butter results suggesting that AXIS data can preserve learned priors.",
+          "tags": [
+            "Model",
+            "Realworld",
+            "Dataset"
+          ],
+          "media": [
+            {
+              "type": "video",
+              "url": "/media/notion/yikai/2026-06-29/38e68db0a61c80b8838aff85435f7717.mp4",
+              "originalName": "8bff3c2747110f49ec8576df5c7a1b86.mp4",
+              "notionBlockId": "38e68db0-a61c-80b8-838a-ff85435f7717"
             }
           ],
           "sourceUrl": "https://app.notion.com/p/30168db0a61c80a690e8cb41c24ade6b"
