@@ -710,6 +710,10 @@ function DemoReel({ entries }: { entries: ReturnType<typeof visibleDemoEntries> 
 function WeekNav({ weeks }: { weeks: WeeklyUpdate[] }) {
   return (
     <nav className="weekNav" aria-label="Weekly report navigation">
+      <a className="weekNavBlog" href={assetUrl('/tech-blog')}>
+        <strong>Tech Blog</strong>
+        <em>Research notes →</em>
+      </a>
       <span>Timeline</span>
       {weeks.map((week) => (
         <a key={week.id} href={`#week-${week.id}`}>
@@ -817,7 +821,7 @@ export default function Home() {
           </p>
           <div className="heroActions">
             <a href="#reports">Read reports</a>
-            <a href="#tech-blog">Tech blog</a>
+            <a href={assetUrl('/tech-blog')}>Tech blog</a>
             <a href={data.sources.weeklyRoot} className="ghost" target="_blank" rel="noreferrer">View update archive</a>
           </div>
         </div>
@@ -839,8 +843,6 @@ export default function Home() {
         {allTags.map((tag) => <span key={tag}>{tag}</span>)}
         <span className="generated">Updated {new Date(data.generatedAt).toLocaleString()}</span>
       </section>
-
-      <TechBlog />
 
       <div className="contentShell">
         <WeekNav weeks={weeklyUpdates} />
