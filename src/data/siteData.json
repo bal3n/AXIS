@@ -1,15 +1,15 @@
 {
-  "generatedAt": "2026-07-06T02:41:09.567Z",
+  "generatedAt": "2026-07-13T02:13:52.372Z",
   "sources": {
     "weeklyRoot": "https://app.notion.com/p/35c68db0a61c80fcade6c0b5e9ae0633",
     "mengfei": "https://app.notion.com/p/2df68db0a61c80c2b820ec5706e5750b",
     "yikai": "https://app.notion.com/p/30168db0a61c80a690e8cb41c24ade6b"
   },
   "stats": {
-    "weeklyUpdates": 9,
-    "demoItems": 41,
-    "mediaItems": 66,
-    "lastUpdate": "2026-06-28"
+    "weeklyUpdates": 10,
+    "demoItems": 42,
+    "mediaItems": 67,
+    "lastUpdate": "2026-07-13"
   },
   "weeklyUpdates": [
     {
@@ -1195,6 +1195,45 @@
               "url": "/media/notion/mengfei/2026-06-29/39568db0a61c80c2992ddae4e41ee3c5.png",
               "originalName": "image.png",
               "notionBlockId": "39568db0-a61c-80c2-992d-dae4e41ee3c5"
+            }
+          ],
+          "sourceUrl": "https://app.notion.com/p/2df68db0a61c80c2b820ec5706e5750b"
+        }
+      ]
+    },
+    {
+      "id": "2026-07-06",
+      "title": "Team Updates 7/6-7/13",
+      "period": "7/6-7/13",
+      "startDate": "2026-07-06",
+      "endDate": "2026-07-13",
+      "sourceUrl": "https://app.notion.com/p/2df68db0a61c80c2b820ec5706e5750b",
+      "summary": [
+        "7/6–7/13 Robotics Tech Update",
+        "This week, the robotics team focused on DAgger launch preparation, TaskGen capability upgrades, and browser-side scene improvements.",
+        "For DAgger, the team prepared batch generation of post-tasks, fixed operation-page loopholes, strengthened physical-consistency checks, added seed-based object reset and verification, and started validating replay results for collected correction data.",
+        "For TaskGen, the team optimized generation performance, expanded auto-checker coverage, increased initial-position randomization, added OpenArm support, and started building an automated asset-generation worker with a more compact taxonomy.",
+        "For browser scenes, RoboCasa environments were migrated into the browser with high-quality indoor scenes while previous lag issues were resolved."
+      ],
+      "demos": [
+        {
+          "id": "demo-2026-07-13-robocasa-browser-scenes",
+          "date": "2026-07-13",
+          "weekId": "2026-07-06",
+          "owner": "Mengfei",
+          "title": "RoboCasa browser scene migration",
+          "caption": "RoboCasa indoor scenes are now running in the browser with improved visual quality and reduced lag, expanding the environment coverage for future task collection.",
+          "tags": [
+            "RoboCasa",
+            "MuJoCo",
+            "TaskGen"
+          ],
+          "media": [
+            {
+              "type": "video",
+              "url": "/media/notion/mengfei/2026-07-13/39b68db0a61c8042bb00f32b7e93ea01.mp4",
+              "originalName": "589d9bb5236e9bc94d6190b1d8e6b59e.mp4",
+              "notionBlockId": "39b68db0-a61c-8042-bb00-f32b7e93ea01"
             }
           ],
           "sourceUrl": "https://app.notion.com/p/2df68db0a61c80c2b820ec5706e5750b"

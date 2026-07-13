@@ -18,6 +18,36 @@ type ReportSection = {
 };
 
 const WEEK_COPY: Record<string, { lead: string; sections: ReportSection[] }> = {
+  '2026-07-06': {
+    lead: 'This week focused on DAgger launch preparation, TaskGen capability upgrades, and browser-side scene improvements. The work pushed AXIS further beyond a pure data-collection platform toward a continuous training loop that can batch-generate tasks, collect correction data, verify replay, and support richer scenes and robot embodiments.',
+    sections: [
+      {
+        title: 'DAgger Launch Preparation',
+        body: 'The DAgger path moved closer to launch through batch post-task generation and operation-page fixes that reduce opportunities for users to exploit interface loopholes. These changes are meant to keep collected correction data clean enough to enter downstream training rather than becoming another manual review burden.',
+        references: ['dagger', 'post task', 'policy']
+      },
+      {
+        title: 'Physical Consistency and Replay Verification',
+        body: 'The team strengthened physical-consistency checks and added seed-based object reset plus verification for DAgger. Replay validation is now being applied to collected DAgger data, so correction segments can be checked before being used in the training loop.',
+        references: ['dagger', 'verify', 'replay', 'seed']
+      },
+      {
+        title: 'TaskGen Performance and Auto-Checker Upgrades',
+        body: 'TaskGen work focused on improving generation performance, expanding auto-checker coverage, and enabling a wider range of initial-position randomization. These upgrades make generated tasks more diverse while keeping them collectable and verifiable.',
+        references: ['taskgen', 'checker', 'randomization']
+      },
+      {
+        title: 'OpenArm and AssetGen Worker',
+        body: 'TaskGen support for OpenArm was added, though the IK still needs further correction. The team also started building an automated AssetGen worker and a more compact asset taxonomy to make task and asset production easier to scale.',
+        references: ['openarm', 'asset', 'taskgen']
+      },
+      {
+        title: 'RoboCasa Browser Scenes',
+        body: 'RoboCasa scenes were migrated into the browser, bringing high-quality indoor environments into the web task interface while resolving previous lag issues. This expands the visual and semantic complexity available for future task collection and evaluation.',
+        references: ['robocasa', 'scene', 'mujoco', 'browser']
+      }
+    ]
+  },
   '2026-06-28': {
     lead: 'This week focused on turning the June DAgger and TaskGen direction into concrete execution work: stabilizing worker infrastructure, preparing post-task deployment, bringing OpenArm online, and improving object-selected gripper movement for smoother correction-data collection.',
     sections: [
@@ -308,6 +338,9 @@ function demoCaption(demo: DemoItem, week: WeeklyUpdate) {
   if (text.includes('franka') || text.includes('cotraining') || text.includes('pick butter')) {
     return 'Real-world Franka co-training is tested against the DROID baseline.';
   }
+  if (text.includes('robocasa') || text.includes('indoor scene')) {
+    return 'RoboCasa indoor scenes run in the browser with smoother playback.';
+  }
   if (text.includes('articraft') || text.includes('dino')) {
     return 'TaskGen expands articulated assets through semantic and visual retrieval.';
   }
@@ -597,7 +630,7 @@ export default function Home() {
         </div>
         <div className="focusPanel">
           <p className="eyebrow">Latest cycle</p>
-          <strong>{fmtDate(latestWeek?.startDate || data.stats.lastUpdate)}</strong>
+          <strong>{fmtDate(latestWeek?.endDate || data.stats.lastUpdate)}</strong>
           <span>{latestWeek ? fmtRange(latestWeek) : 'Latest robotics update'}</span>
           <div className="focusList">
             <p>This week&apos;s focus</p>
