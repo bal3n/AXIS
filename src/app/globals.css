@@ -147,14 +147,15 @@ h3 { font-size: 22px; line-height: 1.08; }
 
 .techBlog {
   margin: 0 0 36px;
-  padding: 34px;
+  padding: 44px;
   scroll-margin-top: 24px;
 }
 .techBlogHeader {
-  max-width: 980px;
+  max-width: 880px;
+  margin: 0 auto;
 }
 .techBlogHeader h2 {
-  max-width: 980px;
+  max-width: 880px;
 }
 .techBlogHeader p:not(.eyebrow) {
   color: var(--muted);
@@ -163,11 +164,12 @@ h3 { font-size: 22px; line-height: 1.08; }
   margin: 18px 0 0;
 }
 .techBlogThesis {
+  max-width: 880px;
   border: 1px solid rgba(125, 255, 178, 0.24);
   background: rgba(125, 255, 178, 0.08);
   border-radius: 22px;
   padding: 18px 20px;
-  margin: 28px 0;
+  margin: 28px auto 36px;
 }
 .techBlogThesis span,
 .techBlogReferences span {
@@ -186,31 +188,65 @@ h3 { font-size: 22px; line-height: 1.08; }
   font-size: 17px;
 }
 .techBlogBody {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 22px;
+  max-width: 880px;
+  margin: 0 auto;
 }
 .techBlogSection {
-  border-left: 2px solid rgba(139, 183, 255, 0.34);
-  padding-left: 18px;
+  border-top: 1px solid var(--line);
+  padding: 30px 0 18px;
 }
 .techBlogSection h3 {
   color: #eefaf6;
-  font-size: 22px;
+  font-size: clamp(24px, 3vw, 34px);
   line-height: 1.16;
-  margin-bottom: 10px;
+  margin-bottom: 16px;
 }
 .techBlogSection p {
   color: var(--muted);
-  line-height: 1.76;
-  margin: 0 0 12px;
-  font-size: 16px;
+  line-height: 1.82;
+  margin: 0 0 16px;
+  font-size: 17px;
+}
+.techBlogFormula {
+  overflow-x: auto;
+  border: 1px solid rgba(139, 183, 255, 0.25);
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 16px;
+  color: #eefaf6;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  font-size: clamp(15px, 2vw, 20px);
+  line-height: 1.6;
+  margin: 18px 0 20px;
+  padding: 18px 20px;
+  text-align: center;
+  white-space: nowrap;
+}
+.techBlogSection blockquote {
+  border-left: 3px solid var(--brand);
+  color: #dff6ef;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.7;
+  margin: 20px 0;
+  padding: 4px 0 4px 20px;
+}
+.techBlogBullet {
+  position: relative;
+  padding-left: 24px;
+}
+.techBlogBullet::before {
+  content: "•";
+  position: absolute;
+  left: 4px;
+  color: var(--brand);
+  font-weight: 900;
 }
 .techBlogReferences {
+  max-width: 880px;
   border-top: 1px solid var(--line);
   display: grid;
   gap: 10px;
-  margin-top: 30px;
+  margin: 30px auto 0;
   padding-top: 20px;
 }
 .techBlogReferences a {
@@ -458,7 +494,6 @@ h3 { font-size: 22px; line-height: 1.08; }
   .reportMeta { position: static; }
   .sourceLinks { flex-direction: row; flex-wrap: wrap; }
   .techBlog { padding: 24px; }
-  .techBlogBody { grid-template-columns: 1fr; }
   .reelGrid { grid-template-columns: 1fr; }
   .demoReference img, .demoReference video { height: 220px; }
 }
