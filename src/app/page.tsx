@@ -17,6 +17,88 @@ type ReportSection = {
   references: string[];
 };
 
+type BlogSection = {
+  title: string;
+  body: string[];
+};
+
+const TECH_BLOG_POST: {
+  eyebrow: string;
+  title: string;
+  subtitle: string;
+  thesis: string;
+  sections: BlogSection[];
+  references: { label: string; href: string }[];
+} = {
+  eyebrow: 'Technical note · Embodied pretraining',
+  title: 'Cross-Source Robotic Pretraining Is a Noise-Tolerant Learner',
+  subtitle: 'Turning in-the-wild human intelligence into robot intelligence.',
+  thesis:
+    'The central claim is simple: noisy community-generated robot trajectories can become a useful pretraining substrate when coverage and diversity are high enough. Individual demonstrations may be messy, but the aggregate distribution can still contain a coherent, feasible behavioral signal.',
+  sections: [
+    {
+      title: '1. The prejudice against dirty data',
+      body: [
+        'Robotics has traditionally treated noisy demonstrations as something to filter away. Operators hesitate, recover from mistakes, choose different strategies, and work across different embodiments. Classical imitation learning assumes the opposite setting: clean, near-optimal demonstrations from a controlled expert.',
+        'At scale, that instinct can be wrong. Individual sloppiness is not the same thing as collective uselessness. If the dataset is large and diverse enough, private errors can cancel while shared task-relevant structure remains.'
+      ]
+    },
+    {
+      title: '2. The egocentric-data analogy',
+      body: [
+        'Egocentric human video was once dismissed for similar reasons: no action labels, unstable cameras, uncontrolled scenes, and a large human-to-robot embodiment gap. Recent work changed that intuition. EgoVerse mixed lab recordings with in-the-wild egocentric data, and DreamDojo trained a generalist robot world model from large-scale internet human video.',
+        'The lesson is not that any data works. EgoVerse also shows that unaligned diversity alone gives limited gains. The useful regime is broad data that still shares task semantics with the target domain.'
+      ]
+    },
+    {
+      title: '3. A cleaner noise model',
+      body: [
+        'Instead of treating each operator as an optimal policy plus additive noise, it is better to model each operator policy as a mixture of competent behavior and idiosyncratic deviation:',
+        'pi_i(. | o) = (1 - eta_i) pi*(. | o, c) + eta_i xi_i(. | o, c)',
+        'Here c is the task and embodiment context. This matters because there is no single universal pi* across different robots and tasks. The policy must condition on context; otherwise it averages incompatible bodies into mush.'
+      ]
+    },
+    {
+      title: '4. The noise-tolerant pretraining hypothesis',
+      body: [
+        'Noise tolerance emerges when the crowd is not systematically biased away from feasible task completion. Everyone can be wrong in their own way, but there must not be one shared wrong direction.',
+        'The hypothesis is a phase transition: below a coverage x diversity threshold, noise dominates and pretraining learns bad habits; above it, the same noise becomes statistically harmless and behavioral cloning approaches a robust behavioral optimum.'
+      ]
+    },
+    {
+      title: '5. Why the mean survives the mess',
+      body: [
+        'Behavioral cloning on a large noisy crowd estimates the mean behavior of that crowd. If errors are uncorrelated, hesitation and recovery quirks wash out, while the feasible path that many operators independently rediscover remains.',
+        'This reframes data quality. The unit of quality is no longer a single trajectory. It is the distribution: coverage over states, tasks, objects, strategies, and embodiments.'
+      ]
+    },
+    {
+      title: '6. The last mile needs closed-loop refinement',
+      body: [
+        'Large-scale pretraining can produce broad competence, but it will not solve the rare long-tail states by itself. The last mile requires deployment, failure mining, and targeted correction.',
+        'The loop is: pretrain on community data, deploy in simulation, mine failures, relabel the visited failure states with corrective supervision, fold those corrections back in, and repeat. This is where DAgger-style correction data becomes essential: failed rollouts alone are not enough unless the policy receives better actions on the states it actually visits.'
+      ]
+    },
+    {
+      title: '7. What would falsify the idea',
+      body: [
+        'The hypothesis fails if crowd errors are correlated, if the dataset sits below the coverage-diversity threshold, if the data is diverse but semantically misaligned with the deployment target, or if closed-loop refinement cannot close the remaining long-tail gap.',
+        'That makes the claim empirical rather than ideological. The question is not whether dirty data is good or bad in the abstract; it is whether the distribution is broad, aligned, and diverse enough for noise to average out.'
+      ]
+    }
+  ],
+  references: [
+    {
+      label: 'EgoVerse: An Egocentric Human Dataset for Robot Learning from Around the World',
+      href: 'https://arxiv.org/abs/2604.07607'
+    },
+    {
+      label: 'DreamDojo: A Generalist Robot World Model from Large-Scale Human Videos',
+      href: 'https://arxiv.org/abs/2602.06949'
+    }
+  ]
+};
+
 const WEEK_COPY: Record<string, { lead: string; sections: ReportSection[] }> = {
   '2026-07-06': {
     lead: 'This week focused on DAgger launch preparation, TaskGen capability upgrades, and browser-side scene improvements. The work pushed AXIS further beyond a pure data-collection platform toward a continuous training loop that can batch-generate tasks, collect correction data, verify replay, and support richer scenes and robot embodiments.',
@@ -608,6 +690,43 @@ function WeeklyReport({ week, index }: { week: WeeklyUpdate; index: number }) {
   );
 }
 
+function TechBlog() {
+  return (
+    <section id="tech-blog" className="techBlog">
+      <div className="techBlogHeader">
+        <p className="eyebrow">{TECH_BLOG_POST.eyebrow}</p>
+        <h2>{TECH_BLOG_POST.title}</h2>
+        <p>{TECH_BLOG_POST.subtitle}</p>
+      </div>
+
+      <div className="techBlogThesis">
+        <span>Thesis</span>
+        <p>{TECH_BLOG_POST.thesis}</p>
+      </div>
+
+      <article className="techBlogBody">
+        {TECH_BLOG_POST.sections.map((section) => (
+          <section className="techBlogSection" key={section.title}>
+            <h3>{section.title}</h3>
+            {section.body.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+          </section>
+        ))}
+      </article>
+
+      <div className="techBlogReferences">
+        <span>References</span>
+        {TECH_BLOG_POST.references.map((reference) => (
+          <a key={reference.href} href={reference.href} target="_blank" rel="noreferrer">
+            {reference.label}
+          </a>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 export default function Home() {
   const weeklyUpdates = [...data.weeklyUpdates].sort((a, b) => b.startDate.localeCompare(a.startDate));
   const allTags = Array.from(new Set(weeklyUpdates.flatMap((w) => w.demos.flatMap((d) => d.tags)))).slice(0, 16);
@@ -625,6 +744,7 @@ export default function Home() {
           </p>
           <div className="heroActions">
             <a href="#reports">Read reports</a>
+            <a href="#tech-blog">Tech blog</a>
             <a href={data.sources.weeklyRoot} className="ghost" target="_blank" rel="noreferrer">View update archive</a>
           </div>
         </div>
@@ -646,6 +766,8 @@ export default function Home() {
         {allTags.map((tag) => <span key={tag}>{tag}</span>)}
         <span className="generated">Updated {new Date(data.generatedAt).toLocaleString()}</span>
       </section>
+
+      <TechBlog />
 
       <div className="contentShell">
         <WeekNav weeks={weeklyUpdates} />

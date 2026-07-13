@@ -36,7 +36,7 @@ main { width: min(1320px, calc(100vw - 32px)); margin: 0 auto; }
   padding: 72px 0 28px;
 }
 
-.heroText, .focusPanel, .report, .tagCloud {
+.heroText, .focusPanel, .report, .tagCloud, .techBlog {
   border: 1px solid var(--line);
   background: linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.035));
   backdrop-filter: blur(18px);
@@ -144,6 +144,84 @@ h3 { font-size: 22px; line-height: 1.08; }
 }
 .tagCloud span:not(:first-child) { color: var(--brand2); }
 .tagCloud .generated { margin-left: auto; color: var(--muted); }
+
+.techBlog {
+  margin: 0 0 36px;
+  padding: 34px;
+  scroll-margin-top: 24px;
+}
+.techBlogHeader {
+  max-width: 980px;
+}
+.techBlogHeader h2 {
+  max-width: 980px;
+}
+.techBlogHeader p:not(.eyebrow) {
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1.65;
+  margin: 18px 0 0;
+}
+.techBlogThesis {
+  border: 1px solid rgba(125, 255, 178, 0.24);
+  background: rgba(125, 255, 178, 0.08);
+  border-radius: 22px;
+  padding: 18px 20px;
+  margin: 28px 0;
+}
+.techBlogThesis span,
+.techBlogReferences span {
+  display: block;
+  color: var(--brand);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 12px;
+  font-weight: 900;
+  margin-bottom: 8px;
+}
+.techBlogThesis p {
+  color: #dff6ef;
+  line-height: 1.7;
+  margin: 0;
+  font-size: 17px;
+}
+.techBlogBody {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+.techBlogSection {
+  border-left: 2px solid rgba(139, 183, 255, 0.34);
+  padding-left: 18px;
+}
+.techBlogSection h3 {
+  color: #eefaf6;
+  font-size: 22px;
+  line-height: 1.16;
+  margin-bottom: 10px;
+}
+.techBlogSection p {
+  color: var(--muted);
+  line-height: 1.76;
+  margin: 0 0 12px;
+  font-size: 16px;
+}
+.techBlogReferences {
+  border-top: 1px solid var(--line);
+  display: grid;
+  gap: 10px;
+  margin-top: 30px;
+  padding-top: 20px;
+}
+.techBlogReferences a {
+  width: fit-content;
+  color: var(--brand2);
+  border: 1px solid rgba(139, 183, 255, 0.28);
+  background: rgba(139, 183, 255, 0.08);
+  border-radius: 999px;
+  padding: 9px 12px;
+  font-weight: 800;
+}
 
 .contentShell {
   display: grid;
@@ -379,6 +457,8 @@ h3 { font-size: 22px; line-height: 1.08; }
   .report { grid-template-columns: 1fr; padding: 24px; }
   .reportMeta { position: static; }
   .sourceLinks { flex-direction: row; flex-wrap: wrap; }
+  .techBlog { padding: 24px; }
+  .techBlogBody { grid-template-columns: 1fr; }
   .reelGrid { grid-template-columns: 1fr; }
   .demoReference img, .demoReference video { height: 220px; }
 }
