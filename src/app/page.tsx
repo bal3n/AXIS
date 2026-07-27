@@ -166,31 +166,31 @@ const TECH_BLOG_POST: {
 
 const WEEK_COPY: Record<string, { lead: string; sections: ReportSection[] }> = {
   '2026-07-13': {
-    lead: 'Across July 13–26, the robotics team focused on scaling benchmark task deployment, strengthening verification and DAgger data quality, broadening TaskGen randomization, and aligning additional robot embodiments. The period also marked the public arXiv release of AXIS, turning the community-driven data engine into a citable research artifact with an updated project website and release materials.',
+    lead: 'Across the July 13–26 cycle, the robotics team focused on moving recently completed infrastructure into reliable production use. The main workstreams were scaling benchmark task deployment, increasing verification throughput, improving DAgger data consistency, broadening TaskGen randomization, and aligning additional robot embodiments. The period also marked the public arXiv release of AXIS, connecting the engineering system, community-generated dataset, code, demonstrations, and research narrative into one citable release.',
     sections: [
       {
         title: 'LIBERO Pro and RoboCasa Task Deployment',
-        body: 'Fifty LIBERO Pro tasks, covering task IDs 2572–2621, were brought online together with their corresponding scenes. The browser integration preserves the benchmark-specific asset randomization and adds license attribution directly in the task UI. In parallel, four RoboCasa tasks were organized as the first batch for wider task and scene deployment.',
+        body: 'The team brought 50 LIBERO Pro tasks, covering task IDs 2572–2621, online together with their corresponding scenes. The browser integration preserves benchmark-specific asset randomization while adding license and upstream-dataset attribution directly in the task interface, making the adapted benchmark easier to inspect and use responsibly. In parallel, the first four RoboCasa tasks were organized and validated as a seed batch for broader indoor-scene deployment. Together, these integrations expand AXIS from custom tasks toward a shared browser surface for established manipulation benchmarks and more visually complex household environments.',
         references: ['libero', 'robocasa', 'scene', 'taskgen']
       },
       {
         title: 'Verification Throughput and Physical Consistency',
-        body: 'Task caching and verify-worker execution were improved, increasing verification speed by roughly three times while correcting the scoring function. The pipeline now rejects trajectories whose control-step frequency violates the task contract earlier, while reducing false positives and unnecessary production-database access.',
+        body: 'Task caching and verify-worker execution were improved, raising verification speed by roughly three times while also correcting the scoring function. The pipeline now intercepts trajectories whose control-step frequency violates the task contract before they consume downstream resources. At the same time, the checks were adjusted to reduce false positives so valid demonstrations are less likely to be discarded. Incremental and semantic caches, collection-process reuse, evaluation-environment reuse, and reduced production-database access make the verification path faster and more suitable for continuous high-volume data collection.',
         references: ['verify', 'checker', 'replay']
       },
       {
         title: 'OpenArm, T1, and Embodiment Alignment',
-        body: 'OpenArm control and collision issues were fixed, while T1 simulation behavior continued to be aligned with real-world behavior. The Axis-to-RoboVerse task conversion path was also completed, making task definitions easier to move across the broader training and evaluation stack.',
+        body: 'The team continued expanding embodiment coverage by resolving OpenArm control and collision issues and aligning T1 behavior between simulation and the physical robot. This work reduces the gap between a task that merely renders correctly and one whose control semantics, contacts, and motion remain meaningful across simulation and hardware. The Axis-to-RoboVerse task conversion path was also completed and documented, allowing task definitions and assets to move more consistently across the broader training and evaluation stack. These improvements support a more reusable multi-embodiment pipeline rather than separate one-off integrations for every robot.',
         references: ['openarm', 't1', 'embodiment', 'roboverse']
       },
       {
         title: 'TaskGen Randomization and DAgger Reliability',
-        body: 'TaskGen expanded spatial and variant randomization beyond a few tightly clustered points toward a wider and more uniform sampling distribution, supported by new plotting and validation tools. For HG-DAgger integration, frontend observation-history construction and action-application semantics were aligned, drag-control frequency was reduced for consistent command timing, and caching plus batched inference improved collection and evaluation throughput.',
+        body: 'TaskGen expanded spatial and variant randomization beyond a small number of tightly clustered points toward a wider and more uniform sampling distribution. New visualization and validation tools make it possible to inspect whether generated initial states actually cover the intended workspace instead of silently collapsing into narrow modes. For HG-DAgger integration, frontend observation-history construction and action-application semantics were aligned so collected corrections match policy execution more faithfully. Drag-control frequency was reduced for consistent command timing, while caching, process reuse, and batched inference improved collection and evaluation throughput for larger post-training runs.',
         references: ['taskgen', 'randomization', 'dagger', 'model']
       },
       {
         title: 'AXIS Paper Released on arXiv',
-        body: 'The AXIS paper logic, storyline, statistics, main text, and appendix were consolidated and polished, with particular attention to the abstract and introduction. “AXIS: A Growable Community-Driven Data Engine for Scalable Robot Manipulation” was submitted to arXiv and appeared at the top of the newest Robotics search results. The project website was updated with live data counters and the latest demonstrations, and the first version of the release video was rendered for broader research communication.',
+        body: 'The AXIS research release was completed by consolidating the paper logic, storyline, statistics, main text, and appendix, with particular attention to making the abstract and introduction clearly explain the growable community-driven data engine. “AXIS: A Growable Community-Driven Data Engine for Scalable Robot Manipulation” was submitted to arXiv and appeared at the top of the newest Robotics search results at release time. The project website was updated with live data counters and the latest demonstrations so the public artifact reflects the current scale of the dataset rather than a static snapshot. A first release video was also produced to communicate the paper, system, and data engine to a broader research audience.',
         references: ['paper', 'arxiv', 'dataset', 'video'],
         links: [
           {
