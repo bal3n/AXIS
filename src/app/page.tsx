@@ -15,6 +15,7 @@ type ReportSection = {
   title: string;
   body: string;
   references: string[];
+  links?: { label: string; href: string }[];
 };
 
 type BlogSection = {
@@ -164,6 +165,46 @@ const TECH_BLOG_POST: {
 };
 
 const WEEK_COPY: Record<string, { lead: string; sections: ReportSection[] }> = {
+  '2026-07-13': {
+    lead: 'Across July 13–26, the robotics team focused on scaling benchmark task deployment, strengthening verification and DAgger data quality, broadening TaskGen randomization, and aligning additional robot embodiments. The period also marked the public arXiv release of AXIS, turning the community-driven data engine into a citable research artifact with an updated project website and release materials.',
+    sections: [
+      {
+        title: 'LIBERO Pro and RoboCasa Task Deployment',
+        body: 'Fifty LIBERO Pro tasks, covering task IDs 2572–2621, were brought online together with their corresponding scenes. The browser integration preserves the benchmark-specific asset randomization and adds license attribution directly in the task UI. In parallel, four RoboCasa tasks were organized as the first batch for wider task and scene deployment.',
+        references: ['libero', 'robocasa', 'scene', 'taskgen']
+      },
+      {
+        title: 'Verification Throughput and Physical Consistency',
+        body: 'Task caching and verify-worker execution were improved, increasing verification speed by roughly three times while correcting the scoring function. The pipeline now rejects trajectories whose control-step frequency violates the task contract earlier, while reducing false positives and unnecessary production-database access.',
+        references: ['verify', 'checker', 'replay']
+      },
+      {
+        title: 'OpenArm, T1, and Embodiment Alignment',
+        body: 'OpenArm control and collision issues were fixed, while T1 simulation behavior continued to be aligned with real-world behavior. The Axis-to-RoboVerse task conversion path was also completed, making task definitions easier to move across the broader training and evaluation stack.',
+        references: ['openarm', 't1', 'embodiment', 'roboverse']
+      },
+      {
+        title: 'TaskGen Randomization and DAgger Reliability',
+        body: 'TaskGen expanded spatial and variant randomization beyond a few tightly clustered points toward a wider and more uniform sampling distribution, supported by new plotting and validation tools. For HG-DAgger integration, frontend observation-history construction and action-application semantics were aligned, drag-control frequency was reduced for consistent command timing, and caching plus batched inference improved collection and evaluation throughput.',
+        references: ['taskgen', 'randomization', 'dagger', 'model']
+      },
+      {
+        title: 'AXIS Paper Released on arXiv',
+        body: 'The AXIS paper logic, storyline, statistics, main text, and appendix were consolidated and polished, with particular attention to the abstract and introduction. “AXIS: A Growable Community-Driven Data Engine for Scalable Robot Manipulation” was submitted to arXiv and appeared at the top of the newest Robotics search results. The project website was updated with live data counters and the latest demonstrations, and the first version of the release video was rendered for broader research communication.',
+        references: ['paper', 'arxiv', 'dataset', 'video'],
+        links: [
+          {
+            label: 'Read the arXiv paper',
+            href: 'https://arxiv.org/abs/2607.21588'
+          },
+          {
+            label: 'Open the AXIS-V1 project website',
+            href: 'https://axisaiorg.github.io/AXIS-V1/'
+          }
+        ]
+      }
+    ]
+  },
   '2026-07-06': {
     lead: 'This week focused on DAgger launch preparation, TaskGen capability upgrades, and browser-side scene improvements. The work pushed AXIS further beyond a pure data-collection platform toward a continuous training loop that can batch-generate tasks, collect correction data, verify replay, and support richer scenes and robot embodiments.',
     sections: [
@@ -441,7 +482,10 @@ const BLOCKED_MEDIA_IDS = [
 
 const ALLOWED_MEDIA_IDS = [
   '39568db0a61c80e78e30eea69d47dad2',
-  '39568db0a61c80c2992ddae4e41ee3c5'
+  '39568db0a61c80c2992ddae4e41ee3c5',
+  '3aa68db0a61c807f910bc6dfa9e850d5',
+  '3a968db0a61c80638523d17ae3a67699',
+  '3aa68db0a61c80a893e6f2eb644b434a'
 ];
 
 function fmtDate(date: string) {
@@ -478,6 +522,15 @@ function reportSections(week: WeeklyUpdate) {
 function demoCaption(demo: DemoItem, week: WeeklyUpdate) {
   const text = contextText(demo);
 
+  if (text.includes('arxiv') || text.includes('paper release')) {
+    return 'The AXIS paper is released on arXiv with updated research materials.';
+  }
+  if (text.includes('libero')) {
+    return 'LIBERO Pro tasks and scenes run in the AXIS browser interface.';
+  }
+  if (text.includes('t1')) {
+    return 'OpenArm control and T1 embodiment behavior are aligned across simulation and hardware.';
+  }
   if (text.includes('openarm')) {
     return 'OpenArm support is validated in the browser-based task interface.';
   }
@@ -504,6 +557,9 @@ function demoCaption(demo: DemoItem, week: WeeklyUpdate) {
   }
   if (text.includes('booster') && text.includes('render')) {
     return 'Booster rendering runs through the embodiment-agnostic pipeline.';
+  }
+  if (text.includes('spatial randomization') || text.includes('wider taskgen')) {
+    return 'TaskGen validates a wider and more uniform initial-position distribution.';
   }
   if (text.includes('dataset') || text.includes('six embodiments')) {
     return 'Dataset generation is validated across multiple robot embodiments.';
@@ -622,6 +678,11 @@ function isRobotDemoMedia(demo: DemoItem, media: MediaItem) {
     'gripper',
     'teleop',
     'booster',
+    'libero',
+    'robocasa',
+    't1',
+    'paper',
+    'arxiv',
     'mujoco',
     'taskgen',
     'articulated',
@@ -747,6 +808,15 @@ function WeeklyReport({ week, index }: { week: WeeklyUpdate; index: number }) {
                 <h3>{section.title}</h3>
                 <p>{section.body}</p>
                 <ReferenceLinks entries={sectionReferences(demoEntries, section)} />
+                {section.links && (
+                  <p className="reportExternalLinks">
+                    {section.links.map((link) => (
+                      <a key={link.href} href={link.href} target="_blank" rel="noreferrer">
+                        {link.label} ↗
+                      </a>
+                    ))}
+                  </p>
+                )}
               </section>
             ))}
           </div>

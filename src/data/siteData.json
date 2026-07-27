@@ -1,15 +1,15 @@
 {
-  "generatedAt": "2026-07-13T02:13:52.372Z",
+  "generatedAt": "2026-07-27T02:33:00.000Z",
   "sources": {
     "weeklyRoot": "https://app.notion.com/p/35c68db0a61c80fcade6c0b5e9ae0633",
     "mengfei": "https://app.notion.com/p/2df68db0a61c80c2b820ec5706e5750b",
     "yikai": "https://app.notion.com/p/30168db0a61c80a690e8cb41c24ade6b"
   },
   "stats": {
-    "weeklyUpdates": 10,
-    "demoItems": 42,
-    "mediaItems": 67,
-    "lastUpdate": "2026-07-13"
+    "weeklyUpdates": 11,
+    "demoItems": 47,
+    "mediaItems": 74,
+    "lastUpdate": "2026-07-26"
   },
   "weeklyUpdates": [
     {
@@ -1237,6 +1237,146 @@
             }
           ],
           "sourceUrl": "https://app.notion.com/p/2df68db0a61c80c2b820ec5706e5750b"
+        }
+      ]
+    },
+    {
+      "id": "2026-07-13",
+      "title": "Team Updates 7/13-7/26",
+      "period": "7/13-7/26",
+      "startDate": "2026-07-13",
+      "endDate": "2026-07-26",
+      "sourceUrl": "https://app.notion.com/p/2df68db0a61c80c2b820ec5706e5750b",
+      "summary": [
+        "7/13–7/26 Robotics Tech Update",
+        "The robotics team scaled benchmark task deployment, verification throughput, TaskGen randomization, and DAgger reliability across a combined two-week cycle.",
+        "Fifty LIBERO Pro tasks and their scenes were deployed in the browser with benchmark-specific randomization and license attribution, while the first RoboCasa task batch was prepared for wider release.",
+        "Verification became roughly three times faster through task caching and worker improvements, with earlier rejection of invalid control-frequency trajectories and fewer false positives.",
+        "OpenArm control and collision issues were fixed, T1 simulation-to-real alignment progressed, and the Axis-to-RoboVerse conversion path was completed.",
+        "The AXIS paper was released on arXiv after a full storyline, statistics, abstract, introduction, and appendix polish, accompanied by an updated project website and release video."
+      ],
+      "demos": [
+        {
+          "id": "demo-2026-07-26-libero-pro-browser",
+          "date": "2026-07-26",
+          "weekId": "2026-07-13",
+          "owner": "Mengfei",
+          "title": "LIBERO Pro browser deployment",
+          "caption": "Fifty LIBERO Pro tasks and their corresponding scenes are deployed in the AXIS browser interface with benchmark randomization and license attribution.",
+          "tags": [
+            "LIBERO",
+            "TaskGen",
+            "Benchmark"
+          ],
+          "media": [
+            {
+              "type": "image",
+              "url": "/media/notion/mengfei/2026-07-26/3a968db0a61c80cea471fc27182d2147.png",
+              "originalName": "1352d57568c7b003a6a2499a27f84884.png",
+              "notionBlockId": "3a968db0-a61c-80ce-a471-fc27182d2147"
+            },
+            {
+              "type": "image",
+              "url": "/media/notion/mengfei/2026-07-26/3a968db0a61c80159ed6e89ca7f56737.png",
+              "originalName": "ef5c7a24b27227101773268f625247fd.png",
+              "notionBlockId": "3a968db0-a61c-8015-9ed6-e89ca7f56737"
+            }
+          ],
+          "sourceUrl": "https://app.notion.com/p/2df68db0a61c80c2b820ec5706e5750b"
+        },
+        {
+          "id": "demo-2026-07-26-robocasa-task-scene",
+          "date": "2026-07-26",
+          "weekId": "2026-07-13",
+          "owner": "Mengfei",
+          "title": "RoboCasa task scene preparation",
+          "caption": "The first RoboCasa task scenes are organized in the browser as a foundation for larger-scale indoor task deployment.",
+          "tags": [
+            "RoboCasa",
+            "TaskGen",
+            "MuJoCo"
+          ],
+          "media": [
+            {
+              "type": "image",
+              "url": "/media/notion/mengfei/2026-07-26/3a968db0a61c803fb573d1052e6ef1ed.png",
+              "originalName": "91fe79e36e694d9e6e11dcc9230b3cc8.png",
+              "notionBlockId": "3a968db0-a61c-803f-b573-d1052e6ef1ed"
+            }
+          ],
+          "sourceUrl": "https://app.notion.com/p/2df68db0a61c80c2b820ec5706e5750b"
+        },
+        {
+          "id": "demo-2026-07-26-openarm-t1-alignment",
+          "date": "2026-07-26",
+          "weekId": "2026-07-13",
+          "owner": "Mengfei",
+          "title": "OpenArm and T1 embodiment alignment",
+          "caption": "OpenArm control and collision behavior is being stabilized while T1 simulation behavior is aligned with the real robot.",
+          "tags": [
+            "OpenArm",
+            "T1",
+            "Multi-embodiment"
+          ],
+          "media": [
+            {
+              "type": "image",
+              "url": "/media/notion/mengfei/2026-07-26/3aa68db0a61c807f910bc6dfa9e850d5.png",
+              "originalName": "7e7242586a09499f9695c792b2611b5e.png",
+              "notionBlockId": "3aa68db0-a61c-807f-910b-c6dfa9e850d5"
+            }
+          ],
+          "sourceUrl": "https://app.notion.com/p/2df68db0a61c80c2b820ec5706e5750b"
+        },
+        {
+          "id": "demo-2026-07-26-taskgen-randomization",
+          "date": "2026-07-26",
+          "weekId": "2026-07-13",
+          "owner": "Mengfei",
+          "title": "Wider TaskGen spatial randomization",
+          "caption": "TaskGen samples initial positions across a wider and more uniform distribution, supported by new visualization and validation tooling.",
+          "tags": [
+            "TaskGen",
+            "Randomization",
+            "Dataset"
+          ],
+          "media": [
+            {
+              "type": "image",
+              "url": "/media/notion/mengfei/2026-07-26/3a968db0a61c80638523d17ae3a67699.png",
+              "originalName": "c782ae07d529b4c46c15c310c8274e0b.png",
+              "notionBlockId": "3a968db0-a61c-8063-8523-d17ae3a67699"
+            }
+          ],
+          "sourceUrl": "https://app.notion.com/p/2df68db0a61c80c2b820ec5706e5750b"
+        },
+        {
+          "id": "demo-2026-07-26-axis-arxiv-release",
+          "date": "2026-07-26",
+          "weekId": "2026-07-13",
+          "owner": "Weekly",
+          "title": "AXIS paper arXiv release",
+          "caption": "AXIS: A Growable Community-Driven Data Engine for Scalable Robot Manipulation is released on arXiv with updated project materials and a research release video.",
+          "tags": [
+            "Paper",
+            "arXiv",
+            "Dataset"
+          ],
+          "media": [
+            {
+              "type": "image",
+              "url": "/media/notion/peihao/2026-07-26/3aa68db0a61c80a893e6f2eb644b434a.png",
+              "originalName": "31a58954d3bab18e574211d634d78375.png",
+              "notionBlockId": "3aa68db0-a61c-80a8-93e6-f2eb644b434a"
+            },
+            {
+              "type": "video",
+              "url": "/media/notion/peihao/2026-07-26/3aa68db0a61c807e82bcdb9c7b3c1065.mp4",
+              "originalName": "Weixin_Videos2026-07-26_192821_976.mp4",
+              "notionBlockId": "3aa68db0-a61c-807e-82bc-db9c7b3c1065"
+            }
+          ],
+          "sourceUrl": "https://arxiv.org/abs/2607.21588"
         }
       ]
     }

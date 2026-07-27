@@ -529,6 +529,21 @@ h3 { font-size: 22px; line-height: 1.08; }
   font-size: 12px;
   font-weight: 850;
 }
+.reportExternalLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px !important;
+}
+.reportExternalLinks a {
+  border: 1px solid rgba(139, 183, 255, 0.3);
+  background: rgba(139, 183, 255, 0.1);
+  color: var(--brand2);
+  border-radius: 999px;
+  padding: 7px 10px;
+  font-size: 12px;
+  font-weight: 850;
+}
 
 .demoReel {
   border-top: 1px solid var(--line);
