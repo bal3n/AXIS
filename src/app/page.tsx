@@ -165,6 +165,31 @@ const TECH_BLOG_POST: {
 };
 
 const WEEK_COPY: Record<string, { lead: string; sections: ReportSection[] }> = {
+  '2026-07-27': {
+    lead: 'Across the July 27–August 3 cycle, the robotics team expanded the browser-facing RoboCasa surface from a small seed set into a richer kitchen-task library. The focus was higher-quality rendered household scenes, additional robot embodiments in the live task UI, joystick-based teleoperation, and clearer in-viewport guidance through task-object and target-area overlays.',
+    sections: [
+      {
+        title: 'More Rendered RoboCasa Kitchen Scenes',
+        body: 'The team brought a broader set of high-fidelity RoboCasa kitchen scenes into the browser task library, covering appliance and furniture interactions such as opening fridge drawers, turning on stoves and toasters, sliding oven racks, and operating electric kettles. These scenes move AXIS beyond sparse tabletop setups toward visually denser household environments that are closer to the kinds of long-tail manipulation settings the data engine needs to cover at scale.',
+        references: ['robocasa', 'scene', 'kitchen', 'task library']
+      },
+      {
+        title: 'Additional Embodiments in the Live Task UI',
+        body: 'Embodiment coverage continued to expand inside the same browser surface. PandaOmron appears across the new RoboCasa tasks, and local review tasks were added for Axis visual-proxy and reduced-face PandaOmron variants. Keeping multiple embodiments on one task dashboard makes it easier to compare control behavior, camera framing, and scene readiness without maintaining separate one-off interfaces for each robot configuration.',
+        references: ['pandaomron', 'embodiment', 'visual proxy', 'task library']
+      },
+      {
+        title: 'Joystick and On-Screen Teleoperation Controls',
+        body: 'Teleoperation in the RoboCasa browser tasks now supports joystick-oriented control alongside keyboard mappings for translation and rotation. The live interface exposes an on-screen joystick, directional pad, MOVE/GRIP actions, and height or intensity sliders, so operators can drive the gripper more continuously during household manipulations. This reduces reliance on click-heavy discrete motion for tasks that require smoother approach, grasp, and appliance interaction.',
+        references: ['joystick', 'teleop', 'control', 'pandaomron']
+      },
+      {
+        title: 'Task Object and Target Area Overlays',
+        body: 'The task viewport now surfaces explicit task-object and target-area indicators, with a consistent legend in the live scene. Blue highlights mark the object that should be interacted with, while yellow markers indicate destination or interaction regions when the task requires placement or directed motion. These overlays make goals easier to parse during collection, especially in cluttered kitchen scenes where the correct handle, knob, rack, or appliance control is otherwise easy to miss.',
+        references: ['task object', 'target area', 'overlay', 'robocasa']
+      }
+    ]
+  },
   '2026-07-13': {
     lead: 'Across the July 13–26 cycle, the robotics team focused on moving recently completed infrastructure into reliable production use. The main workstreams were scaling benchmark task deployment, increasing verification throughput, improving DAgger data consistency, broadening TaskGen randomization, and aligning additional robot embodiments. The period also marked the public arXiv release of AXIS, connecting the engineering system, community-generated dataset, code, demonstrations, and research narrative into one citable release.',
     sections: [
@@ -537,8 +562,17 @@ function demoCaption(demo: DemoItem, week: WeeklyUpdate) {
   if (text.includes('franka') || text.includes('cotraining') || text.includes('pick butter')) {
     return 'Real-world Franka co-training is tested against the DROID baseline.';
   }
-  if (text.includes('robocasa') || text.includes('indoor scene')) {
-    return 'RoboCasa indoor scenes run in the browser with smoother playback.';
+  if (text.includes('task object') || text.includes('target area') || text.includes('overlay')) {
+    return 'Task-object and target-area overlays guide collection in cluttered kitchen scenes.';
+  }
+  if (text.includes('joystick') || text.includes('teleop control')) {
+    return 'Joystick and on-screen controls support smoother browser teleoperation.';
+  }
+  if (text.includes('task library') || text.includes('all tasks')) {
+    return 'The RoboCasa task library expands with more kitchen scenes and embodiment variants.';
+  }
+  if (text.includes('robocasa') || text.includes('indoor scene') || text.includes('pandaomron')) {
+    return 'Expanded RoboCasa scenes run in the browser with PandaOmron embodiment and live teleop controls.';
   }
   if (text.includes('articraft') || text.includes('dino')) {
     return 'TaskGen expands articulated assets through semantic and visual retrieval.';

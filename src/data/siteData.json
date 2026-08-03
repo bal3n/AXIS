@@ -1,15 +1,15 @@
 {
-  "generatedAt": "2026-07-27T02:33:00.000Z",
+  "generatedAt": "2026-08-03T02:20:00.000Z",
   "sources": {
     "weeklyRoot": "https://app.notion.com/p/35c68db0a61c80fcade6c0b5e9ae0633",
     "mengfei": "https://app.notion.com/p/2df68db0a61c80c2b820ec5706e5750b",
     "yikai": "https://app.notion.com/p/30168db0a61c80a690e8cb41c24ade6b"
   },
   "stats": {
-    "weeklyUpdates": 11,
-    "demoItems": 47,
-    "mediaItems": 74,
-    "lastUpdate": "2026-07-26"
+    "weeklyUpdates": 12,
+    "demoItems": 50,
+    "mediaItems": 81,
+    "lastUpdate": "2026-08-03"
   },
   "weeklyUpdates": [
     {
@@ -1378,6 +1378,116 @@
             }
           ],
           "sourceUrl": "https://arxiv.org/abs/2607.21588"
+        }
+      ]
+    },
+    {
+      "id": "2026-07-27",
+      "title": "Team Updates 7/27-8/3",
+      "period": "7/27-8/3",
+      "startDate": "2026-07-27",
+      "endDate": "2026-08-03",
+      "sourceUrl": "https://app.notion.com/p/2df68db0a61c80c2b820ec5706e5750b",
+      "summary": [
+        "7/27–8/3 Robotics Tech Update",
+        "Across the July 27–August 3 cycle, the robotics team expanded the browser-facing RoboCasa surface from a small seed set into a richer kitchen-task library. The focus was higher-quality rendered household scenes, additional robot embodiments in the live task UI, joystick-based teleoperation, and clearer in-viewport guidance through task-object and target-area overlays.",
+        "A broader set of high-fidelity RoboCasa kitchen scenes was brought into the browser task library, covering appliance and furniture interactions such as opening fridge drawers, turning on stoves and toasters, sliding oven racks, and operating electric kettles. These scenes move AXIS toward visually denser household environments that better match the long-tail manipulation settings the data engine needs to cover.",
+        "Embodiment coverage continued to expand inside the same browser surface. PandaOmron appears across the new RoboCasa tasks, and local review tasks were added for Axis visual-proxy and reduced-face PandaOmron variants, making it easier to compare control behavior and camera framing without separate one-off interfaces.",
+        "Teleoperation now supports joystick-oriented control alongside keyboard mappings, with an on-screen joystick, directional pad, MOVE/GRIP actions, and height or intensity sliders for smoother approach, grasp, and appliance interaction.",
+        "The task viewport surfaces explicit task-object and target-area indicators with a consistent legend. Blue highlights mark the object to interact with, while yellow markers indicate destination or interaction regions, making goals easier to parse in cluttered kitchen scenes."
+      ],
+      "demos": [
+        {
+          "id": "demo-2026-08-03-robocasa-task-library",
+          "date": "2026-08-03",
+          "weekId": "2026-07-27",
+          "owner": "Mengfei",
+          "title": "Expanded RoboCasa task library",
+          "caption": "The All Tasks dashboard lists additional RoboCasa kitchen tasks and embodiment review variants for Axis and PandaOmron visual proxies.",
+          "tags": [
+            "RoboCasa",
+            "Task Library",
+            "Embodiment"
+          ],
+          "media": [
+            {
+              "type": "image",
+              "url": "/media/notion/mengfei/2026-08-03/3b168db0a61c80848c46dac767c4fa6f.png",
+              "originalName": "robocasa-all-tasks.png",
+              "notionBlockId": "3b168db0-a61c-8084-8c46-dac767c4fa6f"
+            }
+          ],
+          "sourceUrl": "https://app.notion.com/p/2df68db0a61c80c2b820ec5706e5750b"
+        },
+        {
+          "id": "demo-2026-08-03-pandaomron-joystick-teleop",
+          "date": "2026-08-03",
+          "weekId": "2026-07-27",
+          "owner": "Mengfei",
+          "title": "PandaOmron joystick teleoperation",
+          "caption": "Live RoboCasa tasks use PandaOmron with joystick and on-screen teleop controls for fridge-drawer and kettle interactions.",
+          "tags": [
+            "RoboCasa",
+            "PandaOmron",
+            "Joystick",
+            "Teleop"
+          ],
+          "media": [
+            {
+              "type": "image",
+              "url": "/media/notion/mengfei/2026-08-03/3b168db0a61c80b187eccb931e6bbbc1.png",
+              "originalName": "open-fridge-drawer-pandaomron.png",
+              "notionBlockId": "3b168db0-a61c-80b1-87ec-cb931e6bbbc1"
+            },
+            {
+              "type": "image",
+              "url": "/media/notion/mengfei/2026-08-03/3b168db0a61c80f097bdc8a4a374a7ba.png",
+              "originalName": "open-electric-kettle-lid-pandaomron.png",
+              "notionBlockId": "3b168db0-a61c-80f0-97bd-c8a4a374a7ba"
+            }
+          ],
+          "sourceUrl": "https://app.notion.com/p/2df68db0a61c80c2b820ec5706e5750b"
+        },
+        {
+          "id": "demo-2026-08-03-task-target-overlays",
+          "date": "2026-08-03",
+          "weekId": "2026-07-27",
+          "owner": "Mengfei",
+          "title": "Task object and target area overlays",
+          "caption": "Blue task-object and yellow target-area overlays guide pick-place, oven-rack, and stove tasks in cluttered kitchen scenes.",
+          "tags": [
+            "RoboCasa",
+            "Task Object",
+            "Target Area",
+            "Overlay"
+          ],
+          "media": [
+            {
+              "type": "image",
+              "url": "/media/notion/mengfei/2026-08-03/3b168db0a61c803cb5e5e8609d72b239.png",
+              "originalName": "pick-place-counter-to-toaster-oven.png",
+              "notionBlockId": "3b168db0-a61c-803c-b5e5-e8609d72b239"
+            },
+            {
+              "type": "image",
+              "url": "/media/notion/mengfei/2026-08-03/3b168db0a61c802891f3d3d48aec720b.png",
+              "originalName": "slide-toaster-oven-rack.png",
+              "notionBlockId": "3b168db0-a61c-8028-91f3-d3d48aec720b"
+            },
+            {
+              "type": "image",
+              "url": "/media/notion/mengfei/2026-08-03/3b168db0a61c8044acd7f9c58a81e38e.png",
+              "originalName": "slide-oven-rack.png",
+              "notionBlockId": "3b168db0-a61c-8044-acd7-f9c58a81e38e"
+            },
+            {
+              "type": "image",
+              "url": "/media/notion/mengfei/2026-08-03/3b168db0a61c801eba55ca589495ce0d.png",
+              "originalName": "turn-on-stove.png",
+              "notionBlockId": "3b168db0-a61c-801e-ba55-ca589495ce0d"
+            }
+          ],
+          "sourceUrl": "https://app.notion.com/p/2df68db0a61c80c2b820ec5706e5750b"
         }
       ]
     }
