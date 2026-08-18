@@ -7,8 +7,8 @@
   },
   "stats": {
     "weeklyUpdates": 14,
-    "demoItems": 55,
-    "mediaItems": 87,
+    "demoItems": 54,
+    "mediaItems": 86,
     "lastUpdate": "2026-08-17"
   },
   "weeklyUpdates": [
@@ -1591,7 +1591,9 @@
               "type": "image",
               "url": "/media/notion/mengfei/2026-08-17/3bf68db0a61c804882d0fe142f1f9912.png",
               "originalName": "articulated-assets-embodiments.png",
-              "notionBlockId": "3bf68db0-a61c-8048-82d0-fe142f1f9912"
+              "notionBlockId": "3bf68db0-a61c-8048-82d0-fe142f1f9912",
+              "fit": "contain",
+              "wide": true
             }
           ],
           "sourceUrl": "https://app.notion.com/p/3b168db0a61c803c9b12fddbb1f024f7"
@@ -1614,28 +1616,9 @@
               "type": "image",
               "url": "/media/notion/mengfei/2026-08-17/3bf68db0a61c80ecb34fd817f9592466.jpg",
               "originalName": "robocasa-layout-style-grid.jpg",
-              "notionBlockId": "3bf68db0-a61c-80ec-b34f-d817f9592466"
-            }
-          ],
-          "sourceUrl": "https://app.notion.com/p/3b168db0a61c803c9b12fddbb1f024f7"
-        },
-        {
-          "id": "demo-2026-08-17-libero-pro-eval",
-          "date": "2026-08-17",
-          "weekId": "2026-08-10",
-          "owner": "Mengfei",
-          "title": "LIBERO Pro eval results",
-          "caption": "Cleaner long-horizon and short-horizon LIBERO Pro tasks evaluate at consistently high success, opening the door to DAgger and distillation.",
-          "tags": [
-            "LIBERO Pro Eval",
-            "Horizon"
-          ],
-          "media": [
-            {
-              "type": "image",
-              "url": "/media/notion/mengfei/2026-08-17/3bf68db0a61c80dbb816fa28ea35c20f.png",
-              "originalName": "libero-pro-eval-result.png",
-              "notionBlockId": "3bf68db0-a61c-80db-b816-fa28ea35c20f"
+              "notionBlockId": "3bf68db0-a61c-80ec-b34f-d817f9592466",
+              "fit": "contain",
+              "wide": true
             }
           ],
           "sourceUrl": "https://app.notion.com/p/3b168db0a61c803c9b12fddbb1f024f7"

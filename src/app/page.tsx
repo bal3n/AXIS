@@ -556,8 +556,7 @@ const ALLOWED_MEDIA_IDS = [
   '3aa68db0a61c807f910bc6dfa9e850d5',
   '3a968db0a61c80638523d17ae3a67699',
   '3aa68db0a61c80a893e6f2eb644b434a',
-  '3b868db0a61c80838e58d9585f6eca23',
-  '3bf68db0a61c80dbb816fa28ea35c20f'
+  '3b868db0a61c80838e58d9585f6eca23'
 ];
 
 function fmtDate(date: string) {
@@ -850,7 +849,11 @@ function DemoReel({ entries }: { entries: ReturnType<typeof visibleDemoEntries> 
       </div>
       <div className="reelGrid">
         {entries.map(({ demo, media, title, key, id, label }) => (
-          <figure className="demoReference" id={id} key={key}>
+          <figure
+            className={`demoReference${media.fit === 'contain' ? ' isContain' : ''}${media.wide ? ' isWide' : ''}`}
+            id={id}
+            key={key}
+          >
             <MediaAsset item={media} title={title} />
             <figcaption>
               <span className="demoLabel">{label}</span>

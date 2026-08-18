@@ -591,6 +591,15 @@ h3 { font-size: 22px; line-height: 1.08; }
   object-fit: cover;
   background: #000;
 }
+.demoReference.isWide {
+  grid-column: 1 / -1;
+}
+.demoReference.isContain img,
+.demoReference.isContain video {
+  height: auto;
+  max-height: 720px;
+  object-fit: contain;
+}
 .demoReference figcaption {
   display: grid;
   gap: 6px;

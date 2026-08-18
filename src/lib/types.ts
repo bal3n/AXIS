@@ -4,6 +4,8 @@ export type MediaItem = {
   alt?: string;
   originalName?: string;
   notionBlockId?: string;
+  fit?: 'cover' | 'contain';
+  wide?: boolean;
 };
 
 export type DemoItem = {
