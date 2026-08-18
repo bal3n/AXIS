@@ -556,7 +556,8 @@ const ALLOWED_MEDIA_IDS = [
   '3aa68db0a61c807f910bc6dfa9e850d5',
   '3a968db0a61c80638523d17ae3a67699',
   '3aa68db0a61c80a893e6f2eb644b434a',
-  '3b868db0a61c80838e58d9585f6eca23'
+  '3b868db0a61c80838e58d9585f6eca23',
+  '3bf68db0a61c804882d0fe142f1f9912'
 ];
 
 function fmtDate(date: string) {
