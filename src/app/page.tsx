@@ -165,6 +165,51 @@ const TECH_BLOG_POST: {
 };
 
 const WEEK_COPY: Record<string, { lead: string; sections: ReportSection[] }> = {
+  '2026-08-10': {
+    lead: 'Across the August 10–17 cycle, the robotics team closed remaining replay and runtime gaps between the browser, policy server, and physics stack, then scaled TaskGen coverage. An articulated asset library is now in the generation path, the full RoboCasa 50×50 scene grid is online, and a cleaner long- versus short-horizon task split is ready for ablation, DAgger, and distillation.',
+    sections: [
+      {
+        title: 'Replay Alignment and Browser Runtime',
+        body: 'Policy and human-trajectory action replay are now aligned with the frontend path, with WASM already reaching full replay fidelity. The team added lower-threshold verify intercepts, a task-loading progress indicator, faster scene load, and automatic simulation pause when the operator is idle. Policy runtime and physics runtime were also synchronized with the web client, which unblocks a more trustworthy HG-DAgger training and evaluation pipeline instead of debugging the same sim-to-browser drift on every new run.',
+        references: ['replay', 'verify', 'dagger', 'runtime']
+      },
+      {
+        title: 'Articulated Assets and Full RoboCasa Coverage',
+        body: 'TaskGen now includes a constructed articulated-asset library of 27 object families with four variants each. All RoboCasa scenes are online as a 50-by-50 layout and style grid, so household tasks can be generated across many kitchen geometries and visual styles rather than a handful of hand-picked rooms. This turns the earlier RoboCasa seed batch into a production scene surface that TaskGen can sample from directly.',
+        references: ['articulated', 'robocasa', 'taskgen', 'layout']
+      },
+      {
+        title: 'Cleaner Horizon Splits and LIBERO Pro Readiness',
+        body: 'A cleaner long-horizon versus short-horizon task split was released for ablation, so later DAgger and distillation experiments can isolate horizon effects instead of mixing task difficulty with scene noise. LIBERO Pro evaluation already shows consistently high success rates on the cleaner set, which makes this a reasonable point to start DAgger and distillation attempts rather than continuing to expand the benchmark surface first.',
+        references: ['libero', 'eval', 'horizon', 'distill']
+      },
+      {
+        title: 'DAgger Data Filtering Direction',
+        body: 'The remaining DAgger work this week focused on data filtering and the next improvement direction: keep only the correction segments that actually change closed-loop behavior, and use those traces to decide where distillation should be applied next. Combined with the aligned replay stack, this is meant to make the next training round less dependent on ad-hoc manual collection around a few workspace centers.',
+        references: ['dagger', 'filter', 'correction']
+      }
+    ]
+  },
+  '2026-08-03': {
+    lead: 'Across the August 3–10 cycle, the robotics team focused on unblocking production task generation, moving scene variants off the critical path, and turning HG-DAgger from a local proof of concept into a measurable training recipe. The week combined infrastructure work—CDN-hosted variants, verify UX, and a faster policy evaluation loop—with the first clear distillation gains on both old and new task distributions.',
+    sections: [
+      {
+        title: 'Scene Variants, Verify, and Collection UX',
+        body: 'Scene variants were moved to object storage and CDN delivery so they no longer dominate local load time. Frontend XML lighting support was restored, post-task sampling no longer drops variants at random, and post-task scoring was tightened. The team also fixed an undo bug in the takeover-budget path, hid verify failure reasons from operators, and added checker visualization so reviewers can inspect failures without leaking internal reject logic into the collection UI.',
+        references: ['verify', 'checker', 'scene', 'variant']
+      },
+      {
+        title: 'Regular Task Generation and Faster Policy Loops',
+        body: 'LIBERO Pro, RoboCasa, and wheeled embodiments were added to regular task generation, including wheeled Franka. Generated scene variants now follow the same CDN path as the rest of the task surface, and the pending-publish queue is consistently above 200 tasks. On the training side, the main inference bottleneck remains CPU-side physics stepping; one GPU policy server can now serve about 40 CPU environment clients, which roughly tripled policy training and evaluation throughput.',
+        references: ['libero', 'robocasa', 'franka', 'taskgen']
+      },
+      {
+        title: 'DAgger Distillation on Curated Corrections',
+        body: 'HG-DAgger experiments covered MLP size, diffusion policy, learning rate, epoch, data mix, IWR-style follow-ups, action chunking, DDPM/DDIM mix weights, D0/D1 clipping, MoE, LoRA, and noise ratio. The current recipe that moved the needle is curated correction data plus D0 distillation to limit forgetting on the older distribution: 200 D0 episodes, 15 successful D1 correction episodes from one focus task, 24 human interventions, and 192 correction transitions. The student is trained with BC on D1 plus an MSE match from a frozen source on D0. Success rate improved by more than 20 percentage points on both old and new distributions, though the result still needs more seeds. Freezing or mixing the normalizer also reduced capability drop on a previously degraded task. Cleaner post tasks were released so the same recipe can be retested more cleanly.',
+        references: ['dagger', 'distill', 'd0', 'correction']
+      }
+    ]
+  },
   '2026-07-27': {
     lead: 'Across the July 27–August 3 cycle, the robotics team expanded the browser-facing RoboCasa surface from a small seed set into a richer kitchen-task library. The focus was higher-quality rendered household scenes, additional robot embodiments in the live task UI, joystick-based teleoperation, and clearer in-viewport guidance through task-object and target-area overlays.',
     sections: [
@@ -510,7 +555,9 @@ const ALLOWED_MEDIA_IDS = [
   '39568db0a61c80c2992ddae4e41ee3c5',
   '3aa68db0a61c807f910bc6dfa9e850d5',
   '3a968db0a61c80638523d17ae3a67699',
-  '3aa68db0a61c80a893e6f2eb644b434a'
+  '3aa68db0a61c80a893e6f2eb644b434a',
+  '3b868db0a61c80838e58d9585f6eca23',
+  '3bf68db0a61c80dbb816fa28ea35c20f'
 ];
 
 function fmtDate(date: string) {
@@ -549,6 +596,21 @@ function demoCaption(demo: DemoItem, week: WeeklyUpdate) {
 
   if (text.includes('arxiv') || text.includes('paper release')) {
     return 'The AXIS paper is released on arXiv with updated research materials.';
+  }
+  if (text.includes('distill') || text.includes('d0') || text.includes('correction episode')) {
+    return 'DAgger distillation lifts closed-loop success while limiting forgetting on older tasks.';
+  }
+  if (text.includes('articulated asset') || text.includes('multi-embodiment scene')) {
+    return 'TaskGen ships an articulated asset library across tabletop and kitchen embodiments.';
+  }
+  if (text.includes('layout') && text.includes('style')) {
+    return 'All RoboCasa scenes are online as a 50-by-50 layout and style grid.';
+  }
+  if (text.includes('libero pro eval') || text.includes('eval result')) {
+    return 'LIBERO Pro evaluation shows consistently high success on the cleaner task set.';
+  }
+  if (text.includes('checker') || text.includes('scene variant')) {
+    return 'Verify and checker visualization run on CDN-hosted scene variants.';
   }
   if (text.includes('libero')) {
     return 'LIBERO Pro tasks and scenes run in the AXIS browser interface.';

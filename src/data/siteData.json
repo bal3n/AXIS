@@ -1,15 +1,15 @@
 {
-  "generatedAt": "2026-08-03T02:20:00.000Z",
+  "generatedAt": "2026-08-18T09:20:00.000Z",
   "sources": {
     "weeklyRoot": "https://app.notion.com/p/35c68db0a61c80fcade6c0b5e9ae0633",
-    "mengfei": "https://app.notion.com/p/2df68db0a61c80c2b820ec5706e5750b",
+    "mengfei": "https://app.notion.com/p/3b168db0a61c803c9b12fddbb1f024f7",
     "yikai": "https://app.notion.com/p/30168db0a61c80a690e8cb41c24ade6b"
   },
   "stats": {
-    "weeklyUpdates": 12,
-    "demoItems": 50,
-    "mediaItems": 81,
-    "lastUpdate": "2026-08-03"
+    "weeklyUpdates": 14,
+    "demoItems": 55,
+    "mediaItems": 87,
+    "lastUpdate": "2026-08-17"
   },
   "weeklyUpdates": [
     {
@@ -1488,6 +1488,157 @@
             }
           ],
           "sourceUrl": "https://app.notion.com/p/2df68db0a61c80c2b820ec5706e5750b"
+        }
+      ]
+    },
+    {
+      "id": "2026-08-03",
+      "title": "Team Updates 8/3-8/10",
+      "period": "8/3-8/10",
+      "startDate": "2026-08-03",
+      "endDate": "2026-08-10",
+      "sourceUrl": "https://app.notion.com/p/3b168db0a61c803c9b12fddbb1f024f7",
+      "summary": [
+        "8/3–8/10 Robotics Tech Update",
+        "Across the August 3–10 cycle, the robotics team focused on unblocking production task generation, moving scene variants off the critical path, and turning HG-DAgger from a local proof of concept into a measurable training recipe.",
+        "Scene variants were moved to object storage and CDN delivery. Frontend XML lighting support was restored, post-task sampling no longer drops variants at random, and post-task scoring was tightened. Verify failure reasons are hidden from operators, while checker visualization helps reviewers inspect failures without leaking reject logic into the collection UI.",
+        "LIBERO Pro, RoboCasa, and wheeled embodiments were added to regular task generation, including wheeled Franka. The pending-publish queue stays above 200 tasks. One GPU policy server can now serve about 40 CPU environment clients, roughly tripling policy training and evaluation throughput.",
+        "The current HG-DAgger recipe that moved the needle is curated correction data plus D0 distillation: 200 D0 episodes, 15 successful D1 correction episodes, 24 human interventions, and 192 correction transitions. Success rate improved by more than 20 percentage points on both old and new distributions. Cleaner post tasks were released for a more controlled retest."
+      ],
+      "demos": [
+        {
+          "id": "demo-2026-08-10-checker-scene-variants",
+          "date": "2026-08-10",
+          "weekId": "2026-08-03",
+          "owner": "Mengfei",
+          "title": "Checker visualization and scene-variant delivery",
+          "caption": "Verify and checker visualization run on CDN-hosted scene variants, with restored lighting and tighter post-task scoring.",
+          "tags": [
+            "Verify",
+            "Checker",
+            "Scene Variant"
+          ],
+          "media": [
+            {
+              "type": "video",
+              "url": "/media/notion/mengfei/2026-08-10/3b868db0a61c80c5aaf9c19581dfd313.mp4",
+              "originalName": "checker-visualization.mp4",
+              "notionBlockId": "3b868db0-a61c-80c5-aaf9-c19581dfd313"
+            },
+            {
+              "type": "image",
+              "url": "/media/notion/mengfei/2026-08-10/3b868db0a61c803d8732fd3d1dd9b120.jpg",
+              "originalName": "robocasa-oven-scene.jpg",
+              "notionBlockId": "3b868db0-a61c-803d-8732-fd3d1dd9b120"
+            }
+          ],
+          "sourceUrl": "https://app.notion.com/p/3b168db0a61c803c9b12fddbb1f024f7"
+        },
+        {
+          "id": "demo-2026-08-10-dagger-d0-distillation",
+          "date": "2026-08-10",
+          "weekId": "2026-08-03",
+          "owner": "Mengfei",
+          "title": "DAgger D0 distillation results",
+          "caption": "Curated D1 correction episodes plus D0 distillation raise closed-loop success by more than 20 points while limiting forgetting.",
+          "tags": [
+            "DAgger",
+            "Distillation",
+            "D0",
+            "Correction"
+          ],
+          "media": [
+            {
+              "type": "image",
+              "url": "/media/notion/mengfei/2026-08-10/3b868db0a61c80838e58d9585f6eca23.png",
+              "originalName": "dagger-d0-d1-eval.png",
+              "notionBlockId": "3b868db0-a61c-8083-8e58-d9585f6eca23"
+            }
+          ],
+          "sourceUrl": "https://app.notion.com/p/3b168db0a61c803c9b12fddbb1f024f7"
+        }
+      ]
+    },
+    {
+      "id": "2026-08-10",
+      "title": "Team Updates 8/10-8/17",
+      "period": "8/10-8/17",
+      "startDate": "2026-08-10",
+      "endDate": "2026-08-17",
+      "sourceUrl": "https://app.notion.com/p/3b168db0a61c803c9b12fddbb1f024f7",
+      "summary": [
+        "8/10–8/17 Robotics Tech Update",
+        "Across the August 10–17 cycle, the robotics team closed remaining replay and runtime gaps between the browser, policy server, and physics stack, then scaled TaskGen coverage.",
+        "Policy and human-trajectory action replay are aligned with the frontend path, with WASM already at full replay fidelity. The browser now shows task-loading progress, loads scenes faster, and auto-pauses the simulation when the operator is idle. Policy runtime and physics runtime were synchronized with the web client to support a more trustworthy HG-DAgger pipeline.",
+        "TaskGen now includes an articulated-asset library of 27 object families with four variants each, and all RoboCasa scenes are online as a 50-by-50 layout and style grid.",
+        "A cleaner long-horizon versus short-horizon task split was released for ablation. LIBERO Pro evaluation already shows consistently high success rates, which makes this a reasonable point to start DAgger and distillation attempts. Remaining work focuses on filtering correction data so the next training round depends less on ad-hoc collection around a few workspace centers."
+      ],
+      "demos": [
+        {
+          "id": "demo-2026-08-17-articulated-assets",
+          "date": "2026-08-17",
+          "weekId": "2026-08-10",
+          "owner": "Mengfei",
+          "title": "Articulated assets and multi-embodiment scenes",
+          "caption": "The articulated asset library is wired into TaskGen and exercised across tabletop, dual-arm, humanoid, and mobile kitchen embodiments.",
+          "tags": [
+            "TaskGen",
+            "Articulated Asset",
+            "Embodiment"
+          ],
+          "media": [
+            {
+              "type": "image",
+              "url": "/media/notion/mengfei/2026-08-17/3bf68db0a61c804882d0fe142f1f9912.png",
+              "originalName": "articulated-assets-embodiments.png",
+              "notionBlockId": "3bf68db0-a61c-8048-82d0-fe142f1f9912"
+            }
+          ],
+          "sourceUrl": "https://app.notion.com/p/3b168db0a61c803c9b12fddbb1f024f7"
+        },
+        {
+          "id": "demo-2026-08-17-robocasa-50x50",
+          "date": "2026-08-17",
+          "weekId": "2026-08-10",
+          "owner": "Mengfei",
+          "title": "RoboCasa 50x50 layout and style coverage",
+          "caption": "All RoboCasa scenes are online as a 50-by-50 layout and style grid for household task generation.",
+          "tags": [
+            "RoboCasa",
+            "Layout",
+            "Style",
+            "TaskGen"
+          ],
+          "media": [
+            {
+              "type": "image",
+              "url": "/media/notion/mengfei/2026-08-17/3bf68db0a61c80ecb34fd817f9592466.jpg",
+              "originalName": "robocasa-layout-style-grid.jpg",
+              "notionBlockId": "3bf68db0-a61c-80ec-b34f-d817f9592466"
+            }
+          ],
+          "sourceUrl": "https://app.notion.com/p/3b168db0a61c803c9b12fddbb1f024f7"
+        },
+        {
+          "id": "demo-2026-08-17-libero-pro-eval",
+          "date": "2026-08-17",
+          "weekId": "2026-08-10",
+          "owner": "Mengfei",
+          "title": "LIBERO Pro eval results",
+          "caption": "Cleaner long-horizon and short-horizon LIBERO Pro tasks evaluate at consistently high success, opening the door to DAgger and distillation.",
+          "tags": [
+            "LIBERO Pro Eval",
+            "Horizon"
+          ],
+          "media": [
+            {
+              "type": "image",
+              "url": "/media/notion/mengfei/2026-08-17/3bf68db0a61c80dbb816fa28ea35c20f.png",
+              "originalName": "libero-pro-eval-result.png",
+              "notionBlockId": "3bf68db0-a61c-80db-b816-fa28ea35c20f"
+            }
+          ],
+          "sourceUrl": "https://app.notion.com/p/3b168db0a61c803c9b12fddbb1f024f7"
         }
       ]
     }
