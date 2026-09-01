@@ -165,6 +165,31 @@ const TECH_BLOG_POST: {
 };
 
 const WEEK_COPY: Record<string, { lead: string; sections: ReportSection[] }> = {
+  '2026-08-17': {
+    lead: 'Across the August 17–31 cycle, the robotics team tightened the browser runtime, expanded articulated TaskGen coverage, and ran a second DAgger round. WASM frontend/backend alignment, an eight-step policy-takeover constraint, and cleaner derived tasks now sit alongside mocap-root randomization, published LIBERO Pro and ABCD variants, DreamZero finetuning on AXIS tasks, and a documented path from generation through post-training to real-robot deployment.',
+    sections: [
+      {
+        title: 'WASM Runtime, Takeover, and Checker',
+        body: 'Frontend and backend WASM alignment is complete, and policy inference now runs through WASM ONNX Runtime plus WASM MuJoCo. Policy takeover is constrained to eight steps, undo/redo no longer corrupts replay, and gripper sensitivity was retuned for more stable contact. Backend checker fixes and a more automated HG-DAgger pipeline make correction collection less dependent on one-off manual recovery after every browser drift.',
+        references: ['wasm', 'takeover', 'checker', 'gripper']
+      },
+      {
+        title: 'Clean Derived Tasks and More Articulated Coverage',
+        body: 'TaskGen can now derive cleaner single-scene tasks with four workspace positions from an existing task, and it can automatically resize grasped objects so they stay collectable. Articulated-scene bugs were fixed, and a broader set of articulated tasks is online, covering appliance, drawer, and kitchen-cabinet interactions in both compact workspaces and full RoboCasa rooms.',
+        references: ['articulated', 'taskgen', 'clean task', 'robocasa']
+      },
+      {
+        title: 'DAgger Round Two and DreamZero Finetuning',
+        body: 'Short-horizon user inference is now limited during collection so later data filtering costs less. The current correction set still moves the policy: across three seeds the paired evaluation rose from 68/160 to an average 78.3/160, about +10.3 successes in a consistent direction, and HG-DAgger candidates also gained roughly four to seven points against the source baseline. Round-two tasks are online and DreamZero is connected so AXIS tasks can be finetuned in that stack. The remaining gap is cross-platform: policies that look strong in Python still drop after switching to WASM, which is now the main debug target before another large collection round.',
+        references: ['dagger', 'dreamzero', 'finetune', 'wasm']
+      },
+      {
+        title: 'Randomization, Handbook, and Sim-to-Real Setup',
+        body: 'Mocap-root domain randomization now holds articulated objects in place while varying the rest of the scene, and LIBERO Pro plus ABCD subtasks were published with added randomization. Auto-checker judgment regions were corrected, round-two post tasks were released, and Isaac Sim rendering was repaired and sped up. Training and post-training infrastructure, plus the frontend/backend handbook, now cover the full path from task generation and publish through randomization, collection, verify, cleaning, scoring, rendering, training, post-training, and real-robot deployment, with runnable examples and reproduction scripts. Sim-to-real and co-training comparisons were completed, and a hardware setup with aligned scenes and camera calibration is ready for later data filtering.',
+        references: ['randomization', 'libero', 'handbook', 'sim2real']
+      }
+    ]
+  },
   '2026-08-10': {
     lead: 'Across the August 10–17 cycle, the robotics team closed remaining replay and runtime gaps between the browser, policy server, and physics stack, then scaled TaskGen coverage. An articulated asset library is now in the generation path, the full RoboCasa 50×50 scene grid is online, and a cleaner long- versus short-horizon task split is ready for ablation, DAgger, and distillation.',
     sections: [
@@ -557,7 +582,11 @@ const ALLOWED_MEDIA_IDS = [
   '3a968db0a61c80638523d17ae3a67699',
   '3aa68db0a61c80a893e6f2eb644b434a',
   '3b868db0a61c80838e58d9585f6eca23',
-  '3bf68db0a61c804882d0fe142f1f9912'
+  '3bf68db0a61c804882d0fe142f1f9912',
+  '3c668db0a61c8012a0a6cd5ed76010be',
+  '3c668db0a61c8052909ed1b3dfc5c40c',
+  '3c668db0a61c803bb767d19b6e90142b',
+  '3c668db0a61c8063978ee96a20d2af60'
 ];
 
 function fmtDate(date: string) {
@@ -596,6 +625,15 @@ function demoCaption(demo: DemoItem, week: WeeklyUpdate) {
 
   if (text.includes('arxiv') || text.includes('paper release')) {
     return 'The AXIS paper is released on arXiv with updated research materials.';
+  }
+  if (text.includes('clean task') || text.includes('grasped object')) {
+    return 'TaskGen derives cleaner articulated tasks and automatically resizes grasped objects.';
+  }
+  if (text.includes('dreamzero') || text.includes('round two') || text.includes('round 2')) {
+    return 'Round-two DAgger tasks are online with DreamZero finetuning on AXIS tasks.';
+  }
+  if (text.includes('pick place') || text.includes('counter to oven')) {
+    return 'RoboCasa pick-and-place tasks run with object overlays in the browser interface.';
   }
   if (text.includes('distill') || text.includes('d0') || text.includes('correction episode')) {
     return 'DAgger distillation lifts closed-loop success while limiting forgetting on older tasks.';

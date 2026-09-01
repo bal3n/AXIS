@@ -1,15 +1,15 @@
 {
-  "generatedAt": "2026-08-18T09:20:00.000Z",
+  "generatedAt": "2026-09-01T19:00:00.000Z",
   "sources": {
     "weeklyRoot": "https://app.notion.com/p/35c68db0a61c80fcade6c0b5e9ae0633",
     "mengfei": "https://app.notion.com/p/3b168db0a61c803c9b12fddbb1f024f7",
     "yikai": "https://app.notion.com/p/30168db0a61c80a690e8cb41c24ade6b"
   },
   "stats": {
-    "weeklyUpdates": 14,
-    "demoItems": 54,
-    "mediaItems": 86,
-    "lastUpdate": "2026-08-17"
+    "weeklyUpdates": 15,
+    "demoItems": 56,
+    "mediaItems": 90,
+    "lastUpdate": "2026-08-31"
   },
   "weeklyUpdates": [
     {
@@ -1617,6 +1617,82 @@
               "url": "/media/notion/mengfei/2026-08-17/3bf68db0a61c80ecb34fd817f9592466.jpg",
               "originalName": "robocasa-layout-style-grid.jpg",
               "notionBlockId": "3bf68db0-a61c-80ec-b34f-d817f9592466",
+              "fit": "contain",
+              "wide": true
+            }
+          ],
+          "sourceUrl": "https://app.notion.com/p/3b168db0a61c803c9b12fddbb1f024f7"
+        }
+      ]
+    },
+    {
+      "id": "2026-08-17",
+      "title": "Team Updates 8/17-8/31",
+      "period": "8/17-8/31",
+      "startDate": "2026-08-17",
+      "endDate": "2026-08-31",
+      "sourceUrl": "https://app.notion.com/p/3b168db0a61c803c9b12fddbb1f024f7",
+      "summary": [
+        "8/17–8/31 Robotics Tech Update",
+        "Across the August 17–31 cycle, the robotics team tightened the browser runtime, expanded articulated TaskGen coverage, and ran a second DAgger round.",
+        "Frontend and backend WASM alignment is complete, and policy inference now runs through WASM ONNX Runtime plus WASM MuJoCo. Policy takeover is constrained to eight steps, undo/redo no longer corrupts replay, and gripper sensitivity was retuned. Backend checker fixes and a more automated HG-DAgger pipeline reduce one-off recovery after browser drift.",
+        "TaskGen can derive cleaner single-scene tasks with four workspace positions and automatically resize grasped objects. Articulated-scene bugs were fixed, and a broader set of articulated tasks is online across compact workspaces and RoboCasa kitchens.",
+        "Short-horizon user inference is limited during collection to cut later filtering cost. Across three seeds, paired evaluation rose from 68/160 to an average 78.3/160. Round-two tasks are online and DreamZero is connected for AXIS-task finetuning, while Python-to-WASM success drop remains the main cross-platform gap.",
+        "Mocap-root randomization holds articulated objects in place, LIBERO Pro and ABCD subtasks were published with added randomization, and Isaac Sim rendering was repaired. The handbook now covers generation through real-robot deployment with reproduction scripts. Sim-to-real and co-training comparisons were completed, and a hardware setup with aligned scenes and camera calibration is ready for later data filtering."
+      ],
+      "demos": [
+        {
+          "id": "demo-2026-08-31-clean-articulated-tasks",
+          "date": "2026-08-31",
+          "weekId": "2026-08-17",
+          "owner": "Mengfei",
+          "title": "Clean derived articulated tasks",
+          "caption": "TaskGen derives cleaner single-scene articulated tasks and automatically resizes grasped objects for appliance and drawer interactions.",
+          "tags": [
+            "TaskGen",
+            "Articulated",
+            "Clean Task"
+          ],
+          "media": [
+            {
+              "type": "image",
+              "url": "/media/notion/mengfei/2026-08-24/3c668db0a61c8012a0a6cd5ed76010be.png",
+              "originalName": "clean-task-appliance.png",
+              "notionBlockId": "3c668db0-a61c-8012-a0a6-cd5ed76010be"
+            },
+            {
+              "type": "image",
+              "url": "/media/notion/mengfei/2026-08-24/3c668db0a61c8052909ed1b3dfc5c40c.png",
+              "originalName": "clean-task-drawer.png",
+              "notionBlockId": "3c668db0-a61c-8052-909e-d1b3dfc5c40c"
+            },
+            {
+              "type": "image",
+              "url": "/media/notion/mengfei/2026-08-24/3c668db0a61c803bb767d19b6e90142b.png",
+              "originalName": "articulated-kitchen-cabinet.png",
+              "notionBlockId": "3c668db0-a61c-803b-b767-d19b6e90142b"
+            }
+          ],
+          "sourceUrl": "https://app.notion.com/p/3b168db0a61c803c9b12fddbb1f024f7"
+        },
+        {
+          "id": "demo-2026-08-31-robocasa-pick-place-oven",
+          "date": "2026-08-31",
+          "weekId": "2026-08-17",
+          "owner": "Mengfei",
+          "title": "RoboCasa pick place counter to oven",
+          "caption": "A RoboCasa pick-and-place task runs in the browser with PandaOmron, object overlays, and on-screen teleop controls.",
+          "tags": [
+            "RoboCasa",
+            "Pick Place",
+            "PandaOmron"
+          ],
+          "media": [
+            {
+              "type": "image",
+              "url": "/media/notion/mengfei/2026-08-24/3c668db0a61c8063978ee96a20d2af60.png",
+              "originalName": "robocasa-pick-place-counter-to-oven.png",
+              "notionBlockId": "3c668db0-a61c-8063-978e-e96a20d2af60",
               "fit": "contain",
               "wide": true
             }
