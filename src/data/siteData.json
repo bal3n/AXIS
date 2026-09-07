@@ -1,15 +1,15 @@
 {
-  "generatedAt": "2026-09-01T19:00:00.000Z",
+  "generatedAt": "2026-09-07T02:20:00.000Z",
   "sources": {
     "weeklyRoot": "https://app.notion.com/p/35c68db0a61c80fcade6c0b5e9ae0633",
     "mengfei": "https://app.notion.com/p/3b168db0a61c803c9b12fddbb1f024f7",
     "yikai": "https://app.notion.com/p/30168db0a61c80a690e8cb41c24ade6b"
   },
   "stats": {
-    "weeklyUpdates": 15,
-    "demoItems": 56,
-    "mediaItems": 90,
-    "lastUpdate": "2026-08-31"
+    "weeklyUpdates": 16,
+    "demoItems": 59,
+    "mediaItems": 94,
+    "lastUpdate": "2026-09-07"
   },
   "weeklyUpdates": [
     {
@@ -1693,6 +1693,83 @@
               "url": "/media/notion/mengfei/2026-08-24/3c668db0a61c8063978ee96a20d2af60.png",
               "originalName": "robocasa-pick-place-counter-to-oven.png",
               "notionBlockId": "3c668db0-a61c-8063-978e-e96a20d2af60",
+              "fit": "contain",
+              "wide": true
+            }
+          ],
+          "sourceUrl": "https://app.notion.com/p/3b168db0a61c803c9b12fddbb1f024f7"
+        }
+      ]
+    },
+    {
+      "id": "2026-08-31",
+      "title": "Team Updates 8/31-9/7",
+      "period": "8/31-9/7",
+      "startDate": "2026-08-31",
+      "endDate": "2026-09-07",
+      "sourceUrl": "https://app.notion.com/p/3b168db0a61c803c9b12fddbb1f024f7",
+      "summary": [
+        "8/31–9/7 Robotics Tech Update",
+        "Across the August 31–September 7 cycle, the robotics team shifted the main question from producing more data to digesting it better. After a year of building the data flywheel, the next line is a model-guided data engine that uses foundation-model performance as feedback.",
+        "Three tracks now run together: Axis Dataset V3 for faster Real2Sim2Real, active data curation at scale, and scalable online post-training that learns from failure. Dataset V3 brings real objects and scenes into simulation, completes collision, hinge, physical, and visual properties, and checks on hardware whether the generated data helps. The near-term skill focus is pick-and-place, packing, and sorting rather than zero-shot generality.",
+        "Active curation aims to keep traces that still teach the current policy, instead of only checking whether a trajectory looks valid. Online post-training treats repeated rollout failures as the next collection target, then mixes correction data with older traces so new skills do not erase what already works.",
+        "Task-detail fields that made cheating easier are hidden, and backend verify rejects older-contract trajectories. Pass-verify traces are scanned with full WASM action replay, and abnormal cases go to a human review path. ARX5 bimanual simulation, IK, and teleoperation are connected. TaskGen now supports multiple descriptions in one scene, tighter size limits, fifty basket put-in and take-out tasks, and asset preview plus review across 412 asset classes."
+      ],
+      "demos": [
+        {
+          "id": "demo-2026-09-07-real2sim-isaac",
+          "date": "2026-09-07",
+          "weekId": "2026-08-31",
+          "owner": "Mengfei",
+          "title": "Real2Sim Isaac previews and kitchen rollouts",
+          "caption": "Isaac Real2Sim previews reconstruct the lab workspace, while simulation rollouts cover articulated oven-hinge and kitchen-sink scenes.",
+          "tags": [
+            "Real2Sim",
+            "Isaac",
+            "Dataset V3"
+          ],
+          "media": [
+            {
+              "type": "image",
+              "url": "/media/notion/mengfei/2026-09-07/3d368db0a61c8064995dc190d12d9144.png",
+              "originalName": "isaac-v2-real2sim-previews.png",
+              "notionBlockId": "3d368db0-a61c-8064-995d-c190d12d9144",
+              "fit": "contain",
+              "wide": true
+            },
+            {
+              "type": "video",
+              "url": "/media/notion/mengfei/2026-09-07/3d368db0a61c802bbe2de72a9c052694.mp4",
+              "originalName": "franka-passive-oven-hinge.mp4",
+              "notionBlockId": "3d368db0-a61c-802b-be2d-e72a9c052694"
+            },
+            {
+              "type": "video",
+              "url": "/media/notion/mengfei/2026-09-07/3d368db0a61c807b8ff0f1eaf0273479.mp4",
+              "originalName": "kitchen-sink-scene.mp4",
+              "notionBlockId": "3d368db0-a61c-807b-8ff0-f1eaf0273479"
+            }
+          ],
+          "sourceUrl": "https://app.notion.com/p/3b168db0a61c803c9b12fddbb1f024f7"
+        },
+        {
+          "id": "demo-2026-09-07-basket-tasks",
+          "date": "2026-09-07",
+          "weekId": "2026-08-31",
+          "owner": "Mengfei",
+          "title": "Empty the basket tasks",
+          "caption": "TaskGen publishes basket put-in and take-out tasks in the browser interface, with object overlays and multi-camera views.",
+          "tags": [
+            "TaskGen",
+            "Basket Task",
+            "LIBERO"
+          ],
+          "media": [
+            {
+              "type": "image",
+              "url": "/media/notion/mengfei/2026-09-07/3d368db0a61c80ed8679d20f0d6e785a.png",
+              "originalName": "empty-the-basket.png",
+              "notionBlockId": "3d368db0-a61c-80ed-8679-d20f0d6e785a",
               "fit": "contain",
               "wide": true
             }

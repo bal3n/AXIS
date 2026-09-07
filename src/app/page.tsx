@@ -165,6 +165,31 @@ const TECH_BLOG_POST: {
 };
 
 const WEEK_COPY: Record<string, { lead: string; sections: ReportSection[] }> = {
+  '2026-08-31': {
+    lead: 'Across the August 31–September 7 cycle, the robotics team shifted the main question from producing more data to digesting it better. After a year of building the data flywheel—task and scene generation, teleoperation, DAgger collection, cleaning, and visual augmentation—the next line is a model-guided data engine: use foundation-model performance as feedback to decide what to keep, what to drop, and where the next batch should be produced.',
+    sections: [
+      {
+        title: 'From Data Flywheel to Model-Guided Engine',
+        body: 'The past year made it possible to generate and collect data at scale. The remaining bottleneck is knowing what the current model still lacks, so existing traces can be filtered and the next collection round can be aimed rather than sampled from a fixed distribution. Three tracks now run together: Axis Dataset V3 for faster Real2Sim2Real, active data curation at scale, and scalable online post-training that learns from failure. The long-term shape is a distributed continual-learning loop in which a model is deployed, new failures are exposed, the data engine fills those gaps, and post-training continues.',
+        references: ['dataset', 'curation', 'post-train', 'failure']
+      },
+      {
+        title: 'Axis Dataset V3 and Real2Sim2Real',
+        body: 'Dataset V3 emphasizes bringing real objects and scenes into simulation quickly, completing collision, hinge, physical, and visual properties, generating high-fidelity data in sim, and checking on hardware whether that data actually helps. Task coverage continues to expand, but the near-term goal is not a zero-shot generalist. The team is first building strong cross-object and cross-scene skill on concrete families such as pick-and-place, packing, and sorting, then carrying those skills onto the real robot.',
+        references: ['real2sim', 'isaac', 'dataset', 'pick-place']
+      },
+      {
+        title: 'Active Curation and Learning from Failure',
+        body: 'Crowd-sourced quality control has relied on human review, VLM checks, or fixed scripts that can tell whether a trajectory looks valid without telling whether it is useful to the current policy. Active curation aims for higher throughput and lower cost, with selection tied more directly to model performance so training budget is spent on traces that still teach something. In parallel, scalable online post-training treats repeated rollout failures as the next collection target: operators take over and correct near those failures, then distillation is mixed with older data so new skills do not erase what already works.',
+        references: ['curation', 'dagger', 'failure', 'distill']
+      },
+      {
+        title: 'Verify Hardening, ARX5, and Basket Tasks',
+        body: 'Task-detail fields that made cheating easier are now hidden, and backend verify rejects trajectories that still follow older contracts. Trajectories that pass verify are scanned with full WASM action replay; abnormal WASM failures go to a human review path that can allow or ban an operator, without exposing that admin surface in the public report. ARX5 bimanual simulation, IK, and teleoperation are connected, with gripper response and rotation control corrected. TaskGen now supports multiple task descriptions in the same scene, tighter size measurement with length/width/height floors, fifty put-in and take-out basket tasks, and an asset-preview plus review path covering 412 asset classes.',
+        references: ['verify', 'wasm', 'arx5', 'basket', 'taskgen']
+      }
+    ]
+  },
   '2026-08-17': {
     lead: 'Across the August 17–31 cycle, the robotics team tightened the browser runtime, expanded articulated TaskGen coverage, and ran a second DAgger round. WASM frontend/backend alignment, an eight-step policy-takeover constraint, and cleaner derived tasks now sit alongside mocap-root randomization, published LIBERO Pro and ABCD variants, DreamZero finetuning on AXIS tasks, and a documented path from generation through post-training to real-robot deployment.',
     sections: [
@@ -586,7 +611,9 @@ const ALLOWED_MEDIA_IDS = [
   '3c668db0a61c8012a0a6cd5ed76010be',
   '3c668db0a61c8052909ed1b3dfc5c40c',
   '3c668db0a61c803bb767d19b6e90142b',
-  '3c668db0a61c8063978ee96a20d2af60'
+  '3c668db0a61c8063978ee96a20d2af60',
+  '3d368db0a61c8064995dc190d12d9144',
+  '3d368db0a61c80ed8679d20f0d6e785a'
 ];
 
 function fmtDate(date: string) {
@@ -625,6 +652,15 @@ function demoCaption(demo: DemoItem, week: WeeklyUpdate) {
 
   if (text.includes('arxiv') || text.includes('paper release')) {
     return 'The AXIS paper is released on arXiv with updated research materials.';
+  }
+  if (text.includes('real2sim') || text.includes('isaac')) {
+    return 'Real2Sim previews bring lab scenes and hardware setups into Isaac simulation.';
+  }
+  if (text.includes('empty the basket') || text.includes('basket task')) {
+    return 'TaskGen basket put-in and take-out tasks run in the browser collection interface.';
+  }
+  if (text.includes('oven hinge') || text.includes('arx5')) {
+    return 'New embodiments and articulated kitchen tasks are exercised in simulation.';
   }
   if (text.includes('clean task') || text.includes('grasped object')) {
     return 'TaskGen derives cleaner articulated tasks and automatically resizes grasped objects.';
