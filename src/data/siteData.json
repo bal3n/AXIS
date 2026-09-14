@@ -7,8 +7,8 @@
   },
   "stats": {
     "weeklyUpdates": 17,
-    "demoItems": 60,
-    "mediaItems": 95,
+    "demoItems": 59,
+    "mediaItems": 94,
     "lastUpdate": "2026-09-14"
   },
   "weeklyUpdates": [
@@ -1790,34 +1790,9 @@
         "Across the September 7–14 cycle, the robotics team turned last week’s Dataset V3 skill direction into a concrete task map: six families and thirty collectable paradigms that go beyond short pick-and-place.",
         "The inventory covers stacking and rearrangement; packing, unpacking, and sorting; loaded transport and handover; tool contact, hover, and rotation; simulated pouring and rigid-body transfer; and articulated operations followed by a next action. This gives TaskGen and collection a shared vocabulary for later data rounds.",
         "Stacking includes building layers, unstacking, removing a middle layer, and swapping objects. Packing covers fill, empty, split, swap, and retrieve-one. Transport adds loaded carriers and a bimanual split where one hand holds the carrier while the other loads.",
-        "Tool, pour, and articulated families add contact-then-lift, simulated twisting, empty-container pour mime, tipping rigid objects from a tray, and open-then-place sequences on toolboxes, faucets, laptops, microwaves, ovens, and safes.",
-        "The accompanying demonstration runs a single Stage-2 policy, with no retraining, across four starting layouts. The target is moved three times and the episode stays continuous through three drop events and three regrasp recoveries."
+        "Tool, pour, and articulated families add contact-then-lift, simulated twisting, empty-container pour mime, tipping rigid objects from a tray, and open-then-place sequences on toolboxes, faucets, laptops, microwaves, ovens, and safes."
       ],
-      "demos": [
-        {
-          "id": "demo-2026-09-14-one-policy-interruptions",
-          "date": "2026-09-14",
-          "weekId": "2026-09-07",
-          "owner": "Mengfei",
-          "title": "One policy, three interruptions",
-          "caption": "A single fixed policy handles four starting layouts, three target moves, and drop-and-regrasp recoveries in one continuous episode.",
-          "tags": [
-            "Policy",
-            "Interruption",
-            "Regrasp",
-            "Task 5033"
-          ],
-          "media": [
-            {
-              "type": "video",
-              "url": "/media/notion/mengfei/2026-09-14/3db68db0a61c80e4a795e26c79eaa43f.mp4",
-              "originalName": "task5033_v48_demo.mp4",
-              "notionBlockId": "3db68db0-a61c-80e4-a795-e26c79eaa43f"
-            }
-          ],
-          "sourceUrl": "https://app.notion.com/p/3b168db0a61c803c9b12fddbb1f024f7"
-        }
-      ]
+      "demos": []
     }
   ]
 }

@@ -166,7 +166,7 @@ const TECH_BLOG_POST: {
 
 const WEEK_COPY: Record<string, { lead: string; sections: ReportSection[] }> = {
   '2026-09-07': {
-    lead: 'Across the September 7–14 cycle, the robotics team turned last week’s Dataset V3 skill direction into a concrete task map: six families and thirty collectable paradigms that go beyond short pick-and-place. The same cycle also showed a single fixed policy absorbing layout changes, target motion, and drop-and-regrasp recoveries without retraining.',
+    lead: 'Across the September 7–14 cycle, the robotics team turned last week’s Dataset V3 skill direction into a concrete task map: six families and thirty collectable paradigms that go beyond short pick-and-place.',
     sections: [
       {
         title: 'A Six-Family, Thirty-Paradigm Task Map',
@@ -182,11 +182,6 @@ const WEEK_COPY: Record<string, { lead: string; sections: ReportSection[] }> = {
         title: 'Tools, Pouring, and Articulated Follow-Through',
         body: 'The remaining families push beyond grasp-and-place. Tool contact covers touching a target then lifting away, one hand stabilizing while the other uses a tool, simulated twisting above a target, moving a tool over a target and returning it, and contacting two targets in sequence with the same tool. Pouring and rigid-body transfer include empty-container pour mime, a bimanual pour into a receiving container, tipping real rigid objects from a tray into a container, loading a carrier then dumping it, and staging the receiver before the pour. Articulated follow-through combines an open or toggle with a later placement: opening a toolbox, pot, or storage unit then inserting an object; operating a window, lamp, or fan then continuing to place and contact; opening a faucet then moving a cup nearby; unfolding a laptop or monitor then tidying objects; and opening a microwave, oven, or safe before placing an object and cleaning the surrounding workspace.',
         references: ['tool', 'pour', 'articulated', 'follow-through']
-      },
-      {
-        title: 'One Policy Across Interruptions and Layouts',
-        body: 'The accompanying demonstration runs a single Stage-2 policy, with no retraining, across four starting layouts. The target is moved back and forth three times, including explicit object reposition before grasp, and the episode stays continuous through three drop events and three regrasp recoveries. The point is not a new rendering style. It is that the same policy can keep going when the workspace changes mid-episode, which is the kind of robustness the thirty-paradigm map will need once collection moves from isolated short skills to longer composed tasks.',
-        references: ['policy', 'interruption', 'layout', 'regrasp']
       }
     ]
   },
@@ -677,9 +672,6 @@ function demoCaption(demo: DemoItem, week: WeeklyUpdate) {
 
   if (text.includes('arxiv') || text.includes('paper release')) {
     return 'The AXIS paper is released on arXiv with updated research materials.';
-  }
-  if (text.includes('interruption') || text.includes('regrasp') || text.includes('task 5033') || text.includes('task5033')) {
-    return 'A single policy handles layout changes, target motion, and drop-and-regrasp recoveries.';
   }
   if (text.includes('paradigm') || text.includes('task map')) {
     return 'Thirty task paradigms are organized into six collectable skill families.';
