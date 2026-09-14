@@ -165,6 +165,31 @@ const TECH_BLOG_POST: {
 };
 
 const WEEK_COPY: Record<string, { lead: string; sections: ReportSection[] }> = {
+  '2026-09-07': {
+    lead: 'Across the September 7–14 cycle, the robotics team turned last week’s Dataset V3 skill direction into a concrete task map: six families and thirty collectable paradigms that go beyond short pick-and-place. The same cycle also showed a single fixed policy absorbing layout changes, target motion, and drop-and-regrasp recoveries without retraining.',
+    sections: [
+      {
+        title: 'A Six-Family, Thirty-Paradigm Task Map',
+        body: 'The new task inventory organizes thirty specific paradigms into six families: stacking and rearrangement; packing, unpacking, and sorting; loaded transport and handover; tool contact, hover, and rotation; simulated pouring and rigid-body transfer; and articulated operations followed by a next action. This gives TaskGen and collection a shared vocabulary, so later data rounds can target missing skills instead of growing another pile of isolated pick-and-place variants.',
+        references: ['paradigm', 'task map', 'taskgen', 'skill']
+      },
+      {
+        title: 'Stacking, Packing, and Loaded Transport',
+        body: 'The first three families cover multi-object spatial structure. Stacking and rearrangement include building layers, unstacking and placing items separately, removing a middle layer and restacking, swapping the top and bottom objects, and using a temporary location to exchange two items. Packing, unpacking, and sorting cover filling a container, emptying and placing items, splitting mixed objects into different containers, swapping contents between two containers, and packing several items then retrieving one. Loaded transport and handover add carrying a tray or plate that already holds objects, loading then moving the carrier, shuttling a load between two places, unloading after a move, and a bimanual split where one hand holds the carrier while the other loads.',
+        references: ['stack', 'pack', 'transport', 'bimanual']
+      },
+      {
+        title: 'Tools, Pouring, and Articulated Follow-Through',
+        body: 'The remaining families push beyond grasp-and-place. Tool contact covers touching a target then lifting away, one hand stabilizing while the other uses a tool, simulated twisting above a target, moving a tool over a target and returning it, and contacting two targets in sequence with the same tool. Pouring and rigid-body transfer include empty-container pour mime, a bimanual pour into a receiving container, tipping real rigid objects from a tray into a container, loading a carrier then dumping it, and staging the receiver before the pour. Articulated follow-through combines an open or toggle with a later placement: opening a toolbox, pot, or storage unit then inserting an object; operating a window, lamp, or fan then continuing to place and contact; opening a faucet then moving a cup nearby; unfolding a laptop or monitor then tidying objects; and opening a microwave, oven, or safe before placing an object and cleaning the surrounding workspace.',
+        references: ['tool', 'pour', 'articulated', 'follow-through']
+      },
+      {
+        title: 'One Policy Across Interruptions and Layouts',
+        body: 'The accompanying demonstration runs a single Stage-2 policy, with no retraining, across four starting layouts. The target is moved back and forth three times, including explicit object reposition before grasp, and the episode stays continuous through three drop events and three regrasp recoveries. The point is not a new rendering style. It is that the same policy can keep going when the workspace changes mid-episode, which is the kind of robustness the thirty-paradigm map will need once collection moves from isolated short skills to longer composed tasks.',
+        references: ['policy', 'interruption', 'layout', 'regrasp']
+      }
+    ]
+  },
   '2026-08-31': {
     lead: 'Across the August 31–September 7 cycle, the robotics team shifted the main question from producing more data to digesting it better. After a year of building the data flywheel—task and scene generation, teleoperation, DAgger collection, cleaning, and visual augmentation—the next line is a model-guided data engine: use foundation-model performance as feedback to decide what to keep, what to drop, and where the next batch should be produced.',
     sections: [
@@ -652,6 +677,12 @@ function demoCaption(demo: DemoItem, week: WeeklyUpdate) {
 
   if (text.includes('arxiv') || text.includes('paper release')) {
     return 'The AXIS paper is released on arXiv with updated research materials.';
+  }
+  if (text.includes('interruption') || text.includes('regrasp') || text.includes('task 5033') || text.includes('task5033')) {
+    return 'A single policy handles layout changes, target motion, and drop-and-regrasp recoveries.';
+  }
+  if (text.includes('paradigm') || text.includes('task map')) {
+    return 'Thirty task paradigms are organized into six collectable skill families.';
   }
   if (text.includes('real2sim') || text.includes('isaac')) {
     return 'Real2Sim previews bring lab scenes and hardware setups into Isaac simulation.';
